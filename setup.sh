@@ -1,11 +1,13 @@
 #!/bin/bash
 
-ln -snf bash_logout ${HOME}/.bash_logout
-ln -snf bash_profile ${HOME}/.bash_profile
-ln -snf bashrc ${HOME}/.bashrc
-ln -snf gitconfig ${HOME}/.gitconfig
-ln -snf gvimrc ${HOME}/.gvimrc
-ln -snf inputrc ${HOME}/.inputrc
-ln -snf screenrc ${HOME}/.screenrc
-ln -snf vim/ ${HOME}/.vim
-ln -snf vimrc ${HOME}/.vimrc
+pwd="$( cd -P "$( dirname "$0" )" && pwd )"
+
+ln -vsnf ${pwd}/bash_logout ${HOME}/.bash_logout
+ln -vsnf ${pwd}/bash_profile ${HOME}/.bash_profile
+ln -vsnf ${pwd}/bashrc ${HOME}/.bashrc
+ln -vsnf ${pwd}/gitconfig ${HOME}/.gitconfig
+ln -vsnf ${pwd}/gvimrc ${HOME}/.gvimrc
+ln -vsnf ${pwd}/inputrc ${HOME}/.inputrc
+ln -vsnf ${pwd}/screenrc ${HOME}/.screenrc
+ln -vsnf ${pwd}/vim/ ${HOME}/.vim
+ln -vsnf ${pwd}/vimrc ${HOME}/.vimrc

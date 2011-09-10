@@ -4,5 +4,6 @@
 *.json
 *.oauth
 *.data
-.vim/tmp/*
-.vim/cache/*
+vim/tmp/
+vim/cache/
+tags
