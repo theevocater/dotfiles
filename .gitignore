@@ -1,0 +1,8 @@
+*.swp
+.netrwhist
+*.log
+*.json
+*.oauth
+*.data
+.vim/tmp/*
+.vim/cache/*
