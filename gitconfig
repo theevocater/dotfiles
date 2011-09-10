@@ -1,0 +1,18 @@
+[user]
+        name = theevocater
+        email = theevocater@gmail.com
+
+[alias] 
+    st = status
+    ci = commit
+    co = checkout
+    w = whatchanged
+    br = branch
+
+[color] 
+    diff = auto
+    interactive = auto
+    status = auto
+    branch = auto
+    ui = true
+    pager = true
