@@ -1,13 +1,24 @@
 #!/bin/bash
+# originally borrowed from
+# https://github.com/wyattanderson/dotfiles/blob/master/setup.sh
 
-pwd="$( cd -P "$( dirname "$0" )" && pwd )"
 
-ln -vsnf ${pwd}/bash_logout ${HOME}/.bash_logout
-ln -vsnf ${pwd}/bash_profile ${HOME}/.bash_profile
-ln -vsnf ${pwd}/bashrc ${HOME}/.bashrc
-ln -vsnf ${pwd}/gitconfig ${HOME}/.gitconfig
-ln -vsnf ${pwd}/gvimrc ${HOME}/.gvimrc
-ln -vsnf ${pwd}/inputrc ${HOME}/.inputrc
-ln -vsnf ${pwd}/screenrc ${HOME}/.screenrc
-ln -vsnf ${pwd}/vim/ ${HOME}/.vim
-ln -vsnf ${pwd}/vimrc ${HOME}/.vimrc
+cd -P "$( dirname "$0" )"
+
+# Iterate over the list of setup files we want to alias from our dotfile
+# distribution
+for file in bash_logout bash_profile bashrc gitconfig gvimrc inputrc screenrc vim vimrc
+do
+    # If the file exists, ask the user if they'd like us to move it to
+    # FILENAME_old. Otherwise, overwrite.
+    if [[ -e ~/.${file} ]] ; then
+        read -p "~/.$file exists, overwrite? y[n] " -n 1
+        echo
+        if [[ $REPLY =~ ^[Nn]$ ]] ; then
+            continue
+        fi
+    fi
+    # Add the appropriate symlink
+    ln -svnf ${PWD}/${file} ~/.${file}
+done
+
