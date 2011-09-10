@@ -65,7 +65,11 @@ export HISTFILE=~/.bash_history
 export HISTFILESIZE=2000
 export HISTIGNORE="&:ls:[bf]g:exit" 
 export HISTSIZE=2500
-export LANG='en_US.utf8'
+if [[ ${os} == "Linux" ]] ; then
+    export LANG='en_US.utf8'
+elif [[ ${os} == "Darwin" ]] ; then
+    export LANG='en_US.UTF-8'
+fi
 export LESS="isR"
 #aliases
 alias date="date +%a%t%b%t%D%l:%M:%S%p"
