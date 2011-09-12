@@ -130,6 +130,8 @@ nmap <silent> <leader>t :TlistToggle<CR>
 
 nmap <silent> <leader>f :NERDTreeToggle<CR>
 
+nmap <silent> <leader>e :!p4 edit %<CR>
+
 nnoremap <silent> <leader>y :YRShow<CR>
 
 nnoremap <silent> <leader>g :GundoToggle<CR>

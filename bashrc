@@ -49,8 +49,12 @@ if [[ -f /etc/profile.d/bash-completion.sh ]] ; then
 
     # if we aren't on one of my gentoo boxes, we can depend on git-completion
     # locally
-elif [[ -f $HOME/.rc_files/git-completion.bash ]] ; then
-    . $HOME/.rc_files/git-completion.bash
+elif [[ -f $HOME/.dotfiles/git-completion.bash ]] ; then
+    . $HOME/.dotfiles/git-completion.bash
+fi
+
+if [[ -f ${HOME}/.profile ]] ; then
+  . ${HOME}/.profile
 fi
 
 if [[ -f ~/.inputrc ]] ; then
@@ -210,17 +214,25 @@ function set_prompt {
 
 # Change the window title of X terminals 
 case $TERM in
-    aterm*|xterm*|rxvt*|Eterm)
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
-        ;;  
-    screen)
-        _TITLE='\[\e]0;\u@\h:\w\a\]'
-        PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
-        unset _TITLE
-        ;;  
-    *)
-        PROMPT_COMMAND='true'
-        ;;
+  aterm*|xterm*|rxvt*|Eterm)
+    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
+    ;;  
+  screen)
+    _TITLE='\[\e]0;\u@\h:\w\a\]'
+    PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
+    unset _TITLE
+    ;;  
+  # this isn't exactly a good idea, but this fixes a problem at work where
+  # screen reports the terminal wrong.
+  vt100)
+    _TITLE='\[\e]0;\u@\h:\w\a\]'
+    PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
+    unset _TITLE
+    export TERM="screen-256color-bce"
+    ;;
+  *)
+    PROMPT_COMMAND='true'
+    ;;
 esac
 
 export PROMPT_COMMAND="$PROMPT_COMMAND; set_prompt"
