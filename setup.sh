@@ -2,19 +2,18 @@
 # originally borrowed from
 # https://github.com/wyattanderson/dotfiles/blob/master/setup.sh
 
-
 cd -P "$( dirname "$0" )"
 
 # Iterate over the list of setup files we want to alias from our dotfile
 # distribution
-for file in bash_logout bash_profile bashrc gitconfig gvimrc inputrc screenrc vim vimrc
+for file in bash_logout bash_profile bashrc gitconfig gvimrc inputrc tmux.conf screenrc vim vimrc
 do
     # If the file exists, ask the user if they'd like us to move it to
     # FILENAME_old. Otherwise, overwrite.
     if [[ -e ~/.${file} ]] ; then
         read -p "~/.$file exists, overwrite? y[n] " -n 1
         echo
-        if [[ $REPLY =~ ^[Nn]$ ]] ; then
+        if [[ $REPLY =~ ^[Nn]$ || $REPLY =~ ^[^Yy]$ ]] ; then
             continue
         fi
     fi

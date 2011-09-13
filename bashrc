@@ -67,7 +67,7 @@ export EDITOR=`which vim`
 export HISTCONTROL=ignoreboth:erasedups
 export HISTFILE=~/.bash_history
 export HISTFILESIZE=2000
-export HISTIGNORE="&:ls:[bf]g:exit" 
+export HISTIGNORE="&:ls:[bf]g:exit:history"
 export HISTSIZE=2500
 if [[ ${os} == "Linux" ]] ; then
     export LANG='en_US.utf8'
@@ -217,17 +217,18 @@ case $TERM in
   aterm*|xterm*|rxvt*|Eterm)
     PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
     ;;  
-  screen)
-    _TITLE='\[\e]0;\u@\h:\w\a\]'
-    PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
-    unset _TITLE
-    ;;  
+#  screen*)
+#    _TITLE='\[\e]0;\u@\h:\w\a\]'
+##    PROMPT_COMMAND='echo -ne "\033k${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
+#    PROMPT_COMMAND='echo -ne "\033k$( ${1} )\034\\"'
+#    unset _TITLE
+#    ;;  
   # this isn't exactly a good idea, but this fixes a problem at work where
   # screen reports the terminal wrong.
   vt100)
-    _TITLE='\[\e]0;\u@\h:\w\a\]'
-    PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
-    unset _TITLE
+#    _TITLE='\[\e]0;\u@\h:\w\a\]'
+#    PROMPT_COMMAND='echo -ne "\033k${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
+#    unset _TITLE
     export TERM="screen-256color-bce"
     ;;
   *)
