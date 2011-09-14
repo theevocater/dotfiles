@@ -13,7 +13,8 @@ do
     if [[ -e ~/.${file} ]] ; then
         read -p "~/.$file exists, overwrite? y[n] " -n 1
         echo
-        if [[ $REPLY =~ ^[Nn]$ || $REPLY =~ ^[^Yy]$ ]] ; then
+        # if the answer isn't yes, skip
+        if [[ $REPLY =~ ^[^Yy]$ ]] ; then
             continue
         fi
     fi
