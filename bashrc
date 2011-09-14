@@ -205,10 +205,10 @@ ${git_bit}${direction}${bldred}]${txtrst} "
     printf "%s" "$git_bit"
 }
 
-host_color="\[\e[1;$((31 + $(hostname | cksum | cut -c1-3) % 6))m\]"
+host_color="\[\e[0;$((31 + $(hostname | cksum | cut -c1-3) % 6))m\]"
 function set_prompt {
     git="$(parse_git)"
-    PS1="${bldgrn}\u@${host_color}\h${bldblu} \w $git${bldblu}\$${txtrst} "
+    PS1="${txtgrn}\u@${host_color}\h${txtgrn} \w $git${bldblu}\$${txtrst} "
     export PS1
 }
 
