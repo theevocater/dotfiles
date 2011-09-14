@@ -80,7 +80,7 @@ alias date="date +%a%t%b%t%D%l:%M:%S%p"
 alias df='df -h'
 alias du='du -h'
 alias indent='indent -kr -i8 -l72 -lc72'
-alias irssi='TERM=xterm irssi'
+alias irssi='TERM=screen irssi'
 alias more="less" # never use more, use less instead
 alias unhist='unset HISTFILE'
 alias synergyc="killall synergyc; synergyc"
