@@ -25,3 +25,9 @@
 [submodule "vim/bundle/vim-rainbow"]
 	path = vim/bundle/vim-rainbow
 	url = http://github.com/chrismetcalf/vim-rainbow.git
+[submodule "supertab"]
+	path = supertab
+	url = http://github.com/ervandew/supertab.git
+[submodule "DoxygenToolkit.vim"]
+	path = DoxygenToolkit.vim
+	url = http://github.com/vim-scripts/DoxygenToolkit.vim.git
