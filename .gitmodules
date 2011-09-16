@@ -24,4 +24,4 @@
 	url = http://github.com/tomtom/tlib_vim.git
 [submodule "vim/bundle/vim-rainbow"]
 	path = vim/bundle/vim-rainbow
-	url = https://github.com/chrismetcalf/vim-rainbow.git
+	url = http://github.com/chrismetcalf/vim-rainbow.git
