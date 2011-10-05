@@ -205,7 +205,13 @@ ${git_bit}${direction}${bldred}]${txtrst} "
     printf "%s" "$git_bit"
 }
 
-host_color="\[\e[0;$((31 + $(hostname | cksum | cut -c1-3) % 6))m\]"
+
+
+if [[ $TERM =~ '256color' ]]; then
+   host_color="\[\e[38;5;$((16 + $(hostname | cksum | cut -c1-3) % 256))m\]";
+else
+   host_color="\[\e[0;$((31 + $(hostname | cksum | cut -c1-3) % 6))m\]";
+fi
 function set_prompt {
     git="$(parse_git)"
     PS1="${txtgrn}\u@${host_color}\h${txtgrn} \w $git${bldblu}\$${txtrst} "

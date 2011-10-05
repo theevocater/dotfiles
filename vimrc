@@ -19,6 +19,8 @@ set history=1000
 """"""""""""""""""""""""""""""""""""""""""""""""
 set noerrorbells
 
+set switchbuf=useopen,split
+
 "set statusline+=%{fugitive#statusline()}
 set statusline=%F%m%r%h%w\ %{fugitive#statusline()}%=[%l,%v][%p%%]
 
