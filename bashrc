@@ -208,7 +208,7 @@ ${git_bit}${direction}${bldred}]${txtrst} "
 
 
 if [[ $TERM =~ '256color' ]]; then
-   host_color="\[\e[38;5;$((16 + $(hostname | cksum | cut -c1-3) % 256))m\]";
+   host_color="\[\e[38;5;$((16 + $(hostname | cksum | cut -c1-3) % 216))m\]";
 else
    host_color="\[\e[0;$((31 + $(hostname | cksum | cut -c1-3) % 6))m\]";
 fi
@@ -232,9 +232,6 @@ case $TERM in
   # this isn't exactly a good idea, but this fixes a problem at work where
   # screen reports the terminal wrong.
   vt100)
-#    _TITLE='\[\e]0;\u@\h:\w\a\]'
-#    PROMPT_COMMAND='echo -ne "\033k${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
-#    unset _TITLE
     export TERM="screen-256color-bce"
     ;;
   *)
