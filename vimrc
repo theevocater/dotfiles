@@ -178,6 +178,9 @@ autocmd FileType html,css set noexpandtab tabstop=2
 " Makefiles don't want tabs -> spaces
 autocmd FileType make set noexpandtab shiftwidth=8
 
+" Json is just javascript
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
 " extends matching to if/else etc
 runtime macros/matchit.vim
 
