@@ -34,3 +34,6 @@
 [submodule "vim/bundle/vim-javascript"]
 	path = vim/bundle/vim-javascript
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule "vim/bundle/vim-perforce"]
+	path = vim/bundle/vim-perforce
+	url = git://github.com/theevocater/vim-perforce.git
