@@ -171,10 +171,6 @@ autocmd FileType css set smartindent
 " alone when editing:
 autocmd FileType html set formatoptions+=tl
 
-" for both CSS and HTML, use genuine tab characters for indentation, to make
-" files a few bytes smaller:
-autocmd FileType html,css set noexpandtab tabstop=2
-
 " Makefiles don't want tabs -> spaces
 autocmd FileType make set noexpandtab shiftwidth=8
 
