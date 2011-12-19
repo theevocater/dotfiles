@@ -39,4 +39,4 @@
 	url = git://github.com/theevocater/vim-perforce.git
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
+	url = http://github.com/tpope/vim-surround.git
