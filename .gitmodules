@@ -37,3 +37,6 @@
 [submodule "vim/bundle/vim-perforce"]
 	path = vim/bundle/vim-perforce
 	url = git://github.com/theevocater/vim-perforce.git
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
