@@ -22,3 +22,6 @@ do
     ln -svnf ${PWD}/${file} ~/.${file}
 done
 
+git submodule sync
+git submodule init
+./update.sh
