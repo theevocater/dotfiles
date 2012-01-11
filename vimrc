@@ -138,6 +138,8 @@ nnoremap <silent> <leader>y :YRShow<CR>
 
 nnoremap <silent> <leader>g :GundoToggle<CR>
 
+nnoremap <silent> <leader>m :w<CR> :make<CR> :cw<CR>
+
 " spleling
 "setlocal spell spelllang=en
 
