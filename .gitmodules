@@ -1,21 +1,21 @@
 [submodule "vim/bundle/gundo.vim"]
 	path = vim/bundle/gundo.vim
-	url = git@github.com:sjl/gundo.vim.git
+	url = http://github.com/sjl/gundo.vim.git
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
+	url = http://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundle/vim-yankring"]
 	path = vim/bundle/vim-yankring
-	url = git@github.com:chrismetcalf/vim-yankring.git
+	url = http://github.com/chrismetcalf/vim-yankring.git
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
-	url = git@github.com:scrooloose/nerdcommenter.git
+	url = http://github.com/scrooloose/nerdcommenter.git
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
-	url = git@github.com:tpope/vim-fugitive.git
+	url = http://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/colorschemes"]
 	path = vim/bundle/colorschemes
-	url = git@github.com:flazz/vim-colorschemes.git
+	url = http://github.com/flazz/vim-colorschemes.git
 [submodule "vim/bundle/tskeleton"]
 	path = vim/bundle/tskeleton
 	url = http://github.com/tomtom/tskeleton_vim.git
@@ -33,10 +33,10 @@
 	url = http://github.com/vim-scripts/DoxygenToolkit.vim.git
 [submodule "vim/bundle/vim-javascript"]
 	path = vim/bundle/vim-javascript
-	url = git://github.com/pangloss/vim-javascript.git
+	url = http://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundle/vim-perforce"]
 	path = vim/bundle/vim-perforce
-	url = git://github.com/theevocater/vim-perforce.git
+	url = http://github.com/theevocater/vim-perforce.git
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = http://github.com/tpope/vim-surround.git
