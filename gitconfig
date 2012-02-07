@@ -8,6 +8,7 @@
     co = checkout
     w = whatchanged
     br = branch
+    sb = submodule
 
 [color] 
     diff = auto
