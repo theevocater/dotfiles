@@ -145,6 +145,23 @@ nnoremap <silent> <leader>m :w<CR> :make<CR> :cw<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""
+" Mappings
+""""""""""""""""""""""""""""""""""""""""""""""""
+" all the cool kids are doing it
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+" also kill home|end|pup|pdown
+noremap <Home> <nop>
+noremap <kHome> <nop>
+noremap <End> <nop>
+noremap <kEnd> <nop>
+noremap <PageUp> <nop>
+noremap <PageDown> <nop>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax highlighting
 """"""""""""""""""""""""""""""""""""""""""""""""
 syntax on
