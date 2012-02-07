@@ -85,21 +85,32 @@ set formatoptions=croql1n
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Temp file storage
 """"""""""""""""""""""""""""""""""""""""""""""""
-" backup files
-silent execute '!mkdir -p $HOME/.vim/tmp/backup'
-set backupdir=~/.vim/tmp
-"swap files
-silent execute '!mkdir -p $HOME/.vim/tmp/swap'
-set directory=~/.vim/tmp
-silent execute '!mkdir -p $HOME/.vim/tmp/yankring'
-let g:yankring_history_dir = '$HOME/.vim/tmp/yankring'
+if has("win32")
+    set backupdir=$TEMP
+    set directory=$TEMP
+    let g:yankring_history_dir=$TEMP
 
-if version >= 703
-    set undofile
-    silent execute '!mkdir -p $HOME/.vim/tmp/undo'
-    set undodir=~/.vim/tmp/undo// " undofiles
+    if version >= 703
+        set undofile
+        set undodir=$TEMP
+    endif
+else
+    " backup files
+    "silent execute '!mkdir -p $HOME/.vim/tmp/backup'
+    set backupdir=~/.vim/tmp
+
+    "swap files
+    "silent execute '!mkdir -p $HOME/.vim/tmp/swap'
+    set directory=~/.vim/tmp
+    "silent execute '!mkdir -p $HOME/.vim/tmp/yankring'
+    let g:yankring_history_dir = '$HOME/.vim/tmp/yankring'
+
+    if version >= 703
+        set undofile
+        "silent execute '!mkdir -p $HOME/.vim/tmp/undo'
+        set undodir=~/.vim/tmp/undo// " undofiles
+    endif
 endif
-
 " remember stuff when we close
 " specifically marks, registers, searches and buffers
 set viminfo='20,<50,s10,h,%
