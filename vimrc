@@ -44,6 +44,8 @@ set laststatus=2
 set showmatch
 set matchtime=3
 
+set clipboard=unnamed,exclude:screen.*\\\\|xterm.*
+
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Searching
 """"""""""""""""""""""""""""""""""""""""""""""""
