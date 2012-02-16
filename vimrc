@@ -127,7 +127,7 @@ set backspace=indent,eol,start
 let mapleader = ","
 
 " set up to show spaces
-set listchars=tab:>-,trail:?,eol:$
+set listchars=tab:>-,trail:_,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
 " sets ,n to silence search
