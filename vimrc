@@ -153,6 +153,8 @@ nnoremap <silent> <leader>g :GundoToggle<CR>
 
 nnoremap <silent> <leader>m :w<CR> :make<CR> :cw<CR>
 
+nnoremap <silent> <leader>ll :HighlightLongLines<CR>
+
 " spleling
 "setlocal spell spelllang=en
 
@@ -246,5 +248,22 @@ set background=dark
 " Make the completion menus readable
 highlight Pmenu ctermfg=0 ctermbg=3
 highlight PmenuSel ctermfg=0 ctermbg=7
+" Highlight lines longer than 80 characters as dark-red, lines longer than 90
+" characters as a brighter red.
+function! HighlightLongLines()
+    if exists('b:highlight_long_lines') && b:highlight_long_lines == 1
+        let b:highlight_long_lines = 0
+        highlight OverLength NONE
+        highlight SortaOverLength NONE
+    else
+        let b:highlight_long_lines = 1
+        highlight OverLength ctermbg=124 guibg=#990000
+        highlight SortaOverLength ctermbg=52 guibg=#330000
+        match SortaOverLength /\m\%>80v.\%<92v/
+        2match OverLength /\m\%>90v.\%<140v/
+    endif
+endfunction
+
+command! HighlightLongLines call HighlightLongLines()
 
 colorscheme tir_black
