@@ -2,8 +2,8 @@
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
 if [[ $- != *i* ]] ; then
-	# Shell is non-interactive.  Be done now!
-	return
+    # Shell is non-interactive.  Be done now!
+    return
 fi
 
 txtblk='\[\e[0;30m\]' # Black - Regular
@@ -41,24 +41,29 @@ bakwht='\[\e[47m\]'   # White
 txtrst='\[\e[0m\]'    # Text Reset
 
 if [[ -f /etc/bash/bashrc ]] ; then
-	. /etc/bash/bashrc
+    . /etc/bash/bashrc
 fi
 
 if [[ -f /etc/profile.d/bash-completion.sh ]] ; then
     . /etc/profile.d/bash-completion.sh
 
-    # if we aren't on one of my gentoo boxes, we can depend on git-completion
-    # locally
+# if we aren't on one of my gentoo boxes, we can depend on git-completion
+# locally
 elif [[ -f $HOME/.dotfiles/git-completion.bash ]] ; then
     . $HOME/.dotfiles/git-completion.bash
 fi
 
 if [[ -f ${HOME}/.profile ]] ; then
-  . ${HOME}/.profile
+    . ${HOME}/.profile
 fi
 
 if [[ -f ~/.inputrc ]] ; then
-  export INPUTRC="~/.inputrc"
+    export INPUTRC="~/.inputrc"
+fi
+
+if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
+    source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 fi
 
 os=`uname -s`
