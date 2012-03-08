@@ -18,11 +18,10 @@ set history=1000
 " Interface
 """"""""""""""""""""""""""""""""""""""""""""""""
 set noerrorbells
+set visualbell
+set t_vb=""
 
 set switchbuf=useopen,split
-
-"set statusline+=%{fugitive#statusline()}
-set statusline=%F%m%r%h%w\ %{fugitive#statusline()}%=[%l,%v][%p%%]
 
 " Buffer handling
 set hidden
@@ -38,11 +37,24 @@ set showmode
 set showcmd
 " Number our lines
 set number
-" always show the laststatus
+" always show the statusline
 set laststatus=2
+
+set statusline=%F%m%r%h%w\ %{fugitive#statusline()}%=%{PasteMode()}[%l,%v][%p%%]
+
+function! PasteMode()
+    if &paste
+        return '(paste)'
+    else
+        return ''
+    endif
+endfunction
+
 " Briefly jump the cursor to show the matching bracket
 set showmatch
 set matchtime=3
+" Show the current working line
+set cursorline
 
 set clipboard=unnamed,exclude:screen.*\\\\|xterm.*
 
