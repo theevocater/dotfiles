@@ -110,18 +110,18 @@ if has("win32")
     endif
 else
     " backup files
-    "silent execute '!mkdir -p $HOME/.vim/tmp/backup'
+    silent execute '!mkdir -p $HOME/.vim/tmp/backup'
     set backupdir=~/.vim/tmp
 
     "swap files
-    "silent execute '!mkdir -p $HOME/.vim/tmp/swap'
+    silent execute '!mkdir -p $HOME/.vim/tmp/swap'
     set directory=~/.vim/tmp
-    "silent execute '!mkdir -p $HOME/.vim/tmp/yankring'
+    silent execute '!mkdir -p $HOME/.vim/tmp/yankring'
     let g:yankring_history_dir = '$HOME/.vim/tmp/yankring'
 
     if version >= 703
         set undofile
-        "silent execute '!mkdir -p $HOME/.vim/tmp/undo'
+        silent execute '!mkdir -p $HOME/.vim/tmp/undo'
         set undodir=~/.vim/tmp/undo// " undofiles
     endif
 endif
