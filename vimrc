@@ -109,20 +109,27 @@ if has("win32")
         set undodir=$TEMP
     endif
 else
-    " backup files
+    " enable backup files
+    set backup
     silent execute '!mkdir -p $HOME/.vim/tmp/backup'
-    set backupdir=~/.vim/tmp
+    set backupdir=~/.vim/tmp/backup/
 
-    "swap files
+    " swap files
     silent execute '!mkdir -p $HOME/.vim/tmp/swap'
-    set directory=~/.vim/tmp
+    set directory=~/.vim/tmp/swap/
+    
+    " view files
+    silent execute '!mkdir -p $HOME/.vim/tmp/views'
+    set viewdir=~/.vim/tmp/views/
+
+    " yankring
     silent execute '!mkdir -p $HOME/.vim/tmp/yankring'
-    let g:yankring_history_dir = '$HOME/.vim/tmp/yankring'
+    let g:yankring_history_dir = '~/.vim/tmp/yankring'
 
     if version >= 703
         set undofile
         silent execute '!mkdir -p $HOME/.vim/tmp/undo'
-        set undodir=~/.vim/tmp/undo// " undofiles
+        set undodir=~/.vim/tmp/undo/ " undofiles
     endif
 endif
 " remember stuff when we close
