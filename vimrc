@@ -25,7 +25,9 @@ set switchbuf=useopen,split
 
 " Buffer handling
 set hidden
+" adds a ruler to the statusbar
 set ruler
+" sets the title of the xterm or what not to the filename
 set title
 " This allows better matching as it doesn't autochoose
 set wildmenu
