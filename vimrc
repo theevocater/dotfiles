@@ -119,7 +119,7 @@ else
     " swap files
     silent execute '!mkdir -p $HOME/.vim/tmp/swap'
     set directory=~/.vim/tmp/swap/
-    
+
     " view files
     silent execute '!mkdir -p $HOME/.vim/tmp/views'
     set viewdir=~/.vim/tmp/views/
@@ -166,7 +166,7 @@ nmap <silent> <leader>t :TlistToggle<CR>
 
 nmap <silent> <leader>f :NERDTreeToggle<CR>
 
-nmap <silent> <leader>e :!p4 edit %<CR>
+nmap <silent> <leader>pe :!p4 edit %<CR>
 
 nnoremap <silent> <leader>y :YRShow<CR>
 
@@ -175,6 +175,8 @@ nnoremap <silent> <leader>g :GundoToggle<CR>
 nnoremap <silent> <leader>m :w<CR> :make<CR> :cw<CR>
 
 nnoremap <silent> <leader>ll :HighlightLongLines<CR>
+
+inoremap {{ {<CR>}<Esc>ko
 
 " spleling
 "setlocal spell spelllang=en
@@ -246,6 +248,21 @@ set foldlevel=99
 """"""""""""""""""""""""""""""""""""""""""""""""
 let Tlist_Ctags_Cmd = "/home/user/jkaufman/local/bin/ctags"
 let Tlist_WinWidth = 40
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM Tip: http://vim.wikia.com/wiki/Search_for_visually_selected_text
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " comment cleanups
