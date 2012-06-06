@@ -213,9 +213,9 @@ ${git_bit}${direction}${bldred}]${txtrst} "
 
 
 if [[ $TERM =~ '256color' ]]; then
-   host_color="\[\e[38;5;$((16 + $(hostname | cksum | cut -c1-3) % 216))m\]";
+   host_color="\[\e[38;5;$((16 + $(cksum <<<$HOSTNAME | cut -c4-6) % 216))m\]"
 else
-   host_color="\[\e[0;$((31 + $(hostname | cksum | cut -c1-3) % 6))m\]";
+   host_color="\[\e[0;$((31 + $(cksum <<<$HOSTNAME | cut -c4-6) % 6))m\]"
 fi
 function set_prompt {
     git="$(parse_git)"
