@@ -243,11 +243,6 @@ case $TERM in
 #    PROMPT_COMMAND='echo -ne "\033k$( ${1} )\034\\"'
 #    unset _TITLE
 #    ;;  
-  # this isn't exactly a good idea, but this fixes a problem at work where
-  # screen reports the terminal wrong.
-  vt100)
-    export TERM="screen-256color-bce"
-    ;;
   *)
     PROMPT_COMMAND='true'
     ;;
