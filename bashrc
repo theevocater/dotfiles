@@ -213,9 +213,9 @@ ${git_bit}${direction}${bldred}]${txtrst} "
 
 
 if [[ $TERM =~ '256color' ]]; then
-   host_color="\[\e[38;5;$((16 + $(cksum <<<$HOSTNAME | cut -c4-6) % 216))m\]"
+    host_color="\[\e[38;5;$((16 + $(cksum <<<$HOSTNAME | cut -f1 -d" ") % 216))m\]"
 else
-   host_color="\[\e[0;$((31 + $(cksum <<<$HOSTNAME | cut -c4-6) % 6))m\]"
+    host_color="\[\e[0;$((31 + $(cksum <<<$HOSTNAME | cut -f1 -d" ") % 6))m\]"
 fi
 
 if [[ $USER = 'jkaufman' || $USER = 'jdkaufma' ]]; then
