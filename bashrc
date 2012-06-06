@@ -217,9 +217,18 @@ if [[ $TERM =~ '256color' ]]; then
 else
    host_color="\[\e[0;$((31 + $(cksum <<<$HOSTNAME | cut -c4-6) % 6))m\]"
 fi
+
+if [[ $USER = 'jkaufman' || $USER = 'jdkaufma' ]]; then
+    user_color=${txtgrn}
+elif [[ $EUID -eq 0 ]]; then
+    user_color=${txtred}
+else
+    user_color=${txtwht}
+fi
+
 function set_prompt {
     git="$(parse_git)"
-    PS1="${txtgrn}\u@${host_color}\h${txtgrn} \w $git${bldblu}\$${txtrst} "
+    PS1="${user_color}\u${txtwht}@${host_color}\h${txtgrn} \w $git${bldblu}\$${txtrst} "
     export PS1
 }
 
