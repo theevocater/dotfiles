@@ -6,6 +6,7 @@ if [[ $- != *i* ]] ; then
     return
 fi
 
+# colors
 txtblk='\[\e[0;30m\]' # Black - Regular
 txtred='\[\e[0;31m\]' # Red
 txtgrn='\[\e[0;32m\]' # Green
@@ -46,7 +47,6 @@ fi
 
 if [[ -f /etc/profile.d/bash-completion.sh ]] ; then
     . /etc/profile.d/bash-completion.sh
-
 # if we aren't on one of my gentoo boxes, we can depend on git-completion
 # locally
 elif [[ -f $HOME/.dotfiles/git-completion.bash ]] ; then
@@ -68,6 +68,7 @@ fi
 
 os=`uname -s`
 
+# exports
 export EDITOR=`which vim`
 export HISTCONTROL=ignoreboth:erasedups
 export HISTFILE=~/.bash_history
@@ -80,6 +81,7 @@ elif [[ ${os} == "Darwin" ]] ; then
     export LANG='en_US.UTF-8'
 fi
 export LESS="isR"
+
 #aliases
 alias date="date +%a%t%b%t%D%l:%M:%S%p"
 alias df='df -h'
@@ -90,7 +92,6 @@ alias more="less" # never use more, use less instead
 alias unhist='unset HISTFILE'
 alias synergyc="killall synergyc; synergyc"
 alias synergys="killall synergys; synergys"
-alias wpa_supplicant='wpa_supplicant -Dwext -iwlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf'
 
 # colorful commands
 alias grep='grep --colour=auto'
@@ -119,10 +120,7 @@ fi
 # make mkdir create long pathnames by default
 alias mkdir="mkdir -p"
 
-if [[ -e ${HOME}/scripts/Minecraft.sh ]] ; then
-    alias minecraft="${HOME}/scripts/Minecraft.sh"
-fi
-
+# shell options
 # no bells
 set bell-style none
 # notifies about background jobs
@@ -150,10 +148,10 @@ shopt -s histappend
 # better history handling for failed commands
 shopt -s histreedit histverify
 
-#extended pattern matching for filename matching (aka globbing)
+# extended pattern matching for filename matching (aka globbing)
 shopt -s extglob
 
-#failed globs go to null
+# failed globs go to null
 shopt -s nullglob
 
 # don't parse $PATH if i haven't typed anything
@@ -162,7 +160,7 @@ shopt -s no_empty_cmd_completion
 function parse_git {
     if [[ $( type -t "__git_ps1" ) != "function" ]] 
     then 
-      return
+        return
     fi
     branch=$(__git_ps1 "%s")
     if [[ -z $branch ]]; then
@@ -210,8 +208,6 @@ ${git_bit}${direction}${bldred}]${txtrst} "
     printf "%s" "$git_bit"
 }
 
-
-
 if [[ $TERM =~ '256color' ]]; then
     host_color="\[\e[38;5;$((16 + $(cksum <<<$HOSTNAME | cut -f1 -d" ") % 216))m\]"
 else
@@ -237,12 +233,6 @@ case $TERM in
   aterm*|xterm*|rxvt*|Eterm)
     PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
     ;;  
-#  screen*)
-#    _TITLE='\[\e]0;\u@\h:\w\a\]'
-##    PROMPT_COMMAND='echo -ne "\033k${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"'
-#    PROMPT_COMMAND='echo -ne "\033k$( ${1} )\034\\"'
-#    unset _TITLE
-#    ;;  
   *)
     PROMPT_COMMAND='true'
     ;;
