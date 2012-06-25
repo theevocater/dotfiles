@@ -24,4 +24,4 @@ done
 
 git submodule sync
 git submodule init
-./update.sh
+./update-sb.sh
