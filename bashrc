@@ -215,16 +215,18 @@ else
 fi
 
 if [[ $USER = 'jkaufman' || $USER = 'jdkaufma' ]]; then
-    user_color=${txtgrn}
+    user_color="${txtgrn}jdk"
+elif [[ $USER = 'jakeman' || $USER = 'jacobdeamkaufman' ]]; then
+    user_color="${txtcyn}jkmn"
 elif [[ $EUID -eq 0 ]]; then
-    user_color=${txtred}
+    user_color="${txtred}r"
 else
-    user_color=${txtwht}
+    user_color="${undpur}${USER}"
 fi
 
 function set_prompt {
     git="$(parse_git)"
-    PS1="${user_color}\u${txtwht}@${host_color}\h${txtgrn} \w $git${bldblu}\$${txtrst} "
+    PS1="${user_color}${txtwht}@${host_color}\h${txtgrn} \w $git${bldblu}\$${txtrst} "
     export PS1
 }
 
