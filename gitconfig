@@ -18,3 +18,9 @@
     branch = auto
     ui = true
     pager = true
+[branch]
+	autosetuprebase = always
+[branch "master"]
+	rebase = true
+[core]
+	ignorecase = false
