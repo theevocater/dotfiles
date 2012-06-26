@@ -54,7 +54,10 @@
 	url = http://github.com/vim-scripts/taglist.vim.git
 [submodule "vim/bundle/vim-git"]
 	path = vim/bundle/vim-git
-	url = https://github.com/tpope/vim-git
+	url = http://github.com/tpope/vim-git
 [submodule "vim/bundle/vim-scala"]
 	path = vim/bundle/vim-scala
-	url = https://github.com/derekwyatt/vim-scala.git
+	url = http://github.com/derekwyatt/vim-scala.git
+[submodule "vim-soy"]
+	path = vim-soy
+	url = http://github.com/duganchen/vim-soy.git
