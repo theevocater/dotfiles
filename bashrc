@@ -66,6 +66,10 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 fi
 
+if [[ `type -t brew` == "file" ]] ; then
+    export PATH="/usr/local/bin:$PATH"
+fi
+
 os=`uname -s`
 
 # exports
