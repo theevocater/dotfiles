@@ -41,7 +41,7 @@ set showmode
 " Shows commands that match your incomplete typing
 set showcmd
 " Number our lines
-set number
+set relativenumber
 " always show the statusline
 set laststatus=2
 
@@ -60,6 +60,10 @@ set showmatch
 set matchtime=3
 " Show the current working line
 set cursorline
+" Show column 90 only if not ro
+if (!&readonly)
+    setlocal colorcolumn=90
+endif
 
 set clipboard=unnamed,exclude:screen.*\\\\|xterm.*
 
@@ -161,7 +165,9 @@ nmap <silent> <leader>q :silent :nohlsearch<CR>
 nmap <silent> <leader>sp :set spell!<CR>
 
 nmap <silent> <leader>p :set paste!<CR>
+
 nmap <silent> <leader>n :set number!<CR>
+nmap <silent> <leader>r :ToggleRelative<CR>
 
 nmap <silent> <leader>c :%s/\s\+$//<CR>
 
@@ -306,5 +312,15 @@ function! HighlightLongLines()
 endfunction
 
 command! HighlightLongLines call HighlightLongLines()
+
+function! ToggleRelative()
+    if (&relativenumber)
+      set number
+    else
+      set relativenumber
+    endif
+endfunction
+
+command! ToggleRelative call ToggleRelative()
 
 colorscheme tir_black
