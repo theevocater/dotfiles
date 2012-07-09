@@ -86,9 +86,9 @@ set encoding=utf-8
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Indenting/Spacing
 """"""""""""""""""""""""""""""""""""""""""""""""
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set smarttab
 set expandtab
 set smartindent
@@ -301,7 +301,7 @@ function! HighlightLongLines()
         highlight OverLength ctermbg=124 guibg=#990000
         highlight SortaOverLength ctermbg=52 guibg=#330000
         match SortaOverLength /\m\%>80v.\%<92v/
-        2match OverLength /\m\%>90v.\%<140v/
+        2match OverLength /\m\%>90v.\%<120v/
     endif
 endfunction
 
