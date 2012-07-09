@@ -24,3 +24,4 @@
 	rebase = true
 [core]
 	ignorecase = false
+	excludesfile = ~/.cvsignore
