@@ -65,7 +65,7 @@ if (!&readonly)
     setlocal colorcolumn=90
 endif
 
-set clipboard=unnamed,exclude:screen.*\\\\|xterm.*
+"set clipboard=unnamed,exclude:screen.*\\\\|xterm.*
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Searching
@@ -223,7 +223,6 @@ set grepprg=grep\ -nH\ $*
 
 " for C-like programming, have automatic indentation:
 autocmd FileType c,cpp,slang set cindent
-"autocmd FileType c,cpp,slang set spell!
 
 " for actual C (not C++) programming where comments have explicit end
 " characters, if starting a new line in the middle of a comment automatically
@@ -243,6 +242,9 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " Json is just javascript
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
+" save when focus lost
+autocmd FocusLost * :wa
+
 " extends matching to if/else etc
 runtime macros/matchit.vim
 
@@ -255,7 +257,6 @@ set foldlevel=99
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Tlist stuff
 """"""""""""""""""""""""""""""""""""""""""""""""
-let Tlist_Ctags_Cmd = "/home/user/jkaufman/local/bin/ctags"
 let Tlist_WinWidth = 40
 
 """"""""""""""""""""""""""""""""""""""""""""""""
