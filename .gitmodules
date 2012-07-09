@@ -61,3 +61,6 @@
 [submodule "vim-soy"]
 	path = vim/bundle/vim-soy
 	url = http://github.com/duganchen/vim-soy.git
+[submodule "vim/bundle/vim-pathogen"]
+	path = vim/bundle/vim-pathogen
+	url = http://github.com/tpope/vim-pathogen.git
