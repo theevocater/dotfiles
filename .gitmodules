@@ -16,12 +16,6 @@
 [submodule "vim/bundle/colorschemes"]
 	path = vim/bundle/colorschemes
 	url = http://github.com/flazz/vim-colorschemes.git
-[submodule "vim/bundle/tskeleton"]
-	path = vim/bundle/tskeleton
-	url = http://github.com/tomtom/tskeleton_vim.git
-[submodule "vim/bundle/tlib"]
-	path = vim/bundle/tlib
-	url = http://github.com/tomtom/tlib_vim.git
 [submodule "vim/bundle/vim-rainbow"]
 	path = vim/bundle/vim-rainbow
 	url = http://github.com/chrismetcalf/vim-rainbow.git
