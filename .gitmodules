@@ -58,3 +58,6 @@
 [submodule "Command-T"]
 	path = vim/bundle/Command-T
 	url = http://github.com/wincent/Command-T.git
+[submodule "vim/bundle/rainbow_parentheses"]
+	path = vim/bundle/rainbow_parentheses
+	url = http://github.com/vim-scripts/rainbow_parentheses.vim.git

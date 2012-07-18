@@ -166,8 +166,9 @@ nmap <silent> <leader>sp :set spell!<CR>
 
 nmap <silent> <leader>p :set paste!<CR>
 
-nmap <silent> <leader>n :set number!<CR>
-nmap <silent> <leader>r :ToggleRelative<CR>
+nmap <silent> <leader>n :set relativenumber!<CR>
+
+nmap <silent> <leader>r :RainbowToggle<CR>
 
 nmap <silent> <leader>c :%s/\s\+$//<CR>
 
@@ -324,5 +325,12 @@ function! ToggleRelative()
 endfunction
 
 command! ToggleRelative call ToggleRelative()
+
+function! RainbowToggle()
+  RainbowParenthesesToggle
+  RainbowParenthesesLoadBraces
+endfunction
+
+command! RainbowToggle call RainbowToggle()
 
 colorscheme tir_black
