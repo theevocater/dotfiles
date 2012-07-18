@@ -60,10 +60,6 @@ set showmatch
 set matchtime=3
 " Show the current working line
 set cursorline
-" Show column 90 only if not ro
-if (!&readonly)
-    setlocal colorcolumn=90
-endif
 
 "set clipboard=unnamed,exclude:screen.*\\\\|xterm.*
 
@@ -244,8 +240,9 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " Json is just javascript
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
-" save when focus lost
-autocmd FocusLost * :wa
+" Show column 90 only if not ro
+autocmd BufEnter * setlocal colorcolumn=90
+autocmd WinLeave * setlocal colorcolumn=0
 
 " extends matching to if/else etc
 runtime macros/matchit.vim
