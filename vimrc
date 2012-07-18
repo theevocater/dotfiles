@@ -171,9 +171,10 @@ nmap <silent> <leader>r :ToggleRelative<CR>
 
 nmap <silent> <leader>c :%s/\s\+$//<CR>
 
-nmap <silent> <leader>t :TlistToggle<CR>
+nmap <silent> <leader>ct :TlistToggle<CR>
 
 nmap <silent> <leader>f :NERDTreeToggle<CR>
+nmap <silent> <leader>F :NERDTreeFind<CR>
 
 nmap <silent> <leader>pe :!p4 edit %<CR>
 
