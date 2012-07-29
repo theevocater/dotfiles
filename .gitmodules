@@ -61,3 +61,6 @@
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = vim/bundle/rainbow_parentheses
 	url = http://github.com/vim-scripts/rainbow_parentheses.vim.git
+[submodule "vim/bundle/nginx"]
+	path = vim/bundle/nginx
+	url = http://github.com/vim-scripts/nginx.vim
