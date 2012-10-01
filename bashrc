@@ -76,6 +76,14 @@ if [[ -s "/usr/local/share/chruby/chruby.sh" ]] ; then
   chruby 1.9.3
 fi
 
+if [[ -s "$HOME/local/bin/" ]] ; then
+  PATH=$HOME/local/bin:$PATH
+fi
+
+if [[ -s "$HOME/local/man/" ]] ; then
+  MANPATH=$HOME/local/bin:$MANPATH
+fi
+
 if [[ `type -t brew` == "file" ]] ; then
     export PATH="/usr/local/bin:$PATH"
 fi
