@@ -330,4 +330,13 @@ endfunction
 
 command! RainbowToggle call RainbowToggle()
 
+let g:CommandTMaxFiles = 2000000
+let g:CommandTMaxDepth = 40
+let g:CommandTMaxCachedDirectories = 0
+
+let g:CommandTBackspaceMap=[ '<C-h>', '<BS>' ]
+let g:CommandTCursorLeftMap='<Left>'
+
+set wildignore+=*.so,*.swp,*.zip,*.jar,*.pyc
+
 colorscheme tir_black
