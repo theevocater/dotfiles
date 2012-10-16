@@ -337,6 +337,6 @@ let g:CommandTMaxCachedDirectories = 0
 let g:CommandTBackspaceMap=[ '<C-h>', '<BS>' ]
 let g:CommandTCursorLeftMap='<Left>'
 
-set wildignore+=*.so,*.swp,*.zip,*.jar,*.pyc
+set wildignore+=*.so,*.swp,*.zip,*.jar,*.pyc,*.class,*.bak
 
 colorscheme tir_black
