@@ -245,3 +245,10 @@ case $TERM in
 esac
 
 export PROMPT_COMMAND="$PROMPT_COMMAND; set_prompt"
+
+ssh_sock_symlink="/tmp/ssh-agent-$USER"
+if [[ -n $SSH_AUTH_SOCK && $SSH_AUTH_SOCK != "$ssh_sock_symlink" ]]
+then
+  ln -sf "$SSH_AUTH_SOCK" "$ssh_sock_symlink"
+  export SSH_AUTH_SOCK=$ssh_sock_symlink
+fi
