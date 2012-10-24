@@ -10,18 +10,17 @@
     br = branch
     sb = submodule
     lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
+    brdiff = "log --left-right --graph --cherry-pick --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 [color] 
-    diff = auto
-    interactive = auto
-    status = auto
-    branch = auto
-    ui = true
-    pager = true
+    ui = always
+
 [branch]
 	autosetuprebase = always
+
 [branch "master"]
 	rebase = true
+
 [core]
 	ignorecase = false
 	excludesfile = ~/.cvsignore
