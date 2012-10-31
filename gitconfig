@@ -24,3 +24,6 @@
 [core]
 	ignorecase = false
 	excludesfile = ~/.cvsignore
+
+[push]
+	default = simple
