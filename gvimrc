@@ -1,9 +1,4 @@
-"set guifont=Envy\ Code\ R\ 10
-
-" these only work in 256 colors
-" autocmd FileType c,cpp,slang RainbowParenthesesLoadBraces
-" autocmd FileType c,cpp,slang RainbowParenthesesToggle
-nnoremap <leader>R :RainbowParenthesesToggle<CR>
+set guifont=Source\ Code\ Pro\ ExtraLight:h11
 
 set guioptions-=T
 set guioptions-=r

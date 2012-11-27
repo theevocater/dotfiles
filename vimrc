@@ -173,6 +173,12 @@ nmap <silent> <leader>ct :TlistToggle<CR>
 nmap <silent> <leader>f :NERDTreeToggle<CR>
 nmap <silent> <leader>F :NERDTreeFind<CR>
 
+" fugitive keys
+nmap <silent> <leader>Gs :Gstatus<CR>
+nmap <leader>G :Git
+nmap <silent> <leader>W :Gw<CR>
+nmap <leader>Gc :Git checkout %
+
 nmap <silent> <leader>pe :!p4 edit %<CR>
 
 nnoremap <silent> <leader>y :YRShow<CR>
