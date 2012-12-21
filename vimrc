@@ -175,8 +175,9 @@ nmap <silent> <leader>F :NERDTreeFind<CR>
 
 " fugitive keys
 nmap <silent> <leader>Gs :Gstatus<CR>
-nmap <leader>G :Git
 nmap <silent> <leader>W :Gw<CR>
+nmap <silent> <leader>Gd :Gdiff<CR>
+nmap <leader>G :Git
 nmap <leader>Gc :Git checkout %
 
 nmap <silent> <leader>pe :!p4 edit %<CR>
