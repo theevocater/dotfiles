@@ -64,3 +64,6 @@
 [submodule "vim/bundle/nginx"]
 	path = vim/bundle/nginx
 	url = http://github.com/vim-scripts/nginx.vim
+[submodule "vim/bundle/rust-vim"]
+	path = vim/bundle/rust-vim
+	url = git://github.com/theevocater/rust.vim.git
