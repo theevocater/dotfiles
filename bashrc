@@ -51,6 +51,7 @@ if [[ -f /etc/profile.d/bash-completion.sh ]] ; then
 # locally
 elif [[ -f $HOME/.dotfiles/git-completion.bash ]] ; then
     . $HOME/.dotfiles/git-completion.bash
+    . $HOME/.dotfiles/git-prompt.sh
 fi
 
 if [[ -f ${HOME}/.profile ]] ; then

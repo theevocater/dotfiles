@@ -7,3 +7,5 @@
 vim/tmp/
 vim/cache/
 tags
+git-completion.bash
+git-prompt.sh

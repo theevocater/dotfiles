@@ -4,6 +4,17 @@
 
 cd -P "$( dirname "$0" )"
 
+prompt () {
+  read -p "$1" -n 1
+  echo
+  # if the answer isn't yes, skip
+  if [[ -z $REPLY || $REPLY =~ ^[^Yy]$ ]]
+  then
+    return 1
+  fi
+  return 0
+}
+
 # Iterate over the list of setup files we want to alias from our dotfile
 # distribution
 for file in bash_logout bash_profile bashrc gitconfig gvimrc inputrc tmux.conf screenrc vim vimrc cvsignore
@@ -11,22 +22,32 @@ do
   # If the file exists, ask the user if they'd like us to move it to
   # FILENAME_old. Otherwise, overwrite.
   if [[ -e ~/.${file} ]] ; then
-    read -p "~/.$file exists, overwrite? y[n] " -n 1
-    echo
-    # if the answer isn't yes, skip
-    if [[ -z $REPLY || $REPLY =~ ^[^Yy]$ ]] ; then
+    prompt "~/.$file exists, overwrite? y[n] "
+    if [[ $? -ne 0 ]]
+    then
       continue
     fi
   fi
   # Add the appropriate symlink
-  ln -svnf ${PWD}/${file} ~/.${file}
+  echo "ln -svnf ${PWD}/${file} ~/.${file}"
 done
 
-echo "Downloading git completion script"
 if [[ !(-f git-completion.bash) ]]
 then
+  echo "Downloading git completion script"
   curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash > git-completion.bash
+  curl https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > git-prompt.bash
+else
+  prompt "Update completion? y[n] "
+  if [[ $? -eq 0 ]]
+  then
+    curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash > git-completion.bash
+    curl https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > git-prompt.sh
+  fi
 fi
 
-echo "Syncing submodules"
-./sync-sb.sh
+prompt "Sync submodules? y[n] "
+if [[ $? -eq 0 ]]
+then
+  ./sync-sb.sh
+fi
