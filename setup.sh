@@ -36,7 +36,7 @@ if [[ !(-f git-completion.bash) ]]
 then
   echo "Downloading git completion script"
   curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash > git-completion.bash
-  curl https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > git-prompt.bash
+  curl https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > git-prompt.sh
 else
   prompt "Update completion? y[n] "
   if [[ $? -eq 0 ]]
