@@ -5,7 +5,7 @@
 cd -P "$( dirname "$0" )"
 
 prompt () {
-  read -p "$1" -n 1
+  read -p "$1 y[n] " -n 1
   echo
   # if the answer isn't yes, skip
   if [[ -z $REPLY || $REPLY =~ ^[^Yy]$ ]]
@@ -22,14 +22,19 @@ do
   # If the file exists, ask the user if they'd like us to move it to
   # FILENAME_old. Otherwise, overwrite.
   if [[ -e ~/.${file} ]] ; then
-    prompt "~/.$file exists, overwrite? y[n] "
+    prompt "~/.$file exists, overwrite?"
     if [[ $? -ne 0 ]]
     then
       continue
     fi
   fi
   # Add the appropriate symlink
-  echo "ln -svnf ${PWD}/${file} ~/.${file}"
+  if [[ "$TERM" =~ 256 && -f "${PWD}/256${file}" ]]
+  then
+    ln -svnf "${PWD}/256${file}" ~/.${file}
+  else
+    ln -svnf ${PWD}/${file} ~/.${file}
+  fi
 done
 
 if [[ !(-f git-completion.bash) ]]
@@ -38,7 +43,7 @@ then
   curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash > git-completion.bash
   curl https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > git-prompt.sh
 else
-  prompt "Update completion? y[n] "
+  prompt "Update completion?"
   if [[ $? -eq 0 ]]
   then
     curl https://raw.github.com/git/git/master/contrib/completion/git-completion.bash > git-completion.bash
@@ -46,7 +51,7 @@ else
   fi
 fi
 
-prompt "Sync submodules? y[n] "
+prompt "Sync submodules?"
 if [[ $? -eq 0 ]]
 then
   ./sync-sb.sh
