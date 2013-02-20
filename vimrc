@@ -350,6 +350,12 @@ let g:CommandTMaxCachedDirectories = 0
 let g:CommandTBackspaceMap=[ '<C-h>', '<BS>' ]
 let g:CommandTCursorLeftMap='<Left>'
 
+""""""""""""""""""""""""""""""""""""""""""""""""
+" syntastic
+""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_loc_list = 1
+
 set wildignore+=*.so,*.swp,*.zip,*.jar,*.pyc,*.class,*.bak
 
 colorscheme tir_black
