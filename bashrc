@@ -214,24 +214,34 @@ ${git_bit}${direction}${bldred}]${txtrst} "
 }
 
 if [[ $TERM =~ '256color' ]]; then
-    host_color="\[\e[38;5;$((16 + $(cksum <<<$HOSTNAME | cut -f1 -d" ") % 216))m\]"
+    HOST_COLOR="\[\e[38;5;$((16 + $(cksum <<<$HOSTNAME | cut -f1 -d" ") % 216))m\]"
 else
-    host_color="\[\e[0;$((31 + $(cksum <<<$HOSTNAME | cut -f1 -d" ") % 6))m\]"
+    HOST_COLOR="\[\e[0;$((31 + $(cksum <<<$HOSTNAME | cut -f1 -d" ") % 6))m\]"
 fi
 
-if [[ $USER = 'jkaufman' || $USER = 'jdkaufma' ]]; then
-    user_color="${txtgrn}jdk"
-elif [[ $USER = 'jakeman' || $USER = 'jacobdeamkaufman' ]]; then
-    user_color="${txtcyn}jkmn"
-elif [[ $EUID -eq 0 ]]; then
-    user_color="${txtred}r"
+host=`hostname -s`
+if [[ ${host} == "sixteen" ]]; then
+  HOST_COLOR="${HOST_COLOR}16"
+elif [[ ${host} =~ 'dev-' ]]; then
+  HOST_COLOR="${HOST_COLOR}${host#dev-}"
 else
-    user_color="${undpur}${USER}"
+  HOST_COLOR="${HOST_COLOR}${host:0:3}"
+fi
+unset host
+
+if [[ $USER = 'jkaufman' || $USER = 'jdkaufma' ]]; then
+    USER_COLOR="${txtgrn}jk"
+elif [[ $USER = 'jakeman' || $USER = 'jacobdeamkaufman' ]]; then
+    USER_COLOR="${txtcyn}jkmn"
+elif [[ $EUID -eq 0 ]]; then
+    USER_COLOR="${txtred}r"
+else
+    USER_COLOR="${undpur}${USER}"
 fi
 
 function set_prompt {
     git="$(parse_git)"
-    PS1="${user_color}${txtwht}@${host_color}\h${txtgrn} \w $git${bldblu}\$${txtrst} "
+    PS1="${bldblk}\D{%H:%M:%S} ${USER_COLOR}${txtwht}@${HOST_COLOR}${txtgrn} \w $git${bldblu}\$${txtrst} "
     export PS1
 }
 
@@ -253,3 +263,5 @@ then
   ln -sf "$SSH_AUTH_SOCK" "$ssh_sock_symlink"
   export SSH_AUTH_SOCK=$ssh_sock_symlink
 fi
+
+unset os
