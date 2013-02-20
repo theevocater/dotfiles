@@ -302,6 +302,10 @@ set background=dark
 " Make the completion menus readable
 highlight Pmenu ctermfg=0 ctermbg=3
 highlight PmenuSel ctermfg=0 ctermbg=7
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Helper functions
+""""""""""""""""""""""""""""""""""""""""""""""""
 " Highlight lines longer than 80 characters as dark-red, lines longer than 90
 " characters as a brighter red.
 function! HighlightLongLines()
@@ -317,9 +321,9 @@ function! HighlightLongLines()
         2match OverLength /\m\%>90v.\%<120v/
     endif
 endfunction
-
 command! HighlightLongLines call HighlightLongLines()
 
+" simplify flipping between relative and absolute numbering
 function! ToggleRelative()
     if (&relativenumber)
       set number
@@ -327,16 +331,18 @@ function! ToggleRelative()
       set relativenumber
     endif
 endfunction
-
 command! ToggleRelative call ToggleRelative()
 
+" Toggle rainbow parens w/ the braces we want
 function! RainbowToggle()
   RainbowParenthesesToggle
   RainbowParenthesesLoadBraces
 endfunction
-
 command! RainbowToggle call RainbowToggle()
 
+""""""""""""""""""""""""""""""""""""""""""""""""
+" CommandT
+""""""""""""""""""""""""""""""""""""""""""""""""
 let g:CommandTMaxFiles = 2000000
 let g:CommandTMaxDepth = 40
 let g:CommandTMaxCachedDirectories = 0
