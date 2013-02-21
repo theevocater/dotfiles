@@ -148,7 +148,7 @@ set backspace=indent,eol,start
 " Leader Hotkeys
 """"""""""""""""""""""""""""""""""""""""""""""""
 " sets our leader from \ to ,
-let mapleader = ","
+let mapleader = " "
 
 " set up to show spaces
 set listchars=tab:>-,trail:_,eol:$
