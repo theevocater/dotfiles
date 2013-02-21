@@ -67,6 +67,9 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # Empty Trash securely by default
 defaults write com.apple.finder EmptyTrashSecurely -bool true
 
+# enable text selection in quick look
+defaults write com.apple.finder QLEnableTextSelection -bool TRUE
+
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
@@ -85,3 +88,4 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Enable the debug menu in Disk Utility
 defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
 defaults write com.apple.DiskUtility advanced-image-options -bool true
+
