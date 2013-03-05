@@ -162,7 +162,7 @@ nmap <silent> <leader>sp :set spell!<CR>
 
 nmap <silent> <leader>p :set paste!<CR>
 
-nmap <silent> <leader>n :set relativenumber!<CR>
+nmap <silent> <leader>n :set relativenumber!<CR> :ToggleGitGutter<CR>
 
 nmap <silent> <leader>r :RainbowToggle<CR>
 
