@@ -47,8 +47,7 @@ fi
 
 if [[ -f /etc/profile.d/bash-completion.sh ]] ; then
     . /etc/profile.d/bash-completion.sh
-# if we aren't on one of my gentoo boxes, we can depend on git-completion
-# locally
+# we can depend on git-completion locally
 elif [[ -f $HOME/.dotfiles/git-completion.bash ]] ; then
     . $HOME/.dotfiles/git-completion.bash
     . $HOME/.dotfiles/git-prompt.sh
@@ -60,6 +59,10 @@ fi
 
 if [[ -f ~/.inputrc ]] ; then
     export INPUTRC="~/.inputrc"
+fi
+
+if [[ `which npm` && -d `npm bin` ]] ; then
+    PATH=$PATH:`npm bin`
 fi
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
@@ -163,8 +166,8 @@ shopt -s nullglob
 shopt -s no_empty_cmd_completion
 
 function parse_git {
-    if [[ $( type -t "__git_ps1" ) != "function" ]] 
-    then 
+    if [[ $( type -t "__git_ps1" ) != "function" ]]
+    then
         return
     fi
     branch=$(__git_ps1 "%s")
@@ -245,11 +248,11 @@ function set_prompt {
     export PS1
 }
 
-# Change the window title of X terminals 
+# Change the window title of X terminals
 case $TERM in
   aterm*|xterm*|rxvt*|Eterm)
     PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
-    ;;  
+    ;;
   *)
     PROMPT_COMMAND='true'
     ;;
