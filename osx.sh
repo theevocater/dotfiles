@@ -65,7 +65,8 @@ defaults write -g NSNavPanelExpandedStateForSaveMode -bool TRUE
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # Empty Trash securely by default
-defaults write com.apple.finder EmptyTrashSecurely -bool true
+# this takes *forever* so turn it off
+defaults write com.apple.finder EmptyTrashSecurely -bool false
 
 # enable text selection in quick look
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE
