@@ -61,7 +61,7 @@ if [[ -f ~/.inputrc ]] ; then
     export INPUTRC="~/.inputrc"
 fi
 
-if [[ `which npm` && -d `npm bin` ]] ; then
+if [[ `type -t npm` && -d `npm bin` ]] ; then
     PATH=$PATH:`npm bin`
 fi
 
