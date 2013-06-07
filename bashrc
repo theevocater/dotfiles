@@ -70,6 +70,11 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 fi
 
+if [[ -s "/usr/local/share/chruby/chruby.sh" ]] ; then
+  . /usr/local/share/chruby/chruby.sh
+  RUBIES=("$HOME/.rubies/*")
+fi
+
 if [[ `type -t brew` == "file" ]] ; then
     export PATH="/usr/local/bin:$PATH"
 fi
