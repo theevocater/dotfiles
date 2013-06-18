@@ -73,6 +73,7 @@ fi
 if [[ -s "/usr/local/share/chruby/chruby.sh" ]] ; then
   . /usr/local/share/chruby/chruby.sh
   export RUBIES=("$HOME/.rubies/*")
+  chruby 1.9.3
 fi
 
 if [[ `type -t brew` == "file" ]] ; then
