@@ -36,7 +36,7 @@
 	url = http://github.com/tpope/vim-unimpaired.git
 [submodule "vim/bundle/a.vim"]
 	path = vim/bundle/a.vim
-	url = http://github.com/vim-scripts/a.vim.git
+	url = http://github.com/theevocater/a.vim.git
 [submodule "vim/bundle/taglist.vim"]
 	path = vim/bundle/taglist.vim
 	url = http://github.com/vim-scripts/taglist.vim.git
