@@ -41,23 +41,23 @@ bakcyn='\[\e[46m\]'   # Cyan
 bakwht='\[\e[47m\]'   # White
 txtrst='\[\e[0m\]'    # Text Reset
 
-if [[ -f /etc/bash/bashrc ]] ; then
+if [[ -s /etc/bash/bashrc ]] ; then
     . /etc/bash/bashrc
 fi
 
-if [[ -f /etc/profile.d/bash-completion.sh ]] ; then
+if [[ -s /etc/profile.d/bash-completion.sh ]] ; then
     . /etc/profile.d/bash-completion.sh
 # we can depend on git-completion locally
-elif [[ -f $HOME/.dotfiles/git-completion.bash ]] ; then
+elif [[ -s $HOME/.dotfiles/git-completion.bash ]] ; then
     . $HOME/.dotfiles/git-completion.bash
     . $HOME/.dotfiles/git-prompt.sh
 fi
 
-if [[ -f ${HOME}/.profile ]] ; then
+if [[ -s ${HOME}/.profile ]] ; then
     . ${HOME}/.profile
 fi
 
-if [[ -f ~/.inputrc ]] ; then
+if [[ -s ~/.inputrc ]] ; then
     export INPUTRC="~/.inputrc"
 fi
 
@@ -82,6 +82,11 @@ fi
 
 if [[ -s "$HOME/local/man/" ]] ; then
   MANPATH=$HOME/local/bin:$MANPATH
+fi
+
+# pick up heroku if its around
+if [[ -d "/usr/local/heroku/bin/" ]] ; then
+  export PATH="/usr/local/heroku/bin:$PATH"
 fi
 
 if [[ `type -t brew` == "file" ]] ; then
