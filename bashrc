@@ -68,6 +68,7 @@ fi
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
     source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+    echo -ne "\033[1mPLEASE TYPE rvm implode!\n\033[0m"
 fi
 
 if [[ -s "/usr/local/share/chruby/chruby.sh" ]] ; then
