@@ -182,6 +182,9 @@ shopt -s extglob
 # failed globs go to null
 shopt -s nullglob
 
+# turn on ** (recursive) globbing
+shopt -s globstar
+
 # don't parse $PATH if i haven't typed anything
 shopt -s no_empty_cmd_completion
 
