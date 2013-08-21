@@ -61,3 +61,9 @@ if [[ $? -eq 0 ]]
 then
   ./sync-sb.sh
 fi
+
+prompt "Copy authorized_users?"
+if [[ $? -eq 0 ]]
+then
+  cp authorized_keys ../.ssh/
+fi
