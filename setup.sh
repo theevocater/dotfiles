@@ -19,8 +19,8 @@ download_git () {
   git_version=`git --version | cut -d" " -f3`
 
   echo "Downloading git completion script for $git_version"
-  curl https://raw.github.com/git/git/v$git_version/contrib/completion/git-completion.bash > git-completion.bash
-  curl https://raw.github.com/git/git/v$git_version/contrib/completion/git-prompt.sh > git-prompt.sh
+  curl -f https://raw.github.com/git/git/v$git_version/contrib/completion/git-completion.bash > git-completion.bash
+  curl -f https://raw.github.com/git/git/v$git_version/contrib/completion/git-prompt.sh > git-prompt.sh
 }
 
 # Iterate over the list of setup files we want to alias from our dotfile
