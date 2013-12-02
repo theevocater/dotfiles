@@ -41,15 +41,18 @@ bakcyn='\[\e[46m\]'   # Cyan
 bakwht='\[\e[47m\]'   # White
 txtrst='\[\e[0m\]'    # Text Reset
 
+# load machines bashrc if necessary
 if [[ -s /etc/bash/bashrc ]] ; then
     . /etc/bash/bashrc
 fi
 
-if [[ -s /etc/profile.d/bash-completion.sh ]] ; then
-    . /etc/profile.d/bash-completion.sh
+# load git completion
 # we can depend on git-completion locally
-elif [[ -s $HOME/.dotfiles/git-completion.bash ]] ; then
+if [[ -s $HOME/.dotfiles/git-completion.bash ]] ; then
     . $HOME/.dotfiles/git-completion.bash
+fi
+# load these separately because git-prompt was introduced with git-1.8
+if [[ -s $HOME/.dotfiles/git-prompt.sh ]] ; then
     . $HOME/.dotfiles/git-prompt.sh
 fi
 
@@ -57,20 +60,24 @@ if [[ -s ${HOME}/.profile ]] ; then
     . ${HOME}/.profile
 fi
 
+# load my inputrc so page up and stuff works
 if [[ -s ~/.inputrc ]] ; then
     export INPUTRC="~/.inputrc"
 fi
 
+# pick up NPM
 if [[ `type -t npm` && -d `npm bin` ]] ; then
     PATH=$PATH:`npm bin`
 fi
 
+# load rvm and remind me to blow it up
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
     source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
     echo -ne "\033[1mPLEASE TYPE rvm implode!\n\033[0m"
 fi
 
+# try to pick up ruby
 if [[ -s "/usr/local/share/chruby/chruby.sh" ]] ; then
   . /usr/local/share/chruby/chruby.sh
   export RUBIES=($HOME/.rubies/*)
@@ -103,6 +110,7 @@ export HISTFILE=~/.bash_history
 export HISTFILESIZE=2000
 export HISTIGNORE="&:ls:[bf]g:exit:history"
 export HISTSIZE=2500
+# prefer utf8
 if [[ ${os} == "Linux" ]] ; then
     export LANG='en_US.utf8'
 elif [[ ${os} == "Darwin" ]] ; then
@@ -180,7 +188,7 @@ shopt -s histreedit histverify
 shopt -s extglob
 
 # failed globs go to null
-shopt -s nullglob
+shopt -qs nullglob
 
 # turn on ** (recursive) globbing
 shopt -s globstar
@@ -239,12 +247,14 @@ ${git_bit}${direction}${bldred}]${txtrst} "
     printf "%s" "$git_bit"
 }
 
+# if we have 256 colors use them in prompt
 if [[ $TERM =~ '256color' ]]; then
     HOST_COLOR="\[\e[38;5;$((16 + $(cksum <<<$HOSTNAME | cut -f1 -d" ") % 216))m\]"
 else
     HOST_COLOR="\[\e[0;$((31 + $(cksum <<<$HOSTNAME | cut -f1 -d" ") % 6))m\]"
 fi
 
+# shorten and colorize hostname for prompt
 host=`hostname -s`
 if [[ ${host} == "sixteen" ]]; then
   HOST_COLOR="${HOST_COLOR}16"
@@ -283,6 +293,8 @@ esac
 
 export PROMPT_COMMAND="$PROMPT_COMMAND; set_prompt"
 
+# moves the ssh socket to a symlink that is well defined so that when
+# I reattach a tmux or screen session it will pick up the new socket
 ssh_sock_symlink="/tmp/ssh-agent-$USER"
 if [[ -n $SSH_AUTH_SOCK && $SSH_AUTH_SOCK != "$ssh_sock_symlink" ]]
 then

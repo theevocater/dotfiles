@@ -2,6 +2,7 @@
 # originally borrowed from
 # https://github.com/wyattanderson/dotfiles/blob/master/setup.sh
 
+# change to the directory the setup script exists in
 cd -P "$( dirname "$0" )"
 
 prompt () {
@@ -16,11 +17,13 @@ prompt () {
 }
 
 download_git () {
+  # try to download the "correct" version of git completion
   git_version=`git --version | cut -d" " -f3`
 
   echo "Downloading git completion script for $git_version"
-  curl -f https://raw.github.com/git/git/v$git_version/contrib/completion/git-completion.bash > git-completion.bash
-  curl -f https://raw.github.com/git/git/v$git_version/contrib/completion/git-prompt.sh > git-prompt.sh
+  # here we fail (-f) quietly and save to same name as remote (-O)
+  curl -f -O https://raw.github.com/git/git/v$git_version/contrib/completion/git-completion.bash
+  curl -f -O https://raw.github.com/git/git/v$git_version/contrib/completion/git-prompt.sh
 }
 
 # Iterate over the list of setup files we want to alias from our dotfile
@@ -45,7 +48,7 @@ do
   fi
 done
 
-if [[ !(-f git-completion.bash) ]]
+if [[ !(-s git-completion.bash) || !(-s git-prompt.sh) ]]
 then
   download_git
 else
