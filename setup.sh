@@ -16,17 +16,6 @@ prompt () {
   return 0
 }
 
-download_git () {
-  # try to download the "correct" version of git completion
-  git_version=`git --version | cut -d" " -f3`
-
-  echo "Downloading git completion script for $git_version"
-  # here we fail (-f) quietly and save to same name as remote (-O)
-  curl -f -O https://raw.github.com/git/git/v$git_version/contrib/completion/git-completion.bash
-  curl -f -O https://raw.github.com/git/git/v$git_version/contrib/completion/git-prompt.sh
-}
-
-
 create_symlinks () {
   # Iterate over the list of setup files we want to alias from our dotfile
   # distribution
@@ -52,15 +41,20 @@ create_symlinks () {
 }
 
 update_git_completion () {
-  if [[ !(-s git-completion.bash) || !(-s git-prompt.sh) ]]
+  # try to download the "correct" version of git completion
+  git_version=`git --version | cut -d" " -f3`
+
+  # check if we have the right version of git completion stuffs
+  if [[ -f git-completion.bash && -f git_completion_version && $git_version == `cat git_completion_version` ]]
   then
-    download_git
+    echo "Up to date for $git_version"
   else
-    prompt "Update completion?"
-    if [[ $? -eq 0 ]]
-    then
-      download_git
-    fi
+    rm git_completion_version &>/dev/null
+    echo $git_version > git_completion_version
+    echo "Downloading git completion script for $git_version"
+    # here we fail (-f) quietly and save to same name as remote (-O)
+    curl -f -O https://raw.github.com/git/git/v$git_version/contrib/completion/git-completion.bash
+    curl -f -O https://raw.github.com/git/git/v$git_version/contrib/completion/git-prompt.sh
   fi
 }
 
