@@ -25,7 +25,5 @@
 	ignorecase = false
 	excludesfile = ~/.cvsignore
 
-[push]
-	default = simple
 [diff]
 	tool = vimdiff
