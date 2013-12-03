@@ -26,47 +26,89 @@ download_git () {
   curl -f -O https://raw.github.com/git/git/v$git_version/contrib/completion/git-prompt.sh
 }
 
-# Iterate over the list of setup files we want to alias from our dotfile
-# distribution
-for file in bash_logout bash_profile bashrc gitconfig gvimrc inputrc tmux.conf vim vimrc cvsignore
-do
-  # If the file exists, ask the user if they'd like us to move it to
-  # FILENAME_old. Otherwise, overwrite.
-  if [[ -e ~/.${file} ]] ; then
-    prompt "~/.$file exists, overwrite?"
-    if [[ $? -ne 0 ]]
-    then
-      continue
-    fi
-  fi
-  # Add the appropriate symlink
-  if [[ "$TERM" =~ 256 && -f "${PWD}/256${file}" ]]
-  then
-    ln -svnf "${PWD}/256${file}" ~/.${file}
-  else
-    ln -svnf ${PWD}/${file} ~/.${file}
-  fi
-done
 
-if [[ !(-s git-completion.bash) || !(-s git-prompt.sh) ]]
-then
-  download_git
-else
-  prompt "Update completion?"
-  if [[ $? -eq 0 ]]
+create_symlinks () {
+  # Iterate over the list of setup files we want to alias from our dotfile
+  # distribution
+  for file in bash_logout bash_profile bashrc gitconfig gvimrc inputrc tmux.conf vim vimrc cvsignore
+  do
+    # If the file exists, ask the user if they'd like us to move it to
+    # FILENAME_old. Otherwise, overwrite.
+    if [[ -e ~/.${file} ]] ; then
+      prompt "~/.$file exists, overwrite?"
+      if [[ $? -ne 0 ]]
+      then
+        continue
+      fi
+    fi
+    # Add the appropriate symlink
+    if [[ "$TERM" =~ 256 && -f "${PWD}/256${file}" ]]
+    then
+      ln -svnf "${PWD}/256${file}" ~/.${file}
+    else
+      ln -svnf ${PWD}/${file} ~/.${file}
+    fi
+  done
+}
+
+update_git_completion () {
+  if [[ !(-s git-completion.bash) || !(-s git-prompt.sh) ]]
   then
     download_git
+  else
+    prompt "Update completion?"
+    if [[ $? -eq 0 ]]
+    then
+      download_git
+    fi
   fi
-fi
+}
 
-prompt "Sync submodules?"
-if [[ $? -eq 0 ]]
-then
-  ./sync-sb.sh
-fi
+sync_submodules () {
+  prompt "Sync submodules?"
+  if [[ $? -eq 0 ]]
+  then
+    ./sync-sb.sh
+  fi
+}
 
-prompt "Copy authorized_users?"
-if [[ $? -eq 0 ]]
-then
-  cp authorized_keys ../.ssh/
-fi
+update_ssh () {
+  prompt "Copy authorized_users?"
+  if [[ $? -eq 0 ]]
+  then
+    cp authorized_keys $HOME/.ssh/
+  fi
+
+  if [[ !(-s $HOME/.ssh/config) ]]
+  then
+    prompt "Copy default ssh config?"
+    if [[ $? -eq 0 ]]
+    then
+      cp default_ssh_config $HOME/.ssh/config
+    fi
+  fi
+}
+
+case $1 in 
+  symlinks)
+    create_symlinks
+    ;;
+  git)
+    update_git_completion
+    ;;
+  sb)
+    sync_submodules
+    ;;
+  ssh)
+    update_ssh
+    ;;
+  "") 
+    create_symlinks 
+    update_git_completion
+    sync_submodules
+    update_ssh
+    ;;
+  *)
+    ;;
+esac
+
