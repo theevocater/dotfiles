@@ -28,7 +28,7 @@ download_git () {
 
 # Iterate over the list of setup files we want to alias from our dotfile
 # distribution
-for file in bash_logout bash_profile bashrc gitconfig gvimrc inputrc tmux.conf screenrc vim vimrc cvsignore
+for file in bash_logout bash_profile bashrc gitconfig gvimrc inputrc tmux.conf vim vimrc cvsignore
 do
   # If the file exists, ask the user if they'd like us to move it to
   # FILENAME_old. Otherwise, overwrite.
