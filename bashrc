@@ -187,11 +187,9 @@ shopt -s histreedit histverify
 # extended pattern matching for filename matching (aka globbing)
 shopt -s extglob
 
-# failed globs go to null
-shopt -qs nullglob
-
 # turn on ** (recursive) globbing
-shopt -s globstar
+# specifically silence this one because its introduced in a later bash
+shopt -s globstar &>/dev/null
 
 # don't parse $PATH if i haven't typed anything
 shopt -s no_empty_cmd_completion
