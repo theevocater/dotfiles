@@ -79,3 +79,6 @@
 [submodule "vim/bundle/thrift"]
 	path = vim/bundle/thrift
 	url = git://github.com/theevocater/thrift.vim.git
+[submodule "vim/bundle/vim-golang"]
+	path = vim/bundle/vim-golang
+	url = https://github.com/jnwhiteh/vim-golang.git
