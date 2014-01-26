@@ -44,6 +44,8 @@ set showcmd
 set relativenumber
 " always show the statusline
 set laststatus=2
+" redraw only when we need to.
+set lazyredraw
 
 set statusline=%F%m%r%h%w\ %{fugitive#statusline()}%=%{PasteMode()}[%l,%v][%p%%]
 
@@ -174,17 +176,17 @@ nmap <silent> <leader>f :NERDTreeToggle<CR>
 nmap <silent> <leader>F :NERDTreeFind<CR>
 
 " fugitive keys
-nmap <silent> <leader>Gs :Gstatus<CR>
+nmap <silent> <leader>gs :Gstatus<CR>
 nmap <silent> <leader>W :Gw<CR>
-nmap <silent> <leader>Gd :Gdiff<CR>
-nmap <leader>G :Git
-nmap <leader>Gc :Git checkout %
+nmap <silent> <leader>gd :Gdiff<CR>
+nmap <leader>g :Git
+nmap <leader>gc :Git checkout %
 
 nmap <silent> <leader>pe :!p4 edit %<CR>
 
 nnoremap <silent> <leader>y :YRShow<CR>
 
-nnoremap <silent> <leader>g :GundoToggle<CR>
+nnoremap <silent> <leader>u :GundoToggle<CR>
 
 nnoremap <silent> <leader>m :w<CR> :make<CR> :cw<CR>
 
