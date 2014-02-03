@@ -68,6 +68,7 @@ fi
 # pick up NPM
 if [[ `type -t npm` && -d `npm bin` ]] ; then
     PATH=$PATH:`npm bin`
+    PATH=$PATH:`npm bin -g`
 fi
 
 # load rvm and remind me to blow it up
