@@ -91,3 +91,6 @@
 [submodule "vim/bundle/vim-classpath"]
 	path = vim/bundle/vim-classpath
 	url = https://github.com/tpope/vim-classpath.git
+[submodule "vim/bundle/vim-salt"]
+	path = vim/bundle/vim-salt
+	url = https://github.com/saltstack/salt-vim.git
