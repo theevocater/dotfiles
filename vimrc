@@ -59,6 +59,12 @@ set cursorline
 autocmd InsertEnter * let &l:colorcolumn=&textwidth+1
 autocmd InsertLeave * setlocal colorcolumn=0
 
+" see if any files have changed when switching buffers
+autocmd WinEnter * checktime %
+" if I don't touch anything for 30 seconds, check all buffers
+autocmd CursorHold * checktime
+set updatetime=30000
+
 "set clipboard=unnamed,exclude:screen.*\\\\|xterm.*
 
 """"""""""""""""""""""""""""""""""""""""""""""""
