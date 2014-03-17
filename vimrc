@@ -49,14 +49,6 @@ set lazyredraw
 
 set statusline=%F%m%r%h%w\ %{fugitive#statusline()}%=%{PasteMode()}[%l,%v][%p%%]
 
-function! PasteMode()
-    if &paste
-        return '(paste)'
-    else
-        return ''
-    endif
-endfunction
-
 " Briefly jump the cursor to show the matching bracket
 set showmatch
 set matchtime=3
@@ -341,6 +333,14 @@ function! RainbowToggle()
   RainbowParenthesesLoadBraces
 endfunction
 command! RainbowToggle call RainbowToggle()
+
+function! PasteMode()
+    if &paste
+        return '(paste)'
+    else
+        return ''
+    endif
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " CommandT
