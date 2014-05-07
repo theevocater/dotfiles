@@ -53,8 +53,8 @@ update_git_completion () {
     echo $git_version > git_completion_version
     echo "Downloading git completion script for $git_version"
     # here we fail (-f) quietly and save to same name as remote (-O)
-    curl -f -O https://raw.github.com/git/git/v$git_version/contrib/completion/git-completion.bash
-    curl -f -O https://raw.github.com/git/git/v$git_version/contrib/completion/git-prompt.sh
+    curl -f -L -O https://raw.github.com/git/git/v$git_version/contrib/completion/git-completion.bash
+    curl -f -L -O https://raw.github.com/git/git/v$git_version/contrib/completion/git-prompt.sh
   fi
 }
 
