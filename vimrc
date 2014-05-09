@@ -368,6 +368,6 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': [] }
 
-set wildignore+=*.so,*.swp,*.zip,*.jar,*.pyc,*.class,*.bak
+set wildignore+=*.so,*.swp,*.zip,*.jar,*.pyc,*.class,*.bak,venv/*
 
 colorscheme tir_black
