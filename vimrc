@@ -8,7 +8,7 @@ set shortmess+=I
 filetype off
 " I have pathogen as a bundle so it needs to be added
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#incubate()
+call pathogen#infect('bundle/{}')
 call pathogen#helptags()
 
 """"""""""""""""""""""""""""""""""""""""""""""""
