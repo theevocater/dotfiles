@@ -17,7 +17,7 @@
 	sgAAAAAAAAEBAAAAAAAAABkAAAAAAAAAAAAAAAAAAAC0
 	</data>
 	<key>BackgroundSettingsForInactiveWindows</key>
-	<true/>
+	<false/>
 	<key>Bell</key>
 	<false/>
 	<key>CharacterEncoding</key>
@@ -53,7 +53,7 @@
 	<key>FontWidthSpacing</key>
 	<real>0.90000000000000002</real>
 	<key>ProfileCurrentVersion</key>
-	<real>2.02</real>
+	<real>2.04</real>
 	<key>SelectionColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
@@ -95,6 +95,8 @@
 	<true/>
 	<key>VisualBell</key>
 	<true/>
+	<key>VisualBellOnlyWhenMuted</key>
+	<false/>
 	<key>deleteSendsBackspace</key>
 	<true/>
 	<key>keyMapBoundKeys</key>
@@ -115,14 +117,6 @@
 		<string>[33~</string>
 		<key>$F70F</key>
 		<string>[34~</string>
-		<key>$F729</key>
-		<string>[H</string>
-		<key>$F72B</key>
-		<string>[F</string>
-		<key>$F72C</key>
-		<string>[5~</string>
-		<key>$F72D</key>
-		<string>[6~</string>
 		<key>F704</key>
 		<string>OP</string>
 		<key>F705</key>
