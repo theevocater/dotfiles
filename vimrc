@@ -65,7 +65,7 @@ autocmd WinEnter * checktime %
 autocmd CursorHold * checktime
 set updatetime=30000
 
-"set clipboard=unnamed,exclude:screen.*\\\\|xterm.*
+set clipboard=unnamed,exclude:screen.*\\\\|xterm.*
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Searching
