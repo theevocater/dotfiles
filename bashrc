@@ -98,6 +98,11 @@ if [[ -d "/usr/local/heroku/bin/" ]] ; then
   export PATH="/usr/local/heroku/bin:$PATH"
 fi
 
+# pick up love if its around
+if [[ -d "/Applications/love.app/Contents/MacOS" ]] ; then
+  export PATH="/Applications/love.app/Contents/MacOS:$PATH"
+fi
+
 if [[ `type -t brew` == "file" ]] ; then
     export PATH="/usr/local/bin:$PATH"
 fi
