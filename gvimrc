@@ -1,4 +1,5 @@
-set guifont=Source\ Code\ Pro\ ExtraLight:h11
+"set guifont=Source\ Code\ Pro\ ExtraLight:h11
+set guifont=Input:h11
 
 set guioptions-=T
 set guioptions-=r

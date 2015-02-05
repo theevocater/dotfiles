@@ -13,9 +13,6 @@
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/colorschemes"]
-	path = vim/bundle/colorschemes
-	url = http://github.com/flazz/vim-colorschemes.git
 [submodule "vim/bundle/DoxygenToolkit.vim"]
 	path = vim/bundle/DoxygenToolkit.vim
 	url = http://github.com/vim-scripts/DoxygenToolkit.vim.git
