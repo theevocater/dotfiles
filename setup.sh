@@ -6,11 +6,13 @@
 cd -P "$( dirname "$0" )"
 
 prompt () {
+  if [[ $2 =~ ^[yY]$ ]] ; then
+    return 0
+  fi
   read -p "$1 y[n] " -n 1
   echo
   # if the answer isn't yes, skip
-  if [[ -z $REPLY || $REPLY =~ ^[^Yy]$ ]]
-  then
+  if [[ -z ${REPLY} || ${REPLY} =~ ^[^Yy]$ ]] ; then
     return 1
   fi
   return 0
@@ -24,15 +26,15 @@ create_symlinks () {
     # If the file exists, ask the user if they'd like us to move it to
     # FILENAME_old. Otherwise, overwrite.
     if [[ -e ~/.${file} ]] ; then
-      prompt "~/.$file exists, overwrite?"
-      if [[ $? -ne 0 ]]
-      then
+      prompt "~/.${file} exists, overwrite?" $1
+      if [[ $? -ne 0 ]] ; then
+        echo "Skipping ${file}"
         continue
       fi
     fi
     # Add the appropriate symlink
-    if [[ "$TERM" =~ 256 && -f "${PWD}/256${file}" ]]
-    then
+    echo "Overwritting ~/.${file}"
+    if [[ "$TERM" =~ 256 && -f "${PWD}/256${file}" ]] ; then
       ln -svnf "${PWD}/256${file}" ~/.${file}
     else
       ln -svnf ${PWD}/${file} ~/.${file}
@@ -45,9 +47,10 @@ update_git_completion () {
   git_version=`git --version | cut -d" " -f3`
 
   # check if we have the right version of git completion stuffs
-  if [[ -f git-completion.bash && -f git_completion_version && $git_version == `cat git_completion_version` ]]
-  then
-    echo "Up to date for $git_version"
+  if [[ -f git-completion.bash \
+    && -f git_completion_version \
+    && $git_version == `cat git_completion_version` ]] ; then
+    echo "Git completion up to date for $git_version"
   else
     rm git_completion_version &>/dev/null
     echo $git_version > git_completion_version
@@ -59,31 +62,27 @@ update_git_completion () {
 }
 
 sync_submodules () {
-  prompt "Sync submodules?"
-  if [[ $? -eq 0 ]]
-  then
+  prompt "Sync submodules?" $1
+  if [[ $? -eq 0 ]] ; then
     ./sync-sb.sh
   fi
 }
 
 update_ssh () {
-  prompt "Copy authorized_users?"
-  if [[ $? -eq 0 ]]
-  then
-    cp authorized_keys $HOME/.ssh/
+  prompt "Copy authorized_users?" $1
+  if [[ $? -eq 0 ]] ; then
+    cp -v authorized_keys $HOME/.ssh/
   fi
 
-  if [[ !(-s $HOME/.ssh/config) ]]
-  then
-    prompt "Copy default ssh config?"
-    if [[ $? -eq 0 ]]
-    then
-      cp default_ssh_config $HOME/.ssh/config
+  if [[ !(-s $HOME/.ssh/config) ]] ; then
+    prompt "Copy default ssh config?" $1
+    if [[ $? -eq 0 ]] ; then
+      cp -v default_ssh_config $HOME/.ssh/config
     fi
   fi
 }
 
-case $1 in 
+case $1 in
   symlinks)
     create_symlinks
     ;;
@@ -96,11 +95,11 @@ case $1 in
   ssh)
     update_ssh
     ;;
-  "") 
-    create_symlinks 
-    update_git_completion
-    sync_submodules
-    update_ssh
+  "" | [yY])
+    create_symlinks $1
+    update_git_completion $1
+    sync_submodules $1
+    update_ssh $1
     ;;
   *)
     ;;
