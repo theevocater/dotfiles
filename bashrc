@@ -82,7 +82,7 @@ fi
 if [[ -s "/usr/local/share/chruby/chruby.sh" ]] ; then
   . /usr/local/share/chruby/chruby.sh
   export RUBIES=($HOME/.rubies/*)
-  chruby 1.9.3
+  chruby 2.2.1
 fi
 
 if [[ -s "$HOME/local/bin/" ]] ; then
