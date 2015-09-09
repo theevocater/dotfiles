@@ -67,14 +67,19 @@ fi
 
 # pick up NPM
 if [[ `type -t npm` && -d `npm bin` ]] ; then
-    PATH=$PATH:`npm bin`
-    PATH=$PATH:`npm bin -g 2>/dev/null`
+    export PATH=$PATH:`npm bin`
+    export PATH=$PATH:`npm bin -g 2>/dev/null`
+fi
+
+if [[ `type -t go` ]] ; then
+    export GOPATH="$HOME/projects/go"
+    export PATH=$PATH:$GOPATH/bin
 fi
 
 # load rvm and remind me to blow it up
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
     source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+    export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
     echo -ne "\033[1mPLEASE TYPE rvm implode!\n\033[0m"
 fi
 
@@ -86,11 +91,11 @@ if [[ -s "/usr/local/share/chruby/chruby.sh" ]] ; then
 fi
 
 if [[ -s "$HOME/local/bin/" ]] ; then
-  PATH=$HOME/local/bin:$PATH
+  export PATH=$HOME/local/bin:$PATH
 fi
 
 if [[ -s "$HOME/local/man/" ]] ; then
-  MANPATH=$HOME/local/bin:$MANPATH
+  export MANPATH=$HOME/local/bin:$MANPATH
 fi
 
 # pick up heroku if its around
