@@ -95,11 +95,11 @@ if [[ -s "/usr/local/share/chruby/chruby.sh" ]] ; then
   chruby 2.2.1
 fi
 
-if [[ -s "$HOME/local/bin/" ]] ; then
+if [[ -d "$HOME/local/bin/" ]] ; then
   export PATH=$HOME/local/bin:$PATH
 fi
 
-if [[ -s "$HOME/local/man/" ]] ; then
+if [[ -d "$HOME/local/man/" ]] ; then
   export MANPATH=$HOME/local/bin:$MANPATH
 fi
 
