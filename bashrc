@@ -6,45 +6,61 @@ if [[ $- != *i* ]] ; then
     return
 fi
 
-# colors
-# Explanation:
-# the \[\] pair ignores the characters inside of that block for the purspose of
-# length in bash. this only works as part of the prompt
-# \033 starts the color code. this should work on posix systems. (previously
-# i used \e which is not)
-txtblk='\[\033[0;30m\]' # Black - Regular
-txtred='\[\033[0;31m\]' # Red
-txtgrn='\[\033[0;32m\]' # Green
-txtylw='\[\033[0;33m\]' # Yellow
-txtblu='\[\033[0;34m\]' # Blue
-txtpur='\[\033[0;35m\]' # Purple
-txtcyn='\[\033[0;36m\]' # Cyan
-txtwht='\[\033[0;37m\]' # White
-bldblk='\[\033[1;30m\]' # Black - Bold
-bldred='\[\033[1;31m\]' # Red
-bldgrn='\[\033[1;32m\]' # Green
-bldylw='\[\033[1;33m\]' # Yellow
-bldblu='\[\033[1;34m\]' # Blue
-bldpur='\[\033[1;35m\]' # Purple
-bldcyn='\[\033[1;36m\]' # Cyan
-bldwht='\[\033[1;37m\]' # White
-unkblk='\[\033[4;30m\]' # Black - Underline
-undred='\[\033[4;31m\]' # Red
-undgrn='\[\033[4;32m\]' # Green
-undylw='\[\033[4;33m\]' # Yellow
-undblu='\[\033[4;34m\]' # Blue
-undpur='\[\033[4;35m\]' # Purple
-undcyn='\[\033[4;36m\]' # Cyan
-undwht='\[\033[4;37m\]' # White
-bakblk='\[\033[40m\]'   # Black - Background
-bakred='\[\033[41m\]'   # Red
-badgrn='\[\033[42m\]'   # Green
-bakylw='\[\033[43m\]'   # Yellow
-bakblu='\[\033[44m\]'   # Blue
-bakpur='\[\033[45m\]'   # Purple
-bakcyn='\[\033[46m\]'   # Cyan
-bakwht='\[\033[47m\]'   # White
-txtrst='\[\033[0m\]'    # Text Reset
+# load solarized colors
+# the \[\] pairs mark the characters as non-printing for the purposes of
+# counting line length in bash.
+if tput setaf 1 &> /dev/null; then
+    tput sgr0
+    if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
+			#256 colors yea!
+      BASE03="\[$(tput setaf 234)\]"
+      BASE02="\[$(tput setaf 235)\]"
+      BASE01="\[$(tput setaf 240)\]"
+      BASE00="\[$(tput setaf 241)\]"
+      BASE0="\[$(tput setaf 244)\]"
+      BASE1="\[$(tput setaf 245)\]"
+      BASE2="\[$(tput setaf 254)\]"
+      BASE3="\[$(tput setaf 230)\]"
+      YELLOW="\[$(tput setaf 136)\]"
+      ORANGE="\[$(tput setaf 166)\]"
+      RED="\[$(tput setaf 160)\]"
+      MAGENTA="\[$(tput setaf 125)\]"
+      VIOLET="\[$(tput setaf 61)\]"
+      BLUE="\[$(tput setaf 33)\]"
+      CYAN="\[$(tput setaf 37)\]"
+      GREEN="\[$(tput setaf 64)\]"
+    else
+			# degrade to 8bit colors
+      BASE03="\[$(tput setaf 8)\]"
+      BASE02="\[$(tput setaf 0)\]"
+      BASE01="\[$(tput setaf 10)\]"
+      BASE00="\[$(tput setaf 11)\]"
+      BASE0="\[$(tput setaf 12)\]"
+      BASE1="\[$(tput setaf 14)\]"
+      BASE2="\[$(tput setaf 7)\]"
+      BASE3="\[$(tput setaf 15)\]"
+      YELLOW="\[$(tput setaf 3)\]"
+      ORANGE="\[$(tput setaf 9)\]"
+      RED="\[$(tput setaf 1)\]"
+      MAGENTA="\[$(tput setaf 5)\]"
+      VIOLET="\[$(tput setaf 13)\]"
+      BLUE="\[$(tput setaf 4)\]"
+      CYAN="\[$(tput setaf 6)\]"
+      GREEN="\[$(tput setaf 2)\]"
+    fi
+    BOLD="\[$(tput bold)\]"
+    RESET="\[$(tput sgr0)\]"
+else
+    # Linux console colors. I don't have the energy
+    # to figure out the Solarized values
+    MAGENTA="\033[1;31m"
+    ORANGE="\033[1;33m"
+    GREEN="\033[1;32m"
+    PURPLE="\033[1;35m"
+    WHITE="\033[1;37m"
+    BOLD=""
+    RESET="\033[m"
+fi
 
 # load machines bashrc if necessary
 if [[ -s /etc/bash/bashrc ]] ; then
@@ -232,31 +248,31 @@ function parse_git {
 
     state=""
     if [[ $status =~ "working directory clean" ]]; then
-        state=${bldgrn}${dot}${txtrst}
+        state=${GREEN}${dot}${RESET}
     else
         if [[ $status =~ "Untracked files" ]]; then
-            state=${bldred}${dot}${txtrst}
+            state=${RED}${dot}${RESET}
         fi
         if [[ $status =~ "Changes not staged for commit" || $status =~ "Changed but not updated" ]]; then
-            state=${state}${bldylw}${dot}${txtrst}
+            state=${state}${RED}${dot}${RESET}
         fi
         if [[ $status =~ "Changes to be committed" ]]; then
-            state=${state}${bldylw}${dot}${txtrst}
+            state=${state}${YELLOW}${dot}${RESET}
         fi
     fi
 
     direction=""
     if [[ $status =~ $remote_pattern_ahead ]]; then
-        direction=${bldgrn}${forward}${txtrst}
+        direction=${GREEN}${forward}${RESET}
     elif [[ $status =~ $remote_pattern_behind ]]; then
-        direction=${bldred}${behind}${txtrst}
+        direction=${RED}${behind}${RESET}
     elif [[ $status =~ $remote_pattern_diverge ]]; then
-        direction=${bldred}${forward}${txtrst}${bldgrn}${behind}${txtrst}
+        direction=${RED}${forward}${RESET}${GREEN}${behind}${RESET}
     fi
 
-    branch=${txtwht}${branch}${txtrst}
-    git_bit="${bldred}[${txtrst}${branch}${state}\
-${git_bit}${direction}${bldred}]${txtrst} "
+    branch=${BASE0}${branch}${RESET}
+    git_bit="${BASE0}[${RESET}${branch}${state}\
+${git_bit}${direction}${BASE0}]${RESET} "
 
     printf "%s" "$git_bit"
 }
@@ -280,18 +296,18 @@ fi
 unset host
 
 if [[ $USER = 'jkaufman' || $USER = 'jdkaufma' ]]; then
-    USER_COLOR="${txtgrn}jk"
+    USER_COLOR="${GREEN}jk"
 elif [[ $USER = 'jakeman' ]]; then
-    USER_COLOR="${txtcyn}jkmn"
+    USER_COLOR="${CYAN}jkmn"
 elif [[ $EUID -eq 0 ]]; then
-    USER_COLOR="${txtred}r"
+    USER_COLOR="${RED}r"
 else
-    USER_COLOR="${undpur}${USER}"
+    USER_COLOR="${MAGENTA}${USER}"
 fi
 
 function set_prompt {
     git="$(parse_git)"
-    PS1="${bldblk}\D{%H:%M:%S} ${USER_COLOR}${txtwht}@${HOST_COLOR}${txtgrn} \w $git${bldblu}\$${txtrst} "
+    PS1="${BASE00}\D{%H:%M:%S} ${USER_COLOR}${BASE1}@${HOST_COLOR}${BLUE} \w $git${BASE01}\$${RESET} "
     export PS1
 }
 
