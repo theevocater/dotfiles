@@ -194,8 +194,6 @@ nnoremap <silent> <leader>m :w<CR> :make<CR> :cw<CR>
 
 nnoremap <silent> <leader>ll :HighlightLongLines<CR>
 
-inoremap {{ {<CR>}<Esc>ko
-
 " spleling
 "setlocal spell spelllang=en
 
