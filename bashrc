@@ -247,7 +247,7 @@ function parse_git {
     status="$(git status 2>/dev/null)"
 
     state=""
-    if [[ $status =~ "working directory clean" ]]; then
+    if [[ $status =~ "working tree clean" ]]; then
         state=${GREEN}${dot}${RESET}
     else
         if [[ $status =~ "Untracked files" ]]; then
