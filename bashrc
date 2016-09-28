@@ -151,7 +151,6 @@ fi
 export LESS="isR"
 
 #aliases
-alias date="date +%a%t%b%t%D%l:%M:%S%p"
 alias df='df -h'
 alias du='du -h'
 alias indent='indent -kr -i8 -l72 -lc72'
