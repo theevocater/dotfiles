@@ -194,6 +194,8 @@ nnoremap <silent> <leader>m :w<CR> :make<CR> :cw<CR>
 
 nnoremap <silent> <leader>ll :HighlightLongLines<CR>
 
+nnoremap <silent> <leader>yf :let @" = expand("%:.")<CR>
+
 " spleling
 "setlocal spell spelllang=en
 
