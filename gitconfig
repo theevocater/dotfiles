@@ -1,33 +1,32 @@
-[user]
-        name = Jake Kaufman
-        email = theevocater@gmail.com
+[include]
+  path = ~/.gitconfig-theevocater
 
 [alias] 
-    st = status
-    ci = commit
-    co = checkout
-    w = whatchanged
-    br = branch
-    sb = submodule
-    lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
-    brdiff = "log --left-right --graph --cherry-pick --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+  st = status
+  ci = commit
+  co = checkout
+  w = whatchanged
+  br = branch
+  sb = submodule
+  lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
+  brdiff = "log --left-right --graph --cherry-pick --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 [color] 
-    ui = auto
+  ui = auto
 
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 
 [branch "master"]
-	rebase = true
+  rebase = true
 
 [core]
-	ignorecase = false
-	excludesfile = ~/.cvsignore
+  ignorecase = false
+  excludesfile = ~/.cvsignore
 
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [push]
-	default = current
+  default = current
 [grep]
-	lineNumber = true
+  lineNumber = true
