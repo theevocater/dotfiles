@@ -86,6 +86,13 @@ install_hasklig () {
   rm "${name}.zip"
 }
 
+build_command_t () {
+  pushd vim/bundle/Command-T/ruby/command-t/ext/command-t/
+  ruby extconf.rb
+  make
+  popd
+}
+
 case $1 in
   symlinks)
     create_symlinks
@@ -95,6 +102,10 @@ case $1 in
     ;;
   sb)
     sync_submodules
+    build_command_t
+    ;;
+  ct)
+    build_command_t
     ;;
   ssh)
     update_ssh
