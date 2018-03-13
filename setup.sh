@@ -113,7 +113,7 @@ case $1 in
   font)
     install_hasklig
     ;;
-  "" | [yY])
+  all | [yY])
     create_symlinks $1
     update_git_completion $1
     sync_submodules $1
@@ -121,7 +121,7 @@ case $1 in
     install_hasklig $1
     ;;
   *)
-    echo "Unrecognized Command: $1"
+    echo "Wrong command"
     ;;
 esac
 

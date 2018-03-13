@@ -14,10 +14,15 @@ run setup.sh from wherever
   * Downloads the correct git completion files. Run when git is updated.
 * sb
   * Syncs all the submodules. Mostly for vim
+  * also builds the command-t c extension
+* ct
+  * Builds the command-t c extension
 * ssh
   * sets up ssh configs and such
 * font
   * Installs the hasklig font.
+* all
+  * Runs all of the above. Useful for provisioning a new machine
 
 ## Terminal Colorscheme
 I use
