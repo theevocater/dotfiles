@@ -1,7 +1,6 @@
 #!/bin/bash
 # originally borrowed from
 # https://github.com/wyattanderson/dotfiles/blob/master/setup.sh
-set -x
 
 # change to the directory the setup script exists in
 cd -P "$( dirname "$0" )"
@@ -35,11 +34,7 @@ create_symlinks () {
     fi
     # Add the appropriate symlink
     echo "Overwritting ~/.${file}"
-    if [[ "$TERM" =~ 256 && -f "${PWD}/256${file}" ]] ; then
-      ln -svnf "${PWD}/256${file}" ~/.${file}
-    else
-      ln -svnf ${PWD}/${file} ~/.${file}
-    fi
+    ln -svnf ${PWD}/${file} ~/.${file}
   done
 }
 
