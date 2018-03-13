@@ -1,4 +1,0 @@
-" thanks to wanderson for help setting this up!
-set guifont=Terminus:h9:cANSI
-source ~/_vimrc
-source ~/dotfiles/gvimrc

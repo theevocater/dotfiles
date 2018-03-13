@@ -1,3 +1,0 @@
-" thanks to wanderson for help setting this up!
-set runtimepath+=~/dotfiles/vim
-source ~/dotfiles/vimrc
