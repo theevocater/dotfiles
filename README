@@ -1,8 +1,0 @@
-These are theevocater's dotfiles!
-
-I've included a little setup script that links everything.
-
-It's safe to run at any given time, as it will ask before trampling any files.
-
-INSTALL:
-    run setup.sh from wherever

@@ -1,6 +1,7 @@
 #!/bin/bash
 # originally borrowed from
 # https://github.com/wyattanderson/dotfiles/blob/master/setup.sh
+set -x
 
 # change to the directory the setup script exists in
 cd -P "$( dirname "$0" )"
@@ -82,6 +83,14 @@ update_ssh () {
   fi
 }
 
+hasklig_ver=1.1
+install_hasklig () {
+  name="Hasklig-${hasklig_ver}"
+  curl -L -O https://github.com/i-tu/Hasklig/releases/download/${hasklig_ver}/${name}.zip
+  unzip -d $HOME/Library/Fonts/ "${name}.zip"
+  rm "${name}.zip"
+}
+
 case $1 in
   symlinks)
     create_symlinks
@@ -95,13 +104,18 @@ case $1 in
   ssh)
     update_ssh
     ;;
+  font)
+    install_hasklig
+    ;;
   "" | [yY])
     create_symlinks $1
     update_git_completion $1
     sync_submodules $1
     update_ssh $1
+    install_hasklig $1
     ;;
   *)
+    echo "Unrecognized Command: $1"
     ;;
 esac
 
