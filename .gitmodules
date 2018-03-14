@@ -13,15 +13,9 @@
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/DoxygenToolkit.vim"]
-	path = vim/bundle/DoxygenToolkit.vim
-	url = http://github.com/vim-scripts/DoxygenToolkit.vim.git
 [submodule "vim/bundle/vim-javascript"]
 	path = vim/bundle/vim-javascript
 	url = http://github.com/pangloss/vim-javascript.git
-[submodule "vim/bundle/vim-perforce"]
-	path = vim/bundle/vim-perforce
-	url = http://github.com/theevocater/vim-perforce.git
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = http://github.com/tpope/vim-surround.git
@@ -43,9 +37,6 @@
 [submodule "vim/bundle/vim-scala"]
 	path = vim/bundle/vim-scala
 	url = http://github.com/derekwyatt/vim-scala.git
-[submodule "vim-soy"]
-	path = vim/bundle/vim-soy
-	url = http://github.com/duganchen/vim-soy.git
 [submodule "vim/bundle/vim-pathogen"]
 	path = vim/bundle/vim-pathogen
 	url = http://github.com/tpope/vim-pathogen.git
@@ -73,18 +64,9 @@
 [submodule "vim/bundle/thrift"]
 	path = vim/bundle/thrift
 	url = git://github.com/theevocater/thrift.vim.git
-[submodule "vim/bundle/vim-golang"]
-	path = vim/bundle/vim-golang
-	url = https://github.com/jnwhiteh/vim-golang.git
 [submodule "vim/bundle/vim-fireplace"]
 	path = vim/bundle/vim-fireplace
 	url = https://github.com/tpope/vim-fireplace.git
-[submodule "vim/bundle/vim-clojure-static"]
-	path = vim/bundle/vim-clojure-static
-	url = https://github.com/guns/vim-clojure-static.git
-[submodule "vim/bundle/vim-classpath"]
-	path = vim/bundle/vim-classpath
-	url = https://github.com/tpope/vim-classpath.git
 [submodule "vim/bundle/vim-salt"]
 	path = vim/bundle/vim-salt
 	url = https://github.com/saltstack/salt-vim.git
