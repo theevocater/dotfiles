@@ -10,6 +10,7 @@
   sb = submodule
   lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
   brdiff = "log --left-right --graph --cherry-pick --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+  change-commits = "!f() { VAR=$1; NEW=$2; shift 2; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" != '$NEW' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
 
 [color] 
   ui = auto
