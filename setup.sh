@@ -86,6 +86,11 @@ install_hasklig () {
   rm "${name}.zip"
 }
 
+install_homebrew () {
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew install reattach-to-user-namespace tmux htop vim
+}
+
 build_command_t () {
   pushd vim/bundle/Command-T/ruby/command-t/ext/command-t/
   ruby extconf.rb
@@ -112,6 +117,9 @@ case $1 in
     ;;
   font)
     install_hasklig
+    ;;
+  brew)
+    install_homebrew
     ;;
   all | [yY])
     create_symlinks $1
