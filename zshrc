@@ -1,7 +1,12 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.dotfiles/oh-my-zsh
+MY_ZSH_ROOT=$HOME/.dotfiles/zsh
+export ZSH=$MY_ZSH_ROOT/oh-my-zsh
 
 ZSH_THEME="agnoster"
+
+ZSH_CUSTOM=$MY_ZSH_ROOT/custom
+
+DEFAULT_USER="jkaufman"
 
 plugins=(
   git
