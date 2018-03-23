@@ -84,7 +84,7 @@ install_hasklig () {
 
 install_homebrew () {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  brew install reattach-to-user-namespace tmux htop vim
+  brew install reattach-to-user-namespace tmux htop vim zsh
 }
 
 build_command_t () {
@@ -94,11 +94,31 @@ build_command_t () {
   popd || return
 }
 
+set_zsh () {
+  if ! which -s zsh ; then
+    echo "zsh is not installed"
+    exit -1
+  fi
+  zsh_loc=$(which zsh)
+  if ! grep -q "${zsh_loc}" /etc/shells ; then
+    echo "${zsh_loc} is not in /etc/shells, adding"
+    echo "${zsh_loc}" | sudo tee -a /etc/shells
+  fi
+  if [[ $(uname -s) =~ "Darwin" ]] ; then
+    cur_shell=$(dscl . -read "/Users/${USER}" UserShell | cut -d: -f2)
+  else
+    cur_shell=$(getent passwd "${USER}" | cut -d: -f7)
+  fi
+  if [[ ! (( ${cur_shell} =~ ${zsh_loc} )) ]] ; then
+    chsh -s /usr/local/bin/zsh jkaufman
+  fi
+}
+
 case $1 in
   symlinks)
     create_symlinks "$@"
     ;;
-  git)
+  git) # this is probably deprecated now that I use zsh
     update_git_completion
     ;;
   sb)
@@ -114,6 +134,9 @@ case $1 in
   font)
     install_hasklig
     ;;
+  zsh)
+    set_zsh
+    ;;
   brew)
     install_homebrew
     ;;
@@ -127,6 +150,7 @@ case $1 in
       brew
       install_hasklig
     fi
+    set_zsh
     ;;
   *)
     echo "Wrong command"
