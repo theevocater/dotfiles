@@ -3,13 +3,13 @@
 # https://github.com/wyattanderson/dotfiles/blob/master/setup.sh
 
 # change to the directory the setup script exists in
-cd -P "$( dirname "$0" )"
+cd -P "$( dirname "$0" )" || exit -1
 
 prompt () {
   if [[ $2 =~ ^[yY]$ ]] ; then
     return 0
   fi
-  read -p "$1 y[n] " -n 1
+  read -r -p "$1 y[n] " -n 1
   echo
   # if the answer isn't yes, skip
   if [[ -z ${REPLY} || ${REPLY} =~ ^[^Yy]$ ]] ; then
@@ -25,55 +25,51 @@ create_symlinks () {
   do
     # If the file exists, ask the user if they'd like us to move it to
     # FILENAME_old. Otherwise, overwrite.
-    if [[ -e ~/.${file} ]] ; then
-      prompt "~/.${file} exists, overwrite?" $1
-      if [[ $? -ne 0 ]] ; then
+    if [[ -e $HOME/.${file} ]] ; then
+      if ! prompt "$HOME/.${file} exists, overwrite?" "$1" ; then
         echo "Skipping ${file}"
         continue
       fi
     fi
     # Add the appropriate symlink
     echo "Overwritting ~/.${file}"
-    ln -svnf ${PWD}/${file} ~/.${file}
+    ln -svnf "${PWD}/${file}" "$HOME/.${file}"
   done
 }
 
 update_git_completion () {
   # try to download the "correct" version of git completion
-  git_version=`git --version | cut -d" " -f3`
+  git_version=$(git --version | cut -d" " -f3)
 
   # check if we have the right version of git completion stuffs
   if [[ -f git-completion.bash \
     && -f git_completion_version \
-    && $git_version == `cat git_completion_version` ]] ; then
+    && ${git_version} == $(cat git_completion_version) ]] ; then
     echo "Git completion up to date for $git_version"
   else
     rm git_completion_version &>/dev/null
-    echo $git_version > git_completion_version
+    echo "${git_version} > git_completion_version"
     echo "Downloading git completion script for $git_version"
     # here we fail (-f) quietly and save to same name as remote (-O)
-    curl -f -L -O https://raw.githubusercontent.com/git/git/v$git_version/contrib/completion/git-completion.bash
-    curl -f -L -O https://raw.githubusercontent.com/git/git/v$git_version/contrib/completion/git-prompt.sh
+    curl -f -L -O "https://raw.githubusercontent.com/git/git/v$git_version/contrib/completion/git-completion.bash"
+    curl -f -L -O "https://raw.githubusercontent.com/git/git/v$git_version/contrib/completion/git-prompt.sh"
   fi
 }
 
 sync_submodules () {
-  prompt "Sync submodules?" $1
-  if [[ $? -eq 0 ]] ; then
+  if prompt "Sync submodules?" "$1" ; then
     ./sync-sb.sh
   fi
 }
 
 update_ssh () {
-  prompt "Copy authorized_users?" $1
-  if [[ $? -eq 0 ]] ; then
-    cp -v authorized_keys $HOME/.ssh/
+  if prompt "Copy authorized_users?" "$1" ; then
+    cp -v authorized_keys "$HOME/.ssh/"
   fi
 
-  if [[ !(-s $HOME/.ssh/config) ]] ; then
-    prompt "Copy default ssh config?" $1
-    if [[ $? -eq 0 ]] ; then
-      cp -v default_ssh_config $HOME/.ssh/config
+  if [[ ! (-s $HOME/.ssh/config) ]] ; then
+    if prompt "Copy default ssh config?" "$1" ; then
+      cp -v default_ssh_config "$HOME/.ssh/config"
     fi
   fi
 }
@@ -82,7 +78,7 @@ hasklig_ver=1.1
 install_hasklig () {
   name="Hasklig-${hasklig_ver}"
   curl -L -O https://github.com/i-tu/Hasklig/releases/download/${hasklig_ver}/${name}.zip
-  unzip -d $HOME/Library/Fonts/ "${name}.zip"
+  unzip -d "$HOME/Library/Fonts/" "${name}.zip"
   rm "${name}.zip"
 }
 
@@ -92,28 +88,28 @@ install_homebrew () {
 }
 
 build_command_t () {
-  pushd vim/bundle/Command-T/ruby/command-t/ext/command-t/
+  pushd vim/bundle/Command-T/ruby/command-t/ext/command-t/ || return
   ruby extconf.rb
   make
-  popd
+  popd || return
 }
 
 case $1 in
   symlinks)
-    create_symlinks
+    create_symlinks "$@"
     ;;
   git)
     update_git_completion
     ;;
   sb)
-    sync_submodules
+    sync_submodules "$@"
     build_command_t
     ;;
   ct)
     build_command_t
     ;;
   ssh)
-    update_ssh
+    update_ssh "$@"
     ;;
   font)
     install_hasklig
@@ -122,11 +118,15 @@ case $1 in
     install_homebrew
     ;;
   all | [yY])
-    create_symlinks $1
-    update_git_completion $1
-    sync_submodules $1
-    update_ssh $1
-    install_hasklig $1
+    create_symlinks "$@"
+    update_git_completion
+    sync_submodules "$@"
+    update_ssh "$@"
+    # Install osx only things: fonts, brew, etc
+    if [[ $(uname -s) =~ "Darwin" ]] ; then
+      brew
+      install_hasklig
+    fi
     ;;
   *)
     echo "Wrong command"
