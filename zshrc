@@ -9,6 +9,8 @@ ZSH_CUSTOM=$MY_ZSH_ROOT/custom
 DEFAULT_USER="jkaufman"
 
 plugins=(
+  brew
+  docker
   git
 )
 
