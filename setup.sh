@@ -113,7 +113,7 @@ set_zsh () {
     cur_shell=$(getent passwd "${USER}" | cut -d: -f7)
   fi
   if [[ ! (( ${cur_shell} =~ ${zsh_loc} )) ]] ; then
-    chsh -s /usr/local/bin/zsh jkaufman
+    chsh -s /usr/local/bin/zsh "${USER}"
   fi
 }
 
@@ -122,6 +122,10 @@ case $1 in
     create_symlinks "$@"
     ;;
   git) # this is probably deprecated now that I use zsh
+    git config user.name --local "Jake Kaufman"
+    git config user.email --local "theevocater@gmail.com"
+    ;;
+  gitc)
     update_git_completion
     ;;
   sb)
