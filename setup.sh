@@ -83,8 +83,11 @@ install_hasklig () {
 }
 
 install_homebrew () {
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  if ! brew --version &>/dev/null ; then
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
   brew install reattach-to-user-namespace tmux htop vim zsh
+  brew upgrade
 }
 
 build_command_t () {
