@@ -21,7 +21,7 @@ prompt () {
 create_symlinks () {
   # Iterate over the list of setup files we want to alias from our dotfile
   # distribution
-  for file in bash_logout bash_profile bashrc gitconfig* inputrc tmux.conf vim vimrc cvsignore
+  for file in bash_logout bash_profile bashrc gitconfig* inputrc tmux.conf vim vimrc cvsignore zshrc
   do
     # If the file exists, ask the user if they'd like us to move it to
     # FILENAME_old. Otherwise, overwrite.

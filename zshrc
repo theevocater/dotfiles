@@ -6,7 +6,7 @@ ZSH_THEME="agnoster"
 
 ZSH_CUSTOM=$MY_ZSH_ROOT/custom
 
-DEFAULT_USER="jkaufman"
+DEFAULT_USER="$USER"
 
 plugins=(
   brew
@@ -17,5 +17,3 @@ plugins=(
 #fpath=(/usr/local/share/zsh-completions $fpath)
 
 source $ZSH/oh-my-zsh.sh
-
-alias work="cd projects/go/src/github.com/lyft/"
