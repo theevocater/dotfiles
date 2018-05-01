@@ -12,6 +12,8 @@ plugins=(
   brew
   docker
   git
+  helm
+  kubectl
 )
 
 #fpath=(/usr/local/share/zsh-completions $fpath)

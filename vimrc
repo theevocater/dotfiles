@@ -368,7 +368,11 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': [] }
 
-set wildignore+=*.so,*.swp,*.zip,*.jar,*.pyc,*.class,*.bak,venv/*
+set wildignore+=*.so,*.jar,*.class,*.pyc
+set wildignore+=*.swp,*.bak
+set wildignore+=*.zip
+set wildignore+=venv*/*
+set wildignore+=*/vendor
 
 set background=light
 colorscheme solarized
