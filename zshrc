@@ -2,7 +2,7 @@
 MY_ZSH_ROOT=$HOME/.dotfiles/zsh
 export ZSH=$MY_ZSH_ROOT/oh-my-zsh
 
-ZSH_THEME="agnoster"
+ZSH_THEME="jakeman"
 
 ZSH_CUSTOM=$MY_ZSH_ROOT/custom
 
