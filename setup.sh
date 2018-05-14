@@ -3,30 +3,29 @@
 # https://github.com/wyattanderson/dotfiles/blob/master/setup.sh
 
 # change to the directory the setup script exists in
-cd -P "$( dirname "$0" )" || exit -1
+cd -P "$(dirname "$0")" || exit -1
 
-prompt () {
-  if [[ $2 =~ ^[yY]$ ]] ; then
+prompt() {
+  if [[ $2 =~ ^[yY]$ ]]; then
     return 0
   fi
   read -r -p "$1 y[n] " -n 1
   echo
   # if the answer isn't yes, skip
-  if [[ -z ${REPLY} || ${REPLY} =~ ^[^Yy]$ ]] ; then
+  if [[ -z ${REPLY} || ${REPLY} =~ ^[^Yy]$ ]]; then
     return 1
   fi
   return 0
 }
 
-create_symlinks () {
+create_symlinks() {
   # Iterate over the list of setup files we want to alias from our dotfile
   # distribution
-  for file in bash_logout bash_profile bashrc gitconfig* inputrc tmux.conf vim vimrc cvsignore zshrc
-  do
+  for file in bash_logout bash_profile bashrc gitconfig* inputrc tmux.conf vim vimrc cvsignore zshrc; do
     # If the file exists, ask the user if they'd like us to move it to
     # FILENAME_old. Otherwise, overwrite.
-    if [[ -e $HOME/.${file} ]] ; then
-      if ! prompt "$HOME/.${file} exists, overwrite?" "$1" ; then
+    if [[ -e $HOME/.${file} ]]; then
+      if ! prompt "$HOME/.${file} exists, overwrite?" "$1"; then
         echo "Skipping ${file}"
         continue
       fi
@@ -37,14 +36,12 @@ create_symlinks () {
   done
 }
 
-update_git_completion () {
+update_git_completion() {
   # try to download the "correct" version of git completion
   git_version=$(git --version | cut -d" " -f3)
 
   # check if we have the right version of git completion stuffs
-  if [[ -f git-completion.bash \
-    && -f git_completion_version \
-    && ${git_version} == $(cat git_completion_version) ]] ; then
+  if [[ -f git-completion.bash && -f git_completion_version && ${git_version} == $(cat git_completion_version) ]]; then
     echo "Git completion up to date for $git_version"
   else
     rm git_completion_version &>/dev/null
@@ -56,63 +53,63 @@ update_git_completion () {
   fi
 }
 
-sync_submodules () {
-  if prompt "Sync submodules?" "$1" ; then
+sync_submodules() {
+  if prompt "Sync submodules?" "$1"; then
     ./sync-sb.sh
   fi
 }
 
-update_ssh () {
-  if prompt "Copy authorized_users?" "$1" ; then
+update_ssh() {
+  if prompt "Copy authorized_users?" "$1"; then
     cp -v authorized_keys "$HOME/.ssh/"
   fi
 
-  if [[ ! (-s $HOME/.ssh/config) ]] ; then
-    if prompt "Copy default ssh config?" "$1" ; then
+  if [[ ! (-s $HOME/.ssh/config) ]]; then
+    if prompt "Copy default ssh config?" "$1"; then
       cp -v default_ssh_config "$HOME/.ssh/config"
     fi
   fi
 }
 
 hasklig_ver=1.1
-install_hasklig () {
+install_hasklig() {
   name="Hasklig-${hasklig_ver}"
   curl -L -O https://github.com/i-tu/Hasklig/releases/download/${hasklig_ver}/${name}.zip
   unzip -d "$HOME/Library/Fonts/" "${name}.zip"
   rm "${name}.zip"
 }
 
-install_homebrew () {
-  if ! brew --version &>/dev/null ; then
+install_homebrew() {
+  if ! brew --version &>/dev/null; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
   brew install reattach-to-user-namespace tmux htop vim zsh
   brew upgrade
 }
 
-build_command_t () {
+build_command_t() {
   pushd vim/bundle/Command-T/ruby/command-t/ext/command-t/ || return
   ruby extconf.rb
   make
   popd || return
 }
 
-set_zsh () {
-  if ! which -s zsh ; then
+set_zsh() {
+  if ! which -s zsh; then
     echo "zsh is not installed"
     exit -1
   fi
   zsh_loc=$(which zsh)
-  if ! grep -q "${zsh_loc}" /etc/shells ; then
+  if ! grep -q "${zsh_loc}" /etc/shells; then
     echo "${zsh_loc} is not in /etc/shells, adding"
     echo "${zsh_loc}" | sudo tee -a /etc/shells
   fi
-  if [[ $(uname -s) =~ "Darwin" ]] ; then
+  if [[ "$(uname -s)" =~ "Darwin" ]]; then
     cur_shell=$(dscl . -read "/Users/${USER}" UserShell | cut -d: -f2)
   else
     cur_shell=$(getent passwd "${USER}" | cut -d: -f7)
   fi
-  if [[ ! (( ${cur_shell} =~ ${zsh_loc} )) ]] ; then
+  if [[ ! "${cur_shell}" =~ ${zsh_loc} ]]; then
     chsh -s /usr/local/bin/zsh "${USER}"
   fi
 }
@@ -153,7 +150,7 @@ case $1 in
     sync_submodules "$@"
     update_ssh "$@"
     # Install osx only things: fonts, brew, etc
-    if [[ $(uname -s) =~ "Darwin" ]] ; then
+    if [[ $(uname -s) =~ "Darwin" ]]; then
       brew
       install_hasklig
     fi
@@ -163,4 +160,3 @@ case $1 in
     echo "Wrong command"
     ;;
 esac
-
