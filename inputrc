@@ -1,6 +1,6 @@
 # Written by Jake Kaufman but generously stolen and edited from the gentoo
 # default initrc
-# 
+#
 # Quick dirty little note:
 #  To get the key sequence for binding, you can abuse bash.
 #  While running bash, hit CTRL+V, and then type the key sequence.

@@ -1,1 +1,1 @@
-setlocal makeprg=open\ -W\ -a\ macdown.app\ % 
+setlocal makeprg=open\ -W\ -a\ macdown.app\ %
