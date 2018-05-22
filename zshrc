@@ -28,4 +28,6 @@ if [[ -d "$HOME/go/bin" ]] ; then
   export PATH="$HOME/go/bin:$PATH"
 fi
 
+alias pyactive='source venv/bin/activate'
+
 source $ZSH/oh-my-zsh.sh
