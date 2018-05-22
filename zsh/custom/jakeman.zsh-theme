@@ -37,6 +37,10 @@ p_status() {
   fi
 }
 
+p_time() {
+  segmentize default grey "%D{%H:%M:%S}"
+}
+
 p_git() {
 # [branch{untracked}{status}]
 # {status} = ˄ if im forward, ˅ if im behind, @ - yellow staged, red unstaged
@@ -59,6 +63,7 @@ p_git() {
 prompt() {
   RETVAL=$?
   p_status
+  p_time
   p_dir
 	p_git
   p_end
