@@ -18,4 +18,6 @@ plugins=(
 
 #fpath=(/usr/local/share/zsh-completions $fpath)
 
+alias dr='docker run --rm -t -i'
+
 source $ZSH/oh-my-zsh.sh
