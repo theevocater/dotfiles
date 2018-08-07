@@ -125,6 +125,7 @@ setup_yum() {
   sudo yum update
   sudo yum install -y \
     ShellCheck \
+    ctags \
     docker \
     glide \
     golang \
