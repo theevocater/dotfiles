@@ -20,4 +20,12 @@ plugins=(
 
 alias dr='docker run --rm -t -i'
 
+if [[ -d "$HOME/bin" ]] ; then
+  export PATH="$HOME/bin:$PATH"
+fi
+
+if [[ -d "$HOME/go/bin" ]] ; then
+  export PATH="$HOME/go/bin:$PATH"
+fi
+
 source $ZSH/oh-my-zsh.sh

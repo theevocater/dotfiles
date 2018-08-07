@@ -75,7 +75,14 @@ hasklig_ver=1.1
 install_hasklig() {
   name="Hasklig-${hasklig_ver}"
   curl -L -O https://github.com/i-tu/Hasklig/releases/download/${hasklig_ver}/${name}.zip
-  unzip -d "$HOME/Library/Fonts/" "${name}.zip"
+  font_loc="$HOME/.fonts"
+  if [[ "$(uname -s)" =~ "Darwin" ]]; then
+    font_loc="$HOME/Library/Fonts/"
+  fi
+  unzip -d "$font_loc" "${name}.zip"
+  if which fc-cache &>/dev/null; then
+    fc-cache
+  fi
   rm "${name}.zip"
 }
 
@@ -95,7 +102,7 @@ build_command_t() {
 }
 
 set_zsh() {
-  if ! which -s zsh; then
+  if ! which zsh &>/dev/null; then
     echo "zsh is not installed"
     exit -1
   fi
@@ -110,19 +117,38 @@ set_zsh() {
     cur_shell=$(getent passwd "${USER}" | cut -d: -f7)
   fi
   if [[ ! "${cur_shell}" =~ ${zsh_loc} ]]; then
-    chsh -s /usr/local/bin/zsh "${USER}"
+    chsh -s "${zsh_loc}" "${USER}"
   fi
+}
+
+setup_yum() {
+  sudo yum update
+  sudo yum install -y \
+    ShellCheck \
+    docker \
+    glide \
+    golang \
+    kernel-devel \
+    python3 \
+    python3-virtualenv \
+    redhat-rpm-config \
+    ruby \
+    ruby-devel \
+    vim \
+    zsh
+  sudo systemctl enable docker
+  sudo systemctl start docker
 }
 
 case $1 in
   symlinks)
     create_symlinks "$@"
     ;;
-  git) # this is probably deprecated now that I use zsh
-    git config user.name --local "Jake Kaufman"
-    git config user.email --local "theevocater@gmail.com"
+  git)
+    git config --local user.name "Jake Kaufman"
+    git config --local user.email "theevocater@gmail.com"
     ;;
-  gitc)
+  gitc) # this is probably deprecated now that I use zsh
     update_git_completion
     ;;
   sb)
@@ -143,6 +169,9 @@ case $1 in
     ;;
   brew)
     install_homebrew
+    ;;
+  yum)
+    setup_yum
     ;;
   all | [yY])
     create_symlinks "$@"
