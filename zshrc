@@ -10,11 +10,14 @@ DEFAULT_USER="$USER"
 
 plugins=(
   brew
+  go
   docker
   git
   helm
   kubectl
 )
+
+export GOPATH="$HOME/go"
 
 #fpath=(/usr/local/share/zsh-completions $fpath)
 
@@ -29,5 +32,9 @@ if [[ -d "$HOME/go/bin" ]] ; then
 fi
 
 alias pyactive='source venv/bin/activate'
+
+if [[ -d "$HOME/.cargo/bin" ]] ; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
 
 source $ZSH/oh-my-zsh.sh
