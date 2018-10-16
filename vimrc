@@ -374,5 +374,8 @@ set wildignore+=*.zip
 set wildignore+=venv*/*
 set wildignore+=*/vendor
 
+" rust
+set wildignore+=target
+
 set background=light
 colorscheme solarized
