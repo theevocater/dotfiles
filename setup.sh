@@ -80,7 +80,7 @@ install_hasklig() {
     font_loc="$HOME/Library/Fonts/"
   fi
   unzip -d "$font_loc" "${name}.zip"
-  if which fc-cache &>/dev/null; then
+  if command -v fc-cache &>/dev/null; then
     fc-cache
   fi
   rm "${name}.zip"
@@ -101,12 +101,21 @@ build_command_t() {
   popd || return
 }
 
+build_ycm() {
+  pushd vim/bundle/YouCompleteMe/ || return
+  python3 install.py \
+    --clang-completer \
+    --go-completer \
+    --java-completer
+  popd || return
+}
+
 set_zsh() {
-  if ! which zsh &>/dev/null; then
+  if ! command -v zsh &>/dev/null; then
     echo "zsh is not installed"
     exit -1
   fi
-  zsh_loc=$(which zsh)
+  zsh_loc=$(command -v zsh)
   if ! grep -q "${zsh_loc}" /etc/shells; then
     echo "${zsh_loc} is not in /etc/shells, adding"
     echo "${zsh_loc}" | sudo tee -a /etc/shells
@@ -154,10 +163,11 @@ case $1 in
     ;;
   sb)
     sync_submodules "$@"
-    build_command_t
+    exec ./setup.sh "vim"
     ;;
-  ct)
+  vim)
     build_command_t
+    build_ycm
     ;;
   ssh)
     update_ssh "$@"
@@ -181,7 +191,7 @@ case $1 in
     update_ssh "$@"
     # Install osx only things: fonts, brew, etc
     if [[ $(uname -s) =~ "Darwin" ]]; then
-      brew
+      install_homebrew
       install_hasklig
     fi
     set_zsh
