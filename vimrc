@@ -374,6 +374,9 @@ set wildignore+=*.zip
 set wildignore+=venv*/*
 set wildignore+=*/vendor
 
+" npm
+set wildignore+=*/node_modules
+
 " rust
 set wildignore+=target
 
