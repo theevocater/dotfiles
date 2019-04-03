@@ -17,7 +17,7 @@ plugins=(
   kubectl
 )
 
-export GOPATH="$HOME/go"
+export GOPATH="$HOME/projects/go"
 
 #fpath=(/usr/local/share/zsh-completions $fpath)
 
@@ -27,8 +27,8 @@ if [[ -d "$HOME/bin" ]] ; then
   export PATH="$HOME/bin:$PATH"
 fi
 
-if [[ -d "$HOME/go/bin" ]] ; then
-  export PATH="$HOME/go/bin:$PATH"
+if [[ "$GOPATH" ]] ; then
+  export PATH="$GOPATH/bin:$PATH"
 fi
 
 if [[ -d "/usr/local/go/bin" ]] ; then

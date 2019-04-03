@@ -3,7 +3,7 @@
 # https://github.com/wyattanderson/dotfiles/blob/master/setup.sh
 
 # change to the directory the setup script exists in
-cd -P "$(dirname "$0")" || exit -1
+cd -P "$(dirname "$0")" || exit 1
 
 prompt() {
   if [[ $2 =~ ^[yY]$ ]]; then
@@ -113,7 +113,7 @@ build_ycm() {
 set_zsh() {
   if ! command -v zsh &>/dev/null; then
     echo "zsh is not installed"
-    exit -1
+    exit 1
   fi
   zsh_loc=$(command -v zsh)
   if ! grep -q "${zsh_loc}" /etc/shells; then
