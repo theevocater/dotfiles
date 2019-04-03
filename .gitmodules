@@ -91,3 +91,6 @@
 [submodule "vim/bundle/YouCompleteMe"]
 	path = vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "dotfiles_private"]
+	path = dotfiles_private
+	url = git@github.com:theevocater/dotfiles_private
