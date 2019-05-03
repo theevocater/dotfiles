@@ -106,6 +106,7 @@ build_ycm() {
   python3 install.py \
     --clang-completer \
     --go-completer \
+    --rust-completer \
     --java-completer
   popd || return
 }
