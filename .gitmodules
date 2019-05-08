@@ -94,3 +94,6 @@
 [submodule "dotfiles_private"]
 	path = dotfiles_private
 	url = git@github.com:theevocater/dotfiles_private
+[submodule "vim/bundle/ale"]
+	path = vim/bundle/ale
+	url = https://github.com/w0rp/ale.git
