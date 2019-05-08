@@ -5,4 +5,3 @@
     - id: git-check  # Configure in .gitattributes
     - id: git-dirty  # Configure in .gitignore
     - id: shellcheck
-    - id: shfmt
