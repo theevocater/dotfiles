@@ -145,6 +145,9 @@ setup_apt() {
     git \
     golang-go \
     python3-dev \
+    python3-pip \
+    python3-venv \
+    shellcheck \
     ruby-dev \
     tmux \
     vim-nox \
