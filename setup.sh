@@ -101,6 +101,10 @@ build_command_t() {
   popd || return
 }
 
+install_rustup() {
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+}
+
 build_ycm() {
   pushd vim/bundle/YouCompleteMe/ || return
   python3 install.py \
@@ -129,6 +133,23 @@ set_zsh() {
   if [[ ! "${cur_shell}" =~ ${zsh_loc} ]]; then
     chsh -s "${zsh_loc}" "${USER}"
   fi
+}
+
+setup_apt() {
+  sudo apt update
+  sudo apt install -y \
+    build-essential \
+    cmake \
+    ctags \
+    curl \
+    git \
+    golang-go \
+    python3-dev \
+    ruby-dev \
+    tmux \
+    vim-nox \
+    xclip \
+    zsh
 }
 
 setup_yum() {
@@ -182,8 +203,14 @@ case $1 in
   brew)
     install_homebrew
     ;;
+  apt)
+    setup_apt
+    ;;
   yum)
     setup_yum
+    ;;
+  rust)
+    install_rustup
     ;;
   all | [yY])
     create_symlinks "$@"
