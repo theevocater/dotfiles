@@ -71,25 +71,8 @@ update_ssh() {
   fi
 }
 
-build_command_t() {
-  pushd vim/bundle/Command-T/ruby/command-t/ext/command-t/ || return
-  ruby extconf.rb
-  make
-  popd || return
-}
-
 install_rustup() {
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-}
-
-build_ycm() {
-  pushd vim/bundle/YouCompleteMe/ || return
-  python3 install.py \
-    --clang-completer \
-    --go-completer \
-    --rust-completer \
-    --java-completer
-  popd || return
 }
 
 set_zsh() {
