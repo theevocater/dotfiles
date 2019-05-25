@@ -17,6 +17,8 @@ plugins=(
   kubectl
 )
 
+export EDITOR=`which vim`
+
 export GOPATH="$HOME/projects/go"
 
 #fpath=(/usr/local/share/zsh-completions $fpath)
