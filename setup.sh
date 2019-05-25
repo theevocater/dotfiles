@@ -86,14 +86,6 @@ install_hasklig() {
   rm "${name}.zip"
 }
 
-install_homebrew() {
-  if ! brew --version &>/dev/null; then
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  fi
-  brew install reattach-to-user-namespace tmux htop vim zsh
-  brew upgrade
-}
-
 build_command_t() {
   pushd vim/bundle/Command-T/ruby/command-t/ext/command-t/ || return
   ruby extconf.rb
@@ -133,46 +125,6 @@ set_zsh() {
   if [[ ! "${cur_shell}" =~ ${zsh_loc} ]]; then
     chsh -s "${zsh_loc}" "${USER}"
   fi
-}
-
-setup_apt() {
-  sudo apt update
-  sudo apt install -y \
-    build-essential \
-    cmake \
-    ctags \
-    curl \
-    git \
-    golang-go \
-    python3-dev \
-    python3-pip \
-    python3-venv \
-    shellcheck \
-    ruby-dev \
-    tmux \
-    vim-nox \
-    xclip \
-    zsh
-}
-
-setup_yum() {
-  sudo yum update
-  sudo yum install -y \
-    ShellCheck \
-    ctags \
-    docker \
-    glide \
-    golang \
-    kernel-devel \
-    python3 \
-    python3-virtualenv \
-    redhat-rpm-config \
-    ruby \
-    ruby-devel \
-    vim \
-    zsh
-  sudo systemctl enable docker
-  sudo systemctl start docker
 }
 
 case $1 in
