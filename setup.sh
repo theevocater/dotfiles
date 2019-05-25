@@ -71,21 +71,6 @@ update_ssh() {
   fi
 }
 
-hasklig_ver=1.1
-install_hasklig() {
-  name="Hasklig-${hasklig_ver}"
-  curl -L -O https://github.com/i-tu/Hasklig/releases/download/${hasklig_ver}/${name}.zip
-  font_loc="$HOME/.fonts"
-  if [[ "$(uname -s)" =~ "Darwin" ]]; then
-    font_loc="$HOME/Library/Fonts/"
-  fi
-  unzip -d "$font_loc" "${name}.zip"
-  if command -v fc-cache &>/dev/null; then
-    fc-cache
-  fi
-  rm "${name}.zip"
-}
-
 build_command_t() {
   pushd vim/bundle/Command-T/ruby/command-t/ext/command-t/ || return
   ruby extconf.rb
