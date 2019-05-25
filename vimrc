@@ -368,6 +368,25 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': [] }
 
+""""""""""""""""""""""""""""""""""""""""""""""""
+" ALE
+""""""""""""""""""""""""""""""""""""""""""""""""
+" mypy isn't super smart at imports
+let g:ale_python_mypy_options = '--ignore-missing-imports'
+
+let g:ale_linters = {
+\   'go': ['go build'],
+\   'typescript': ['tsserver', 'typecheck'],
+\   'javascript': ['eslint'],
+\   'python': ['flake8', 'mypy'],
+\}
+
+let g:ale_fixers = {
+\    'python': ['autopep8'],
+\}
+
+let g:ale_fix_on_save=1
+
 set wildignore+=*.so,*.jar,*.class,*.pyc
 set wildignore+=*.swp,*.bak
 set wildignore+=*.zip
