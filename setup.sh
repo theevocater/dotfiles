@@ -5,19 +5,6 @@
 # change to the directory the setup script exists in
 cd -P "$(dirname "$0")" || exit 1
 
-prompt() {
-  if [[ $2 =~ ^[yY]$ ]]; then
-    return 0
-  fi
-  read -r -p "$1 y[n] " -n 1
-  echo
-  # if the answer isn't yes, skip
-  if [[ -z ${REPLY} || ${REPLY} =~ ^[^Yy]$ ]]; then
-    return 1
-  fi
-  return 0
-}
-
 create_symlinks() {
   # Iterate over the list of setup files we want to alias from our dotfile
   # distribution
