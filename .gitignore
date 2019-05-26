@@ -10,3 +10,4 @@ tags
 git-completion.bash
 git-prompt.sh
 git_completion_version
+venv/
