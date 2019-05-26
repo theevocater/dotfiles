@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import os
 import sys
 from os import path
@@ -6,11 +7,18 @@ from typing import List
 
 
 def main(argv: List[str]) -> int:
+    parser = argparse.ArgumentParser(description="symlink n files to a base path")
+    parser.add_argument("files", metavar="file", nargs="+", help="file to symlink")
+    parser.add_argument("--base_path", required=True, help="base_path to join with")
+    args = parser.parse_args(argv[1:])
+
     dotfiles_base = path.abspath(path.join(path.dirname(argv[0]), ".."))
-    home = path.expanduser("~")
-    files = argv[1:]
+    # user might pass something like ~/., need to parse that correctly
+    home = path.dirname(path.expanduser(args.base_path))
+    pre = path.basename(args.base_path)
+    files = args.files
     for f in files:
-        h = path.join(home, f".{f}")
+        h = path.join(home, f"{pre}{f}")
         if path.exists(h):
             r = str.lower(input(f"{h} exists, overwrite? y[n] "))
             if "n" == r or "no" == r:
@@ -20,7 +28,8 @@ def main(argv: List[str]) -> int:
                 os.remove(h)
                 print(f"Overwritting {f}")
 
-        os.symlink(path.join(dotfiles_base, f), h)
+        # os.symlink(path.join(dotfiles_base, f), h)
+        print(path.join(dotfiles_base, f), h)
     return 0
 
 
