@@ -53,12 +53,6 @@ update_git_completion() {
   fi
 }
 
-sync_submodules() {
-  if prompt "Sync submodules?" "$1"; then
-    ./sync-sb.sh
-  fi
-}
-
 update_ssh() {
   if prompt "Copy authorized_users?" "$1"; then
     cp -v authorized_keys "$HOME/.ssh/"
