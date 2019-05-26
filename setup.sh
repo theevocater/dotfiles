@@ -5,24 +5,6 @@
 # change to the directory the setup script exists in
 cd -P "$(dirname "$0")" || exit 1
 
-create_symlinks() {
-  # Iterate over the list of setup files we want to alias from our dotfile
-  # distribution
-  for file in bash_logout bash_profile bashrc gitconfig* inputrc tmux.conf vim vimrc cvsignore zshrc; do
-    # If the file exists, ask the user if they'd like us to move it to
-    # FILENAME_old. Otherwise, overwrite.
-    if [[ -e $HOME/.${file} ]]; then
-      if ! prompt "$HOME/.${file} exists, overwrite?" "$1"; then
-        echo "Skipping ${file}"
-        continue
-      fi
-    fi
-    # Add the appropriate symlink
-    echo "Overwritting ~/.${file}"
-    ln -svnf "${PWD}/${file}" "$HOME/.${file}"
-  done
-}
-
 update_git_completion() {
   # try to download the "correct" version of git completion
   git_version=$(git --version | cut -d" " -f3)
