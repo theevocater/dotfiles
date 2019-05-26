@@ -29,3 +29,8 @@ I use
 [solarized](https://github.com/tomislav/osx-terminal.app-colors-solarized) as
 my main color scheme. I've borrowed @tomislav's and modified it to use hasklig
 as the font.
+
+## TODO
+add tests for symlink_home
+install a version of go
+rewrite new setup.sh
