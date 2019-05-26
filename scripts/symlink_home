@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+import os
+import sys
+from os import path
+from typing import List
+
+
+def main(argv: List[str]) -> int:
+    dotfiles_base = path.abspath(path.join(path.dirname(argv[0]), ".."))
+    home = path.expanduser("~")
+    files = argv[1:]
+    for f in files:
+        h = path.join(home, f".{f}")
+        if path.exists(h):
+            r = str.lower(input(f"{h} exists, overwrite? y[n] "))
+            if "n" == r or "no" == r:
+                print(f"Skipping {f}")
+                continue
+            else:
+                os.remove(h)
+                print(f"Overwritting {f}")
+
+        os.symlink(path.join(dotfiles_base, f), h)
+    return 0
+
+
+if __name__ == "__main__":
+    exit(main(sys.argv))
