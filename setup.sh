@@ -34,10 +34,6 @@ update_ssh() {
   fi
 }
 
-install_rustup() {
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-}
-
 case $1 in
   symlinks)
     create_symlinks "$@"
