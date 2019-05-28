@@ -37,6 +37,10 @@ if [[ -d "/usr/local/go/bin" ]] ; then
   export PATH="/usr/local/go/bin:$PATH"
 fi
 
+if [[ -d "$HOME/.jakeman/go/bin" ]] ; then
+  export PATH="$HOME/.jakeman/go/bin:$PATH"
+fi
+
 alias pyactive='source venv/bin/activate'
 
 if [[ -d "$HOME/.cargo/bin" ]] ; then

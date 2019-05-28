@@ -24,7 +24,6 @@ setup_apt() {
     ctags \
     curl \
     git \
-    golang-go \
     python3-dev \
     python3-pip \
     python3-venv \
@@ -43,7 +42,6 @@ setup_fedora() {
     ctags \
     docker \
     glide \
-    golang \
     kernel-devel \
     python3 \
     python3-virtualenv \

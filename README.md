@@ -32,5 +32,4 @@ as the font.
 
 ## TODO
 add tests for symlink_home
-install a version of go
 rewrite new setup.sh
