@@ -1,6 +1,5 @@
 #!/bin/bash
 set -eu -o pipefail
-# download and install hasklig
 
 hasklig_ver=1.1
 name="Hasklig-${hasklig_ver}"
@@ -12,6 +11,8 @@ fi
 if [[ -f "$font_loc/Hasklig-Regular.otf" ]] ; then
   exit 0
 fi
+
+echo "Downloading and installing hasklig"
 
 curl -L -O https://github.com/i-tu/Hasklig/releases/download/${hasklig_ver}/${name}.zip
 

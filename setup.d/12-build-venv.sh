@@ -4,6 +4,7 @@ set -eu -o pipefail
 
 cd -P "$(dirname "$0")" || exit 1
 cd .. || exit 1
+echo "Building a python venv"
 
 if [[ -e venv ]]; then
   rm -rf venv

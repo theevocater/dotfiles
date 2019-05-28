@@ -4,6 +4,7 @@ set -eu -o pipefail
 
 cd -P "$(dirname "$0")" || exit 1
 cd .. || exit 1
+echo "Symlinking Dotfiles"
 
 scripts/symlink_home \
   --base_src "." \

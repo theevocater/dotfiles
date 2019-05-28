@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 if ! command -v zsh &>/dev/null; then
-  echo "zsh is not installed"
+  echo "Unable to switch to zsh: zsh is not installed"
   exit 1
 fi
 zsh_loc=$(command -v zsh)
@@ -16,5 +16,6 @@ else
   cur_shell=$(getent passwd "${USER}" | cut -d: -f7)
 fi
 if [[ ! "${cur_shell}" =~ ${zsh_loc} ]]; then
+  echo "Configuring zsh as shell"
   chsh -s "${zsh_loc}" "${USER}"
 fi
