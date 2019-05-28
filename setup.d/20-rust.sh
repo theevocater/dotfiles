@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eu -o pipefail
 # install rust
 # TODO(jakeman) there has to be a better way
 

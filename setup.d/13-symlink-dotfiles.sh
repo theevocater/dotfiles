@@ -1,8 +1,9 @@
 #!/bin/bash
+set -eu -o pipefail
 # symlink all my dotfiles
 
 cd -P "$(dirname "$0")" || exit 1
-cd ..
+cd .. || exit 1
 
 scripts/symlink_home \
   --base_src "." \

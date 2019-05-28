@@ -1,8 +1,9 @@
 #!/bin/bash
+set -eu -o pipefail
 # Build a venv with some useful tools
 
 cd -P "$(dirname "$0")" || exit 1
-cd ..
+cd .. || exit 1
 
 if [[ -e venv ]]; then
   rm -rf venv
