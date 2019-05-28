@@ -22,57 +22,9 @@ update_git_completion() {
   fi
 }
 
-update_ssh() {
-  if prompt "Copy authorized_users?" "$1"; then
-    cp -v authorized_keys "$HOME/.ssh/"
-  fi
-
-  if [[ ! (-s $HOME/.ssh/config) ]]; then
-    if prompt "Copy default ssh config?" "$1"; then
-      cp -v default_ssh_config "$HOME/.ssh/config"
-    fi
-  fi
-}
-
 case $1 in
-  symlinks)
-    create_symlinks "$@"
-    ;;
-  git)
-    git config --local user.name "Jake Kaufman"
-    git config --local user.email "theevocater@gmail.com"
-    ;;
   gitc) # this is probably deprecated now that I use zsh
     update_git_completion
-    ;;
-  sb)
-    sync_submodules "$@"
-    exec ./setup.sh "vim"
-    ;;
-  vim)
-    build_command_t
-    build_ycm
-    ;;
-  ssh)
-    update_ssh "$@"
-    ;;
-  font)
-    install_hasklig
-    ;;
-  zsh)
-    set_zsh
-    ;;
-  brew)
-    install_homebrew
-    ;;
-  apt)
-    setup_apt
-    ;;
-  yum)
-    setup_yum
-    ;;
-  rust)
-    install_rustup
     ;;
   all | [yY])
     create_symlinks "$@"
