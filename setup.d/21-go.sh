@@ -3,6 +3,11 @@ set -eu -o pipefail
 
 version=1.12.5
 platform="$(uname | tr '[:upper:]' '[:lower:]')"
+
+if command -v go &>/dev/null && [[ "$(go version)" =~ 1.12.5 ]]; then
+  exit 0
+fi
+
 echo "Installing go $version $platform"
 
 if [[ "$platform" == "linux" ]]; then
