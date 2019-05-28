@@ -32,4 +32,3 @@ as the font.
 
 ## TODO
 add tests for symlink_home
-rewrite new setup.sh
