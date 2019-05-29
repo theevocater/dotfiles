@@ -382,7 +382,7 @@ let g:ale_linters = {
 \}
 
 let g:ale_fixers = {
-\    'python': ['autopep8'],
+\    'python': ['autopep8', 'black', 'isort'],
 \}
 
 let g:ale_fix_on_save=1
@@ -390,7 +390,7 @@ let g:ale_fix_on_save=1
 set wildignore+=*.so,*.jar,*.class,*.pyc
 set wildignore+=*.swp,*.bak
 set wildignore+=*.zip
-set wildignore+=venv*/*
+set wildignore+=*/venv/*
 set wildignore+=*/vendor
 
 " npm

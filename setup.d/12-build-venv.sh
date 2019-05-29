@@ -1,0 +1,28 @@
+#!/bin/bash
+set -eu -o pipefail
+# Build a venv with some useful tools
+
+cd -P "$(dirname "$0")" || exit 1
+cd .. || exit 1
+echo "Building a python venv"
+
+if [[ -e venv ]]; then
+  rm -rf venv
+fi
+
+python3 -m venv venv
+venv/bin/pip install --requirement requirements.txt
+scripts/symlink_home.py  \
+  --base_src "venv/bin/" \
+  --base_dest "$HOME/bin/" \
+  black \
+  flake8 \
+  isort \
+  mypy \
+  pip \
+  pip-compile \
+  python \
+  pre-commit \
+  pytest \
+  virtualenv \
+  wheel

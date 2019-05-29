@@ -5,3 +5,19 @@
     - id: git-check  # Configure in .gitattributes
     - id: git-dirty  # Configure in .gitignore
     - id: shellcheck
+- repo: https://github.com/pre-commit/mirrors-mypy
+  sha: v0.701
+  hooks:
+    - id: mypy
+- repo: https://github.com/asottile/seed-isort-config
+  rev: v1.9.0
+  hooks:
+  - id: seed-isort-config
+- repo: https://github.com/pre-commit/mirrors-isort
+  sha: v4.3.20
+  hooks:
+    - id: isort
+- repo: https://gitlab.com/pycqa/flake8
+  rev: 3.7.7
+  hooks:
+    - id: flake8
