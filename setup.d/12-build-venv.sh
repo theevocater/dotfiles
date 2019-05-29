@@ -19,4 +19,10 @@ scripts/symlink_home  \
   flake8 \
   isort \
   mypy \
-  pre-commit
+  pip \
+  pip-compile \
+  python \
+  pre-commit \
+  pytest \
+  virtualenv \
+  wheel
