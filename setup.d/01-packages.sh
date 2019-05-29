@@ -3,7 +3,7 @@ set -eu -o pipefail
 # Set up necessary packages for me to function
 
 install_homebrew() {
-  if ! brew --version &>/dev/null; then
+  if ! command -v brew &>/dev/null; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
   brew upgrade
