@@ -23,6 +23,6 @@ scripts/symlink_home.py  \
   pip-compile \
   python \
   pre-commit \
-  pytest \
+  tox \
   virtualenv \
   wheel

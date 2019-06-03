@@ -5,4 +5,5 @@ mypy
 pip-tools
 pre-commit
 pytest
+tox
 wheel
