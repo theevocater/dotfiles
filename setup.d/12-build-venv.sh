@@ -13,8 +13,8 @@ fi
 python3 -m venv venv
 venv/bin/pip install --requirement requirements.txt
 scripts/symlink_home.py  \
-  --base_src "venv/bin/" \
-  --base_dest "$HOME/bin/" \
+  "venv/bin/" \
+  "$HOME/bin/" \
   black \
   flake8 \
   isort \

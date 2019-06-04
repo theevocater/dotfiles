@@ -7,8 +7,9 @@ cd .. || exit 1
 echo "Symlinking Dotfiles"
 
 scripts/symlink_home.py \
-  --base_src "." \
-  --base_dest "$HOME/." \
+  "." \
+  "$HOME/" \
+  --prefix '.' \
   bash_logout \
   bash_profile \
   bashrc \
