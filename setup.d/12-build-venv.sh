@@ -15,6 +15,7 @@ venv/bin/pip install --requirement requirements.txt
 scripts/symlink_home.py  \
   "venv/bin/" \
   "$HOME/bin/" \
+  add-trailing-comma \
   black \
   flake8 \
   isort \
@@ -22,6 +23,7 @@ scripts/symlink_home.py  \
   pip \
   pip-compile \
   python \
+  reorder-python-imports \
   pre-commit \
   tox \
   virtualenv \
