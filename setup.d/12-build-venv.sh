@@ -22,7 +22,7 @@ scripts/symlink_home.py  \
   mypy \
   pip \
   pip-compile \
-  python \
+  python3 \
   reorder-python-imports \
   pre-commit \
   tox \
