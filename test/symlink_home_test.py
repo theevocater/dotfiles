@@ -40,7 +40,7 @@ def test_link_prefix(base_dirs):
     assert path.lexists(str(base_dirs.dest / '.foo'))
 
 
-def test_link_exists_skip(base_dirs, capsys):
+def test_link_exists_n(base_dirs, capsys):
     dest_foo = base_dirs.dest / '.foo'
     dest_foo.write_text('foo')
     argv = [f'{str(base_dirs.src)}/', f'{str(base_dirs.dest)}/', '--prefix', '.', 'foo']
@@ -52,7 +52,7 @@ def test_link_exists_skip(base_dirs, capsys):
     assert out == f'Skipping foo\n'
 
 
-def test_link_exists_overwrite(base_dirs, capsys):
+def test_link_exists_y(base_dirs, capsys):
     dest_foo = base_dirs.dest / '.foo'
     dest_foo.write_text('foo')
     argv = [f'{str(base_dirs.src)}/', f'{str(base_dirs.dest)}/', '--prefix', '.', 'foo']
@@ -62,3 +62,15 @@ def test_link_exists_overwrite(base_dirs, capsys):
     assert path.islink(str(base_dirs.dest / '.foo'))
     out, _ = capsys.readouterr()
     assert out == f'Overwritting foo\n'
+
+
+def test_link_exists_no_response(base_dirs, capsys):
+    dest_foo = base_dirs.dest / '.foo'
+    dest_foo.write_text('foo')
+    argv = [f'{str(base_dirs.src)}/', f'{str(base_dirs.dest)}/', '--prefix', '.', 'foo']
+    with mock.patch('builtins.input') as inp:
+        inp.return_value = ''
+        assert main(argv) == 1
+    assert not path.islink(str(base_dirs.dest / '.foo'))
+    out, _ = capsys.readouterr()
+    assert out == f'Skipping foo\n'

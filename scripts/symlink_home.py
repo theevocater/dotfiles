@@ -31,12 +31,12 @@ def main(argv: Optional[List[str]] = None) -> int:
         d = path.join(dest, f'{prefix}{f}')
         if path.lexists(d):
             r = input(f'{d} exists, overwrite? y[n] ').lower()
-            if 'n' == r or 'no' == r:
-                print(f'Skipping {f}')
-                continue
-            else:
+            if 'y' == r:
                 os.remove(d)
                 print(f'Overwritting {f}')
+            else:
+                print(f'Skipping {f}')
+                continue
 
         os.symlink(s, d)
         retv = 0
