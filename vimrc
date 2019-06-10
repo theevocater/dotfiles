@@ -381,10 +381,8 @@ let g:ale_linters = {
 \   'python': ['flake8', 'mypy'],
 \}
 
-let g:ale_python_black_options = '--skip-string-normalization'
-
 let g:ale_fixers = {
-\    'python': ['autopep8', 'black', 'isort'],
+\    'python': ['autopep8', 'reorder-python-imports'],
 \}
 
 let g:ale_fix_on_save=1
