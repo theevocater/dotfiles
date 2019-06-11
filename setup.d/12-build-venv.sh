@@ -16,7 +16,7 @@ scripts/symlink_home.py  \
   "venv/bin/" \
   "$HOME/bin/" \
   add-trailing-comma \
-  black \
+  autopep8 \
   flake8 \
   isort \
   mypy \
