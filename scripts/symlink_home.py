@@ -3,7 +3,8 @@ import argparse
 import os
 import sys
 from os import path
-from typing import List, Optional
+from typing import List
+from typing import Optional
 
 
 def main(argv: Optional[List[str]] = None) -> int:
