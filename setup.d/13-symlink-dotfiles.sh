@@ -19,4 +19,11 @@ scripts/symlink_home.py \
   vim \
   vimrc \
   cvsignore \
-  zshrc
+  zshrc \
+  || true
+
+scripts/symlink_home.py \
+  "." \
+  "$HOME/.config/" \
+  kitty \
+  || true
