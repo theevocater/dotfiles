@@ -10,6 +10,8 @@ if [[ -e venv ]]; then
   rm -rf venv
 fi
 
+mkdir -p "$HOME/bin"
+
 python3 -m venv venv
 venv/bin/pip install --requirement requirements.txt
 scripts/symlink_home.py  \
@@ -17,6 +19,7 @@ scripts/symlink_home.py  \
   "$HOME/bin/" \
   add-trailing-comma \
   autopep8 \
+  aws \
   flake8 \
   isort \
   mypy \

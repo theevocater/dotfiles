@@ -1,5 +1,6 @@
 add-trailing-comma
 autopep8
+awscli
 flake8
 isort
 mypy
