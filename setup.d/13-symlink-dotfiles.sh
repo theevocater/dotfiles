@@ -26,4 +26,5 @@ scripts/symlink_home.py \
   "." \
   "$HOME/.config/" \
   kitty \
+  awesome \
   || true
