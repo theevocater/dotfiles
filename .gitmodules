@@ -90,7 +90,7 @@
 	url = https://github.com/hashivim/vim-terraform
 [submodule "vim/bundle/YouCompleteMe"]
 	path = rc.d/vim/bundle/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
+	url = https://github.com/ycm-core/YouCompleteMe
 [submodule "dotfiles_private"]
 	path = dotfiles_private
 	url = git@github.com:theevocater/dotfiles_private
