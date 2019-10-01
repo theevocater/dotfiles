@@ -7,13 +7,14 @@ cd .. || exit 1
 echo "Symlinking Dotfiles"
 
 scripts/symlink_home.py \
-  "." \
+  "rc.d/" \
   "$HOME/" \
   --prefix '.' \
   bash_logout \
   bash_profile \
   bashrc \
-  gitconfig* \
+  gitconfig \
+  gitconfig-theevocater \
   inputrc \
   tmux.conf \
   vim \
@@ -23,7 +24,7 @@ scripts/symlink_home.py \
   || true
 
 scripts/symlink_home.py \
-  "." \
+  "rc.d/" \
   "$HOME/.config/" \
   kitty \
   || true
