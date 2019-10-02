@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-MY_ZSH_ROOT=$HOME/.dotfiles/zsh
+MY_ZSH_ROOT=$HOME/.dotfiles/rc.d/zsh
 export ZSH=$MY_ZSH_ROOT/oh-my-zsh
 
 ZSH_THEME="jakeman"
