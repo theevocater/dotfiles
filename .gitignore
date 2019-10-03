@@ -12,3 +12,4 @@ git-prompt.sh
 git_completion_version
 venv/
 __pycache__/
+*.retry
