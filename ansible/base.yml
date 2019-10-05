@@ -1,6 +1,5 @@
 ---
 - hosts: "*"
-  remote_user: root
   tasks:
   - name: ensure packages are installed
     apt:
@@ -26,4 +25,11 @@
       - xclip
       - zsh
       update_cache: yes
-      state: latest
+      state: present
+  - name: ensure jkaufman exists
+    user: # need to accomodate osx someday
+      name: jkaufman
+      comment: "Jake Kaufman"
+      shell: /usr/bin/zsh
+      groups: sudo
+      append: yes

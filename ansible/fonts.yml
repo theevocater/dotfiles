@@ -1,6 +1,5 @@
 ---
 - hosts: "*"
-  remote_user: root # later this will be my user
   tasks:
   - name: Download hasklig
     vars:
@@ -11,12 +10,14 @@
       checksum: sha256:98eccec22bc0ae3838a099a911230f62197e681b6a6c30e5149c52f5fc6a95c3
   - name: Ensure .fonts exists
     file:
-      path: /root/.fonts
+      path: "{{ ansible_env.HOME }}/.fonts"
       state: directory
   - name: Extract hasklig to fonts
     unarchive:
       src: /tmp/hasklig.zip
-      dest: /root/.fonts
+      dest: "{{ ansible_env.HOME }}/.fonts"
+    notify: Update fc-cache
+  handlers:
   - name: Update fc-cache
     command: fc-cache
     when: ansible_os_family == "Debian"
