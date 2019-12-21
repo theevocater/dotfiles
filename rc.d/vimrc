@@ -7,9 +7,50 @@ set shortmess+=I
 " loads our bundle directory
 filetype off
 " I have pathogen as a bundle so it needs to be added
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect('bundle/{}')
-call pathogen#helptags()
+"runtime bundle/vim-pathogen/autoload/pathogen.vim
+"call pathogen#infect('bundle/{}')
+"call pathogen#helptags()
+
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+" Declare the list of plugins.
+Plug 'Lokaltog/vim-powerline'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'chrismetcalf/vim-yankring'
+Plug 'derekwyatt/vim-scala'
+Plug 'fatih/vim-go'
+Plug 'hashivim/vim-terraform'
+Plug 'msanders/snipmate.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'robbyrussell/oh-my-zsh'
+Plug 'rust-lang/rust.vim'
+Plug 'saltstack/salt-vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'sjl/gundo.vim'
+Plug 'theevocater/a.vim'
+Plug 'theevocater/dotfiles_private'
+Plug 'theevocater/thrift.vim'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-pathogen'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/nginx.vim'
+Plug 'vim-scripts/rainbow_parentheses.vim'
+Plug 'vim-scripts/taglist.vim'
+Plug 'w0rp/ale'
+Plug 'wincent/Command-T'
+Plug 'ycm-core/YouCompleteMe'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " History
@@ -189,6 +230,7 @@ nmap <silent> <leader>pe :!p4 edit %<CR>
 nnoremap <silent> <leader>y :YRShow<CR>
 
 nnoremap <silent> <leader>u :GundoToggle<CR>
+let g:gundo_prefer_python3 = 1
 
 nnoremap <silent> <leader>m :w<CR> :make<CR> :cw<CR>
 
