@@ -80,8 +80,8 @@
       state: present
     when: ansible_distribution == "Ubuntu"
   - name: add stable docker repository
-    apt_repository: # s/disco/lsb_release -cs
-      repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable edge test"
+    apt_repository: # s/disco/lsb_release -cs / eoan isn't ready yet, use disco
+      repo: "deb https://download.docker.com/linux/ubuntu disco stable edge test"
     when: ansible_distribution == "Ubuntu"
   - name: install docker-ce
     apt:

@@ -1,0 +1,11 @@
+---
+- hosts: "*"
+  tasks:
+  - name: ensure packages are installed
+    apt:
+      name:
+      - gnome-tweak-tool
+      - kitty
+      - xclip
+      update_cache: yes
+      state: present

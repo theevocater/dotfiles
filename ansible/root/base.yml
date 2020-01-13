@@ -8,9 +8,8 @@
       - cmake
       - ctags
       - curl
+      - fontconfig
       - git
-      - gnome-tweak-tool
-      - kitty
       - net-tools
       - python-dev
       - python-pip
@@ -22,7 +21,6 @@
       - shellcheck
       - tmux
       - vim-nox
-      - xclip
       - zsh
       update_cache: yes
       state: present
