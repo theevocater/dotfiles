@@ -11,7 +11,7 @@
       requirements: requirements.txt
       virtualenv: venv
       virtualenv_python: python3.7
-  - name: symlink add-trailing-comma
+  - name: symlink from venv to bin
     file:
       src: '/home/jkaufman/.dotfiles/venv/bin/{{ item }}'
       dest: '/home/jkaufman/bin/{{ item }}'

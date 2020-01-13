@@ -1,0 +1,34 @@
+---
+- hosts: "*"
+  tasks:
+  - name: Create bin/
+    file:
+      path: /home/jkaufman/bin
+      state: directory
+  - name: symlink dotfiles
+    file:
+      src: '/home/jkaufman/.dotfiles/rc.d/{{ item }}'
+      dest: '/home/jkaufman/.{{ item }}'
+      state: link
+      force: yes
+    loop:
+      - bash_logout
+      - bash_profile
+      - bashrc
+      - gitconfig
+      - gitconfig-theevocater
+      - inputrc
+      - tmux.conf
+      - vim
+      - vimrc
+      - cvsignore
+      - zshrc
+  - name: create .config
+    file:
+      dest: '/home/jkaufman/.config/'
+      state: directory
+  - name: symlink kitty
+    file:
+      src: '/home/jkaufman/.dotfiles/rc.d/kitty'
+      dest: '/home/jkaufman/.config/kitty'
+      state: link
