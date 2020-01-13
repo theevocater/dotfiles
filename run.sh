@@ -2,5 +2,5 @@
 set -eu -o pipefail
 
 docker run -t -i \
+  -v="$(pwd)":"$(pwd)" \
   dotfiles:latest /bin/bash \
-  #-v "$(pwd)/ansible":/root/ansible \

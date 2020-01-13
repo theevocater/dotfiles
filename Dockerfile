@@ -8,8 +8,6 @@ WORKDIR /root/ansible/
 RUN ansible-playbook -v -i hosts base.yml
 RUN ansible-playbook -v -i hosts docker.yml
 USER jkaufman
-COPY --chown=jkaufman:jkaufman ansible/jkaufman /home/jkaufman/.dotfiles/ansible/jkaufman
-COPY --chown=jkaufman:jkaufman ansible/hosts /home/jkaufman/.dotfiles/ansible/hosts
-WORKDIR /home/jkaufman/.dotfiles
-RUN ansible-playbook -v -i ansible/hosts ansible/jkaufman/fonts.yml
 COPY --chown=jkaufman:jkaufman . /home/jkaufman/.dotfiles/
+WORKDIR /home/jkaufman/.dotfiles
+#RUN ansible-playbook -v -i ansible/hosts ansible/jkaufman/fonts.yml
