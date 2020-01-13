@@ -379,10 +379,12 @@ let g:ale_linters = {
 \   'typescript': ['tsserver', 'typecheck'],
 \   'javascript': ['eslint'],
 \   'python': ['flake8', 'mypy'],
+\   'rust': ['cargo', 'rls', 'rustc'],
 \}
 
 let g:ale_fixers = {
 \    'python': ['autopep8', 'reorder-python-imports'],
+\    'rust': ['rustfmt'],
 \}
 
 let g:ale_fix_on_save=1
