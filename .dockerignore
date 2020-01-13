@@ -1,4 +1,4 @@
-.git/
+.git/modules/
 rc.d/vim/bundle/*
 rc.d/vim/tmp/*
 venv/
