@@ -1,0 +1,33 @@
+---
+- hosts: "*"
+  tasks:
+  - name: Create bin/
+    file:
+      path: /home/jkaufman/bin
+      state: directory
+  - name: Build work venv
+    pip:
+      chdir: /home/jkaufman/.dotfiles/
+      requirements: requirements.txt
+      virtualenv: venv
+      virtualenv_python: python3.7
+  - name: symlink add-trailing-comma
+    file:
+      src: '/home/jkaufman/.dotfiles/venv/bin/{{ item }}'
+      dest: '/home/jkaufman/bin/{{ item }}'
+      state: link
+    loop:
+      - add-trailing-comma
+      - autopep8
+      - aws
+      - flake8
+      - isort
+      - mypy
+      - pip
+      - pip-compile
+      - python3
+      - reorder-python-imports
+      - pre-commit
+      - tox
+      - virtualenv
+      - wheel
