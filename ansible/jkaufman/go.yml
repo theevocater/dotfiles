@@ -1,0 +1,4 @@
+---
+- hosts: "*"
+  tasks:
+  - name: install go

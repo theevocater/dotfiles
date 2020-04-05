@@ -10,4 +10,4 @@ RUN ansible-playbook -v -i hosts docker.yml
 USER jkaufman
 COPY --chown=jkaufman:jkaufman . /home/jkaufman/.dotfiles/
 WORKDIR /home/jkaufman/.dotfiles
-#RUN ansible-playbook -v -i ansible/hosts ansible/jkaufman/fonts.yml
+#RUN ansible-playbook -v -i ansible/hosts ansible/jkaufman/*.yml

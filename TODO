@@ -1,0 +1,13 @@
+flow
+
+* 2 parts:
+clone to fresh thing in root
+run until you get to having a user
+jump to that user
+
+
+run a bunch of things that move toward consistency:
+fonts
+packages
+venv
+etc
