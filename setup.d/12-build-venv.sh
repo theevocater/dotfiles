@@ -12,12 +12,23 @@ fi
 
 mkdir -p "$HOME/bin"
 
-python3 -m venv venv
+virtualenv -p python3 venv
 venv/bin/pip install --requirement requirements.txt
 scripts/symlink_home.py  \
   "venv/bin/" \
   "$HOME/bin/" \
   add-trailing-comma \
+  ansible \
+  ansible-config \
+  ansible-connection \
+  ansible-console \
+  ansible-doc \
+  ansible-galaxy \
+  ansible-inventory \
+  ansible-playbook \
+  ansible-pull \
+  ansible-test \
+  ansible-vault \
   autopep8 \
   aws \
   flake8 \

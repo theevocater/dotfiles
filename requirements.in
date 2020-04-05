@@ -1,4 +1,5 @@
 add-trailing-comma
+ansible
 autopep8
 awscli
 flake8
@@ -9,4 +10,3 @@ pre-commit
 pytest
 reorder-python-imports
 tox
-wheel
