@@ -26,4 +26,5 @@ repos:
   rev: v4.2.0
   hooks:
     - id: ansible-lint
-      files: ansible/.*\.yml$
+      args:
+        - 'ansible/site.yml'
