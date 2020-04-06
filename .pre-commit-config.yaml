@@ -26,5 +26,9 @@ repos:
   rev: v4.2.0
   hooks:
     - id: ansible-lint
+      files: ^ansible/
+      types: [yaml]
+      entry: ansible-lint
       args:
-        - 'ansible/site.yml'
+        - ansible/site.yml
+      always_run: false
