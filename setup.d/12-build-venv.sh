@@ -4,16 +4,16 @@ set -eu -o pipefail
 
 cd -P "$(dirname "$0")" || exit 1
 cd .. || exit 1
-echo "Building a python venv"
+#echo "Building a python venv"
 
-if [[ -e venv ]]; then
-  rm -rf venv
-fi
+#if [[ -e venv ]]; then
+  #rm -rf venv
+#fi
 
-mkdir -p "$HOME/bin"
+#mkdir -p "$HOME/bin"
 
-virtualenv -p python3 venv
-venv/bin/pip install --requirement requirements.txt
+#virtualenv -p python3 venv
+#venv/bin/pip install --requirement requirements.txt
 scripts/symlink_home.py  \
   "venv/bin/" \
   "$HOME/bin/" \
@@ -25,6 +25,7 @@ scripts/symlink_home.py  \
   ansible-doc \
   ansible-galaxy \
   ansible-inventory \
+  ansible-lint \
   ansible-playbook \
   ansible-pull \
   ansible-test \
