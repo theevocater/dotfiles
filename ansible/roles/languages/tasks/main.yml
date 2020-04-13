@@ -1,0 +1,4 @@
+- name: install golang
+  import_tasks: go.yml
+- name: install rust
+  import_tasks: rust.yml

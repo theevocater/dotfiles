@@ -1,0 +1,14 @@
+- name: ensure "{{ tmp_dir }}"
+  file:
+    path: "{{ tmp_dir }}"
+    state: directory
+- name: download go {{ go_version }}
+  get_url:
+    url: "https://dl.google.com/go/go{{ go_version }}.{{ ansible_system.lower() }}-amd64.tar.gz"
+    checksum: "{{ go_checksum }}"
+    dest: "{{ tmp_dir }}"
+  register: download
+- name: Extract go
+  unarchive:
+    src: "{{ download.dest }}"
+    dest: "{{ tmp_dir }}"
