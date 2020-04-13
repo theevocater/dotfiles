@@ -1,0 +1,15 @@
+- name: ensure "{{ tmp_dir }}"
+  file:
+    path: "{{ tmp_dir }}"
+    state: directory
+- name: Download rustup
+  get_url:
+    url: https://sh.rustup.rs
+    dest: "{{ tmp_dir }}/rustup-init"
+    mode: 0755
+  register: download
+- name: Run rustup-init
+  command:
+  args:
+    cmd: "{{ download.dest }} -y"
+    creates: "{{ ansible_env.HOME }}/.rustup"
