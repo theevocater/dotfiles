@@ -6,7 +6,7 @@
 #
 add-trailing-comma==2.0.1  # via -r requirements.in
 ansible-lint==4.2.0       # via -r requirements.in
-ansible==2.9.6            # via -r requirements.in, ansible-lint
+ansible==2.9.6            # via ansible-lint
 appdirs==1.4.3            # via virtualenv
 aspy.refactor-imports==2.1.0  # via reorder-python-imports
 attrs==19.3.0             # via pytest
@@ -25,7 +25,6 @@ entrypoints==0.3          # via flake8
 filelock==3.0.12          # via tox, virtualenv
 flake8==3.7.9             # via -r requirements.in
 identify==1.4.14          # via pre-commit
-importlib-metadata==1.6.0  # via pluggy, pre-commit, pytest, tox, virtualenv
 isort==4.3.21             # via -r requirements.in
 jinja2==2.11.1            # via ansible
 jmespath==0.9.5           # via botocore
@@ -62,4 +61,3 @@ typing-extensions==3.7.4.2  # via mypy
 urllib3==1.25.8           # via botocore
 virtualenv==20.0.16       # via pre-commit, tox
 wcwidth==0.1.9            # via pytest
-zipp==3.1.0               # via importlib-metadata

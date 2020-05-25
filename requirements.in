@@ -1,5 +1,4 @@
 add-trailing-comma
-ansible
 ansible-lint
 autopep8
 awscli
