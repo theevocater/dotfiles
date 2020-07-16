@@ -100,3 +100,6 @@
 [submodule "vim/bundle/vim-bazel"]
 	path = vim/bundle/vim-bazel
 	url = https://github.com/bazelbuild/vim-bazel
+[submodule "vim/bundle/vim-maktaba"]
+	path = vim/bundle/vim-maktaba
+	url = https://github.com/google/vim-maktaba
