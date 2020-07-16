@@ -401,5 +401,8 @@ set wildignore+=*/node_modules
 " rust
 set wildignore+=target
 
+" bazel
+set wildignore+=*/bazel-bin,*/bazel-envoy,*/bazel-out,*/bazel-testlogs
+
 set background=light
 colorscheme solarized
