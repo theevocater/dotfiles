@@ -1,2 +1,0 @@
----
-tmp_dir: "{{ ansible_env.HOME }}/.jakeman"
