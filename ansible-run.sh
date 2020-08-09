@@ -5,6 +5,7 @@ set -eu -o pipefail
 if ! command -v  ansible ; then
   sudo scripts/bootstrap-ansible.sh
 fi
+
 # Run playbooks that require root
 ansible-playbook --verbose --inventory ansible/hosts --ask-become-pass ansible/root.yml
 
