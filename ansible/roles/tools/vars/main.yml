@@ -1,0 +1,2 @@
+tmp_hasklig_zip: "{{ tmp_dir }}/hasklig.zip"
+hasklig_url: "https://github.com/i-tu/Hasklig/releases/download/{{ hasklig_version }}/Hasklig-{{ hasklig_version }}.zip"
