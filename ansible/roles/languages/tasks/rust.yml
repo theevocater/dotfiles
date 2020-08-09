@@ -10,6 +10,5 @@
   register: download
 - name: Run rustup-init
   command:
-  args:
     cmd: "{{ download.dest }} -y"
     creates: "{{ ansible_env.HOME }}/.rustup"
