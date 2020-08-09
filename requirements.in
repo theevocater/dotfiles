@@ -1,7 +1,11 @@
-add-trailing-comma
+ansible
 ansible-lint
-autopep8
+
 awscli
+
+# python stuff
+add-trailing-comma
+autopep8
 flake8
 isort
 mypy

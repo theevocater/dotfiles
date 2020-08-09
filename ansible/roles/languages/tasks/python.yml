@@ -34,9 +34,9 @@
     - mypy
     - pip
     - pip-compile
+    - pre-commit
     - python3
     - reorder-python-imports
-    - pre-commit
     - tox
     - virtualenv
     - wheel
