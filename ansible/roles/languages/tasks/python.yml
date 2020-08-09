@@ -1,0 +1,42 @@
+- name: Create bin/
+  file:
+    path: /home/jkaufman/bin
+    state: directory
+- name: Build work venv
+  pip:
+    chdir: /home/jkaufman/.dotfiles/
+    requirements: requirements.txt
+    virtualenv: venv
+    virtualenv_python: python3
+- name: symlink from venv to bin
+  file:
+    src: '/home/jkaufman/.dotfiles/venv/bin/{{ item }}'
+    dest: '/home/jkaufman/bin/{{ item }}'
+    state: link
+  loop:
+    - add-trailing-comma
+    - ansible
+    - ansible-config
+    - ansible-connection
+    - ansible-console
+    - ansible-doc
+    - ansible-galaxy
+    - ansible-inventory
+    - ansible-lint
+    - ansible-playbook
+    - ansible-pull
+    - ansible-test
+    - ansible-vault
+    - autopep8
+    - aws
+    - flake8
+    - isort
+    - mypy
+    - pip
+    - pip-compile
+    - pre-commit
+    - python3
+    - reorder-python-imports
+    - tox
+    - virtualenv
+    - wheel
