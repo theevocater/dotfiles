@@ -401,5 +401,8 @@ set wildignore+=*/node_modules
 " rust
 set wildignore+=target
 
+" vim
+set wildignore+=*~
+
 set background=light
 colorscheme solarized
