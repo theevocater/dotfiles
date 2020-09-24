@@ -10,7 +10,7 @@ DEFAULT_USER="$USER"
 
 plugins=(
   brew
-  go
+  golang
   docker
   git
   helm
