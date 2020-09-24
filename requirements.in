@@ -6,6 +6,7 @@ awscli
 # python stuff
 add-trailing-comma
 autopep8
+black
 flake8
 isort
 mypy
@@ -13,5 +14,6 @@ pip-tools
 pipenv
 pre-commit
 pytest
+pyupgrade
 reorder-python-imports
 tox

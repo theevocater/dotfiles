@@ -29,6 +29,7 @@
     - ansible-vault
     - autopep8
     - aws
+    - black
     - flake8
     - isort
     - mypy
@@ -37,6 +38,7 @@
     - pipenv
     - pre-commit
     - python3
+    - pyupgrade
     - reorder-python-imports
     - tox
     - virtualenv
