@@ -10,6 +10,7 @@ flake8
 isort
 mypy
 pip-tools
+pipenv
 pre-commit
 pytest
 reorder-python-imports

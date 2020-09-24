@@ -34,6 +34,7 @@
     - mypy
     - pip
     - pip-compile
+    - pipenv
     - pre-commit
     - python3
     - reorder-python-imports
