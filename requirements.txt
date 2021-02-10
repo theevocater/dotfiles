@@ -4,73 +4,186 @@
 #
 #    pip-compile
 #
-add-trailing-comma==2.0.1  # via -r requirements.in
-ansible-base==2.10.1      # via ansible
-ansible-lint==4.3.5       # via -r requirements.in
-ansible==2.10.0           # via -r requirements.in, ansible-lint
-appdirs==1.4.4            # via black, virtualenv
-aspy.refactor-imports==2.1.1  # via reorder-python-imports
-attrs==20.2.0             # via pytest
-autopep8==1.5.4           # via -r requirements.in
-awscli==1.18.145          # via -r requirements.in
-black==20.8b1             # via -r requirements.in
-botocore==1.18.4          # via awscli, s3transfer
-cached-property==1.5.2    # via aspy.refactor-imports
-certifi==2020.6.20        # via pipenv
-cffi==1.14.3              # via cryptography
-cfgv==3.2.0               # via pre-commit
-click==7.1.2              # via black, pip-tools
-colorama==0.4.3           # via awscli, rich
-commonmark==0.9.1         # via rich
-cryptography==3.1.1       # via ansible-base
-distlib==0.3.1            # via virtualenv
-docutils==0.15.2          # via awscli
-filelock==3.0.12          # via tox, virtualenv
-flake8==3.8.3             # via -r requirements.in
-identify==1.5.5           # via pre-commit
-iniconfig==1.0.1          # via pytest
-isort==5.5.3              # via -r requirements.in
-jinja2==2.11.2            # via ansible-base
-jmespath==0.10.0          # via botocore
-markupsafe==1.1.1         # via jinja2
-mccabe==0.6.1             # via flake8
-more-itertools==8.5.0     # via pytest
-mypy-extensions==0.4.3    # via black, mypy
-mypy==0.782               # via -r requirements.in
-nodeenv==1.5.0            # via pre-commit
-packaging==20.4           # via ansible-base, pytest, tox
-pathspec==0.8.0           # via black
-pip-tools==5.3.1          # via -r requirements.in
-pipenv==2020.8.13         # via -r requirements.in
-pluggy==0.13.1            # via pytest, tox
-pre-commit==2.7.1         # via -r requirements.in
-py==1.9.0                 # via pytest, tox
-pyasn1==0.4.8             # via rsa
-pycodestyle==2.6.0        # via autopep8, flake8
-pycparser==2.20           # via cffi
-pyflakes==2.2.0           # via flake8
-pygments==2.7.1           # via rich
-pyparsing==2.4.7          # via packaging
-pytest==6.0.2             # via -r requirements.in
-python-dateutil==2.8.1    # via botocore
-pyupgrade==2.7.2          # via -r requirements.in
-pyyaml==5.3.1             # via ansible-base, ansible-lint, awscli, pre-commit
-regex==2020.7.14          # via black
-reorder-python-imports==2.3.5  # via -r requirements.in
-rich==7.0.0               # via ansible-lint
-rsa==4.5                  # via awscli
-ruamel.yaml.clib==0.2.2   # via ruamel.yaml
-ruamel.yaml==0.16.12      # via ansible-lint
-s3transfer==0.3.3         # via awscli
-six==1.15.0               # via cryptography, packaging, pip-tools, python-dateutil, tox, virtualenv
-tokenize-rt==4.0.0        # via add-trailing-comma, pyupgrade
-toml==0.10.1              # via autopep8, black, pre-commit, pytest, tox
-tox==3.20.0               # via -r requirements.in
-typed-ast==1.4.1          # via black, mypy
-typing-extensions==3.7.4.3  # via black, mypy, rich
-urllib3==1.25.10          # via botocore
-virtualenv-clone==0.5.4   # via pipenv
-virtualenv==20.0.31       # via pipenv, pre-commit, tox
+add-trailing-comma==2.0.1
+    # via -r requirements.in
+ansible-base==2.10.1
+    # via ansible
+ansible-lint==4.3.5
+    # via -r requirements.in
+ansible==2.10.0
+    # via
+    #   -r requirements.in
+    #   ansible-lint
+appdirs==1.4.4
+    # via
+    #   black
+    #   virtualenv
+aspy.refactor-imports==2.1.1
+    # via reorder-python-imports
+attrs==20.2.0
+    # via pytest
+autopep8==1.5.4
+    # via -r requirements.in
+awscli==1.18.145
+    # via -r requirements.in
+black==20.8b1
+    # via -r requirements.in
+botocore==1.18.4
+    # via
+    #   awscli
+    #   s3transfer
+cached-property==1.5.2
+    # via aspy.refactor-imports
+certifi==2020.6.20
+    # via pipenv
+cffi==1.14.3
+    # via cryptography
+cfgv==3.2.0
+    # via pre-commit
+click==7.1.2
+    # via
+    #   black
+    #   pip-tools
+colorama==0.4.3
+    # via
+    #   awscli
+    #   rich
+commonmark==0.9.1
+    # via rich
+cryptography==3.3.2
+    # via ansible-base
+distlib==0.3.1
+    # via virtualenv
+docutils==0.15.2
+    # via awscli
+filelock==3.0.12
+    # via
+    #   tox
+    #   virtualenv
+flake8==3.8.3
+    # via -r requirements.in
+identify==1.5.5
+    # via pre-commit
+iniconfig==1.0.1
+    # via pytest
+isort==5.5.3
+    # via -r requirements.in
+jinja2==2.11.2
+    # via ansible-base
+jmespath==0.10.0
+    # via botocore
+markupsafe==1.1.1
+    # via jinja2
+mccabe==0.6.1
+    # via flake8
+more-itertools==8.5.0
+    # via pytest
+mypy-extensions==0.4.3
+    # via
+    #   black
+    #   mypy
+mypy==0.782
+    # via -r requirements.in
+nodeenv==1.5.0
+    # via pre-commit
+packaging==20.4
+    # via
+    #   ansible-base
+    #   pytest
+    #   tox
+pathspec==0.8.0
+    # via black
+pip-tools==5.3.1
+    # via -r requirements.in
+pipenv==2020.8.13
+    # via -r requirements.in
+pluggy==0.13.1
+    # via
+    #   pytest
+    #   tox
+pre-commit==2.7.1
+    # via -r requirements.in
+py==1.9.0
+    # via
+    #   pytest
+    #   tox
+pyasn1==0.4.8
+    # via rsa
+pycodestyle==2.6.0
+    # via
+    #   autopep8
+    #   flake8
+pycparser==2.20
+    # via cffi
+pyflakes==2.2.0
+    # via flake8
+pygments==2.7.1
+    # via rich
+pyparsing==2.4.7
+    # via packaging
+pytest==6.0.2
+    # via -r requirements.in
+python-dateutil==2.8.1
+    # via botocore
+pyupgrade==2.7.2
+    # via -r requirements.in
+pyyaml==5.3.1
+    # via
+    #   ansible-base
+    #   ansible-lint
+    #   awscli
+    #   pre-commit
+regex==2020.7.14
+    # via black
+reorder-python-imports==2.3.5
+    # via -r requirements.in
+rich==7.0.0
+    # via ansible-lint
+rsa==4.5
+    # via awscli
+ruamel.yaml==0.16.12
+    # via ansible-lint
+s3transfer==0.3.3
+    # via awscli
+six==1.15.0
+    # via
+    #   cryptography
+    #   packaging
+    #   pip-tools
+    #   python-dateutil
+    #   tox
+    #   virtualenv
+tokenize-rt==4.0.0
+    # via
+    #   add-trailing-comma
+    #   pyupgrade
+toml==0.10.1
+    # via
+    #   autopep8
+    #   black
+    #   pre-commit
+    #   pytest
+    #   tox
+tox==3.20.0
+    # via -r requirements.in
+typed-ast==1.4.1
+    # via
+    #   black
+    #   mypy
+typing-extensions==3.7.4.3
+    # via
+    #   black
+    #   mypy
+    #   rich
+urllib3==1.25.10
+    # via botocore
+virtualenv-clone==0.5.4
+    # via pipenv
+virtualenv==20.0.31
+    # via
+    #   pipenv
+    #   pre-commit
+    #   tox
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
