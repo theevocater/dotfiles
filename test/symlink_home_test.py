@@ -49,7 +49,7 @@ def test_link_exists_n(base_dirs, capsys):
         assert main(argv) == 1
     assert not path.islink(str(base_dirs.dest / '.foo'))
     out, _ = capsys.readouterr()
-    assert out == f'Skipping foo\n'
+    assert out == 'Skipping foo\n'
 
 
 def test_link_exists_y(base_dirs, capsys):
@@ -61,7 +61,7 @@ def test_link_exists_y(base_dirs, capsys):
         assert main(argv) == 0
     assert path.islink(str(base_dirs.dest / '.foo'))
     out, _ = capsys.readouterr()
-    assert out == f'Overwritting foo\n'
+    assert out == 'Overwritting foo\n'
 
 
 def test_link_exists_no_response(base_dirs, capsys):
@@ -73,4 +73,4 @@ def test_link_exists_no_response(base_dirs, capsys):
         assert main(argv) == 1
     assert not path.islink(str(base_dirs.dest / '.foo'))
     out, _ = capsys.readouterr()
-    assert out == f'Skipping foo\n'
+    assert out == 'Skipping foo\n'

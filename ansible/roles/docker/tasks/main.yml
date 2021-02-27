@@ -10,7 +10,7 @@
     state: present
   when: ansible_distribution == "Ubuntu"
 - name: add docker gpg apt key
-  apt_key: # from https://download.docker.com/linux/ubuntu/gpg
+  apt_key:  # from https://download.docker.com/linux/ubuntu/gpg
     data: |
       -----BEGIN PGP PUBLIC KEY BLOCK-----
 
@@ -87,11 +87,11 @@
       - docker-ce
       - docker-ce-cli
       - containerd.io
-    update_cache: yes
+    update_cache: true
     state: present
   notify: restart docker
 - name: add docker group to jkaufman
   user:
     name: jkaufman
     groups: docker
-    append: yes
+    append: true

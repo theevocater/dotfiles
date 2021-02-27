@@ -2,6 +2,7 @@
   file:
     path: "{{ tmp_dir }}"
     state: directory
+    mode: '755'
 - name: download go {{ go_version }}
   get_url:
     url: "https://dl.google.com/go/go{{ go_version }}.{{ ansible_system.lower() }}-amd64.tar.gz"
@@ -15,6 +16,6 @@
   when: ansible_system == "Linux"
 - name: Install go pkg
   command:
-      cmd: "open {{ download.dest }}"
-      creates: /usr/local/go
+    cmd: "open {{ download.dest }}"
+    creates: /usr/local/go
   when: ansible_system == "Darwin"

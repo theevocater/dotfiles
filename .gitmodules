@@ -97,3 +97,6 @@
 [submodule "vim/bundle/ale"]
 	path = rc.d/vim/bundle/ale
 	url = https://github.com/w0rp/ale.git
+[submodule "rc.d/vim/bundle/vim-ansible"]
+	path = rc.d/vim/bundle/ansible-vim
+	url = https://github.com/pearofducks/ansible-vim.git

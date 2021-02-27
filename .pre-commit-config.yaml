@@ -1,34 +1,34 @@
 repos:
 - repo: https://github.com/jumanjihouse/pre-commit-hooks
-  rev: 2.0.0
+  rev: 2.1.5
   hooks:
     - id: forbid-binary
     - id: git-check  # Configure in .gitattributes
     - id: git-dirty  # Configure in .gitignore
     - id: shellcheck
 - repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v0.770
+  rev: v0.812
   hooks:
     - id: mypy
 - repo: https://github.com/asottile/reorder_python_imports
-  rev: v2.1.0
+  rev: v2.4.0
   hooks:
   - id: reorder-python-imports
 - repo: https://gitlab.com/pycqa/flake8
-  rev: 3.7.9
+  rev: 3.8.4
   hooks:
     - id: flake8
 - repo: https://github.com/pre-commit/mirrors-autopep8
-  rev: v1.5
+  rev: v1.5.4
   hooks:
     - id: autopep8
 - repo: https://github.com/ansible/ansible-lint.git
-  rev: v4.2.0
+  rev: v5.0.2
   hooks:
     - id: ansible-lint
       files: ^ansible/
       types: [yaml]
       entry: ansible-lint
       args:
-        - ansible/site.yml
+        - ansible/
       always_run: false
