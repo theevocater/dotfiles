@@ -1,7 +1,6 @@
 *.swp
 .netrwhist
 *.log
-*.json
 *.oauth
 *.data
 */vim/tmp/
@@ -12,3 +11,4 @@ git-prompt.sh
 git_completion_version
 venv/
 __pycache__/
+.mypy_cache/
