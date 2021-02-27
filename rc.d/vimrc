@@ -251,6 +251,8 @@ autocmd FileType make set noexpandtab shiftwidth=8
 " Json is just javascript
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
+autocmd BufNewFile,BufRead */ansible/*.yml set filetype=yaml.ansible
+
 " extends matching to if/else etc
 runtime macros/matchit.vim
 
@@ -388,6 +390,7 @@ let g:ale_fixers = {
 \}
 
 let g:ale_fix_on_save=1
+
 
 set wildignore+=*.so,*.jar,*.class,*.pyc
 set wildignore+=*.swp,*.bak

@@ -1,7 +1,8 @@
 - name: Create bin/
   file:
-    path: /home/jkaufman/bin
+    path: "{{ ansible_env.HOME }}/bin"
     state: directory
+    mode: '755'
 - name: Build work venv
   pip:
     chdir: /home/jkaufman/.dotfiles/
