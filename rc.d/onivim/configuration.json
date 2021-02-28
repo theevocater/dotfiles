@@ -1,20 +1,21 @@
 
 {
   "editor.detectIndentation": true,
-  "editor.fontFamily": "JetBrainsMono-Regular.ttf",
-  "editor.fontSize": 14,
+  "editor.fontFamily": "Hasklig",
+  "editor.fontSize": 13,
   "editor.largeFileOptimizations": true,
   "editor.highlightActiveIndentGuide": true,
   "editor.indentSize": 4,
   "editor.insertSpaces": true,
   "editor.lineNumbers": "on",
   "editor.matchBrackets": true,
-  "editor.minimap.enabled": true,
+  "editor.minimap.enabled": false,
   "editor.minimap.maxColumn": 120,
-  "editor.minimap.showSlider": true,
+  "editor.minimap.showSlider": false,
   "editor.renderIndentGuides": true,
   "editor.renderWhitespace": "none",
   "editor.rulers": [],
+  "workbench.colorTheme": "Solarized Dark",
   "editor.tabSize": 4,
   "editor.zenMode.hideTabs": true,
   "editor.zenMode.singleFile": true,
@@ -27,5 +28,10 @@
   "workbench.sideBar.visible": true,
   "workbench.statusBar.visible": true,
   "workbench.tree.indent": 2,
-  "vim.useSystemClipboard": ["yank"]
+  "vim.useSystemClipboard": ["yank"],
+  "oni.layout.singleTabMode": true,
+  "oni.layout.layoutTabPosition": "top",
+  "terminal.integrated.fontFamily": "Hasklig",
+  "terminal.integrated.linux": "zsh",
+  "vim.leader": "<space>"
 }
