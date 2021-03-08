@@ -1,0 +1,22 @@
+- name: symlink HOME dotfiles
+  file:
+    src: "{{ ansible_env.HOME }}/.dotfiles/rc.d/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.{{ item }}"
+    state: link
+  loop:
+    - bash_logout
+    - bash_profile
+    - bashrc
+    - gitconfig
+    - gitconfig-theevocater
+    - inputrc
+    - tmux.conf
+    - vim
+    - vimrc
+    - cvsignore
+    - zshrc
+- name: symlink kitty dotfiles
+  file:
+    src: "{{ ansible_env.HOME }}/.dotfiles/rc.d/kitty"
+    dest: "{{ ansible_env.HOME }}/.config/kitty"
+    state: link
