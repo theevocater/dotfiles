@@ -5,14 +5,14 @@
     mode: '755'
 - name: Build work venv
   pip:
-    chdir: /home/jkaufman/.dotfiles/
+    chdir: "{{ ansible_env.HOME }}/.dotfiles/"
     requirements: requirements.txt
     virtualenv: venv
     virtualenv_python: python3
 - name: symlink from venv to bin
   file:
-    src: '/home/jkaufman/.dotfiles/venv/bin/{{ item }}'
-    dest: '/home/jkaufman/bin/{{ item }}'
+    src: "{{ ansible_env.HOME }}/.dotfiles/venv/bin/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/bin/{{ item }}"
     state: link
   loop:
     - add-trailing-comma
