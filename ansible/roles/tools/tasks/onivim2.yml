@@ -6,8 +6,8 @@
     mode: '755'
 - name: symlink oni config files
   file:
-    src: '/home/jkaufman/.dotfiles/rc.d/onivim/{{ item }}'
-    dest: '/home/jkaufman/.config/oni2/{{ item }}'
+    src: "{{ ansible_env.HOME }}/.dotfiles/rc.d/onivim/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/oni2/{{ item }}"
     state: link
   loop:
     - configuration.json

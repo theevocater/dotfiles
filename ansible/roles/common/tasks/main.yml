@@ -1,42 +1,6 @@
----
-- name: Install non-x packages
-  apt:
-    name:
-      - ansible
-      - build-essential
-      - cmake
-      - ctags
-      - curl
-      - fontconfig
-      - git
-      - net-tools
-      - python-is-python3
-      - python3-dev
-      - python3-pip
-      - python3-venv
-      - ruby-dev
-      - shellcheck
-      - tmux
-      - vim-nox
-      - virtualenv
-      - zsh
-    update_cache: true
-    state: present
-- name: ensure jkaufman exists
-  user:  # need to accomodate osx someday
-    name: jkaufman
-    comment: "Jake Kaufman"
-    shell: /usr/bin/zsh
-    groups: sudo
-    append: true
-- name: Install X11 packages
-  apt:
-    name:
-      - gnome-tweak-tool
-      - kitty
-      - lm-sensors
-      - xautomation
-      - xbindkeys
-      - xclip
-    update_cache: true
-    state: present
+- name: run common tasks ubuntu
+  import_tasks: ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+- name: run common tasks osx
+  import_tasks: osx.yml
+  when: ansible_sytem == "Darwin"

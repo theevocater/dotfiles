@@ -10,5 +10,7 @@
 # Run Tasks
 - name: set up font
   import_tasks: fonts.yml
+- name: set up dotfiles links
+  import_tasks: dotfiles.yml
 - name: set up onivim2 config
   import_tasks: onivim2.yml
