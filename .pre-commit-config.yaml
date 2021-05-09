@@ -11,19 +11,19 @@ repos:
   hooks:
     - id: mypy
 - repo: https://github.com/asottile/reorder_python_imports
-  rev: v2.4.0
+  rev: v2.5.0
   hooks:
   - id: reorder-python-imports
 - repo: https://gitlab.com/pycqa/flake8
-  rev: 3.8.4
+  rev: 3.9.2
   hooks:
     - id: flake8
 - repo: https://github.com/pre-commit/mirrors-autopep8
-  rev: v1.5.4
+  rev: v1.5.7
   hooks:
     - id: autopep8
 - repo: https://github.com/ansible/ansible-lint.git
-  rev: v5.0.2
+  rev: v5.0.8
   hooks:
     - id: ansible-lint
       files: ^ansible/
