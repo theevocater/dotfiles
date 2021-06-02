@@ -180,7 +180,7 @@ typing-extensions==3.10.0.0
     # via
     #   mypy
     #   rich
-urllib3==1.26.4
+urllib3==1.26.5
     # via botocore
 virtualenv-clone==0.5.4
     # via pipenv
