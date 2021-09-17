@@ -376,8 +376,11 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 " mypy isn't super smart at imports
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 
+let g:ale_go_golangci_lint_options = ''
+let g:ale_go_golangci_lint_package = 1
+
 let g:ale_linters = {
-\   'go': ['go build'],
+\   'go': ['golangci-lint'],
 \   'typescript': ['tsserver', 'typecheck'],
 \   'javascript': ['eslint'],
 \   'python': ['flake8', 'mypy'],
