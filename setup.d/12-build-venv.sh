@@ -12,8 +12,8 @@ cd .. || exit 1
 
 #mkdir -p "$HOME/bin"
 
-#virtualenv -p python3 venv
-#venv/bin/pip install --requirement requirements.txt
+virtualenv -p python3 venv
+venv/bin/pip install --requirement requirements.txt
 scripts/symlink_home.py  \
   "venv/bin/" \
   "$HOME/bin/" \

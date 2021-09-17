@@ -19,8 +19,6 @@ plugins=(
 
 export EDITOR=`which vim`
 
-export GOPATH="$HOME/projects/go"
-
 #fpath=(/usr/local/share/zsh-completions $fpath)
 
 alias dr='docker run --rm -t -i'
@@ -29,8 +27,8 @@ if [[ -d "$HOME/bin" ]] ; then
   export PATH="$HOME/bin:$PATH"
 fi
 
-if [[ "$GOPATH" ]] ; then
-  export PATH="$GOPATH/bin:$PATH"
+if whence -p go &>/dev/null ; then
+  export PATH="$(go env GOPATH)/bin:$PATH"
 fi
 
 if [[ -d "/usr/local/go/bin" ]] ; then
