@@ -3,7 +3,7 @@ set -eu -o pipefail
 
 # install ansible if necessary
 if ! command -v  ansible ; then
-  sudo scripts/bootstrap-ansible.sh
+  scripts/bootstrap-ansible.sh
 fi
 
 # Run playbooks that require root

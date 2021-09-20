@@ -1,5 +1,6 @@
 - name: install golang
   import_tasks: go.yml
+  when: ansible_system == "Linux"
 - name: install rust
   import_tasks: rust.yml
 - name: python tasks
