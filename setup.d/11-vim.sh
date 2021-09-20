@@ -5,6 +5,9 @@ echo "Building vim submodules"
 
 build_command_t() {
   echo "Building commant_t"
+  if [ -d /usr/local/opt/ruby/bin ] ; then
+    export PATH="/usr/local/opt/ruby/bin:$PATH"
+  fi
   pushd rc.d/vim/bundle/Command-T/ruby/command-t/ext/command-t/ || return
   ruby extconf.rb
   make
