@@ -45,4 +45,8 @@ if [[ -d "$HOME/.cargo/bin" ]] ; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+if whence -p gh &>/dev/null ; then
+  plugins+=(gh)
+fi
+
 source $ZSH/oh-my-zsh.sh
