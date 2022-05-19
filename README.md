@@ -1,28 +1,16 @@
-These are theevocater's dotfiles!
+# dotfiles
 
-I've included a little setup script that links everything.
+A crash of my dotfiles.
 
-It's safe to run at any given time, as it will ask before trampling any files.
+## Status
 
-## Install
-run setup.sh from wherever
+Currently I'm very slowly porting setup.d stuff either to ansible or just
+deprecating them.
 
-## Commands:
-* symlinks
-  * This creates all the symlinks to the various files in the repo.
-* git
-  * Downloads the correct git completion files. Run when git is updated.
-* sb
-  * Syncs all the submodules. Mostly for vim
-  * also builds the command-t c extension
-* ct
-  * Builds the command-t c extension
-* ssh
-  * sets up ssh configs and such
-* font
-  * Installs the hasklig font.
-* all
-  * Runs all of the above. Useful for provisioning a new machine
+## Config
+
+You'll likely find the most valuable stuff to crib from in [rc.d](/rc.d/). The
+rest is mostly just weird garbage.
 
 ## Terminal Colorscheme
 I use
