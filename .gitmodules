@@ -1,6 +1,3 @@
-[submodule "vim/bundle/gundo.vim"]
-	path = rc.d/vim/pack/foo/start/gundo.vim
-	url = http://github.com/sjl/gundo.vim.git
 [submodule "vim/bundle/nerdtree"]
 	path = rc.d/vim/pack/foo/start/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git

@@ -174,11 +174,7 @@ nmap <silent> <leader>gd :Gdiff<CR>
 nmap <leader>g :Git
 nmap <leader>gc :Git checkout %
 
-nmap <silent> <leader>pe :!p4 edit %<CR>
-
 nnoremap <silent> <leader>y :YRShow<CR>
-
-nnoremap <silent> <leader>u :GundoToggle<CR>
 
 nnoremap <silent> <leader>m :w<CR> :make<CR> :cw<CR>
 
