@@ -1,15 +1,5 @@
-" Originally Written by Jake Kaufman with much help from Dannel Jurado and
-" Jason Zaman
-
-" Get rid of that stupid intro
-set shortmess+=I
-
-" loads our bundle directory
-filetype off
-" I have pathogen as a bundle so it needs to be added
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect('bundle/{}')
-call pathogen#helptags()
+" Originally Written by Jake Kaufman with much
+" help from Dannel Jurado and Jason Zaman
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " History
