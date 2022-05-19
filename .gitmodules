@@ -40,9 +40,6 @@
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = rc.d/vim/pack/foo/start/rainbow_parentheses
 	url = http://github.com/vim-scripts/rainbow_parentheses.vim.git
-[submodule "vim/bundle/nginx"]
-	path = rc.d/vim/pack/foo/start/nginx
-	url = http://github.com/vim-scripts/nginx.vim
 [submodule "vim/bundle/syntastic"]
 	path = rc.d/vim/pack/foo/start/syntastic
 	url = https://github.com/scrooloose/syntastic.git
