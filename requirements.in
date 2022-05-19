@@ -3,6 +3,9 @@ ansible-lint
 
 awscli
 
+# keyboard stuff
+qmk
+
 # python stuff
 add-trailing-comma
 autopep8
