@@ -94,3 +94,6 @@
 [submodule "rc.d/vim/pack/foo/start/fzf"]
 	path = rc.d/vim/pack/foo/start/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "rc.d/vim/pack/foo/start/fzf.vim"]
+	path = rc.d/vim/pack/foo/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git

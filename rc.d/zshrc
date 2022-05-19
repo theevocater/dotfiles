@@ -49,4 +49,8 @@ if whence -p gh &>/dev/null ; then
   plugins+=(gh)
 fi
 
+if whence -p rg &>/dev/null ; then
+  plugins+=(ripgrep)
+fi
+
 source $ZSH/oh-my-zsh.sh
