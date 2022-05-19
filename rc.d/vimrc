@@ -182,6 +182,9 @@ nnoremap <silent> <leader>ll :HighlightLongLines<CR>
 
 nnoremap <silent> <leader>yf :let @" = expand("%:.")<CR>
 
+" use fzf for CommandT
+nnoremap <silent> <leader>t :FZF<CR>
+
 " spleling
 "setlocal spell spelllang=en
 
@@ -335,16 +338,6 @@ function! PasteMode()
         return ''
     endif
 endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""
-" CommandT
-""""""""""""""""""""""""""""""""""""""""""""""""
-let g:CommandTMaxFiles = 2000000
-let g:CommandTMaxDepth = 40
-let g:CommandTMaxCachedDirectories = 0
-
-let g:CommandTBackspaceMap=[ '<C-h>', '<BS>' ]
-let g:CommandTCursorLeftMap='<Left>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " syntastic
