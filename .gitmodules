@@ -64,9 +64,6 @@
 [submodule "vim/bundle/vim-terraform"]
 	path = rc.d/vim/pack/foo/start/vim-terraform
 	url = https://github.com/hashivim/vim-terraform
-[submodule "vim/bundle/YouCompleteMe"]
-	path = rc.d/vim/pack/foo/start/YouCompleteMe
-	url = https://github.com/ycm-core/YouCompleteMe
 [submodule "dotfiles_private"]
 	path = dotfiles_private
 	url = git@github.com:theevocater/dotfiles_private
