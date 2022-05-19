@@ -97,3 +97,6 @@
 [submodule "rc.d/vim/bundle/vim-ansible"]
 	path = rc.d/vim/pack/foo/start/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim.git
+[submodule "rc.d/vim/pack/foo/start/fzf"]
+	path = rc.d/vim/pack/foo/start/fzf
+	url = https://github.com/junegunn/fzf.git
