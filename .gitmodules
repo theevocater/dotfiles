@@ -46,9 +46,6 @@
 [submodule "vim/bundle/syntastic"]
 	path = rc.d/vim/pack/foo/start/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/powerline"]
-	path = rc.d/vim/pack/foo/start/powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
 [submodule "vim/bundle/gitgutter"]
 	path = rc.d/vim/pack/foo/start/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
