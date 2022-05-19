@@ -1,6 +1,3 @@
-[submodule "vim/bundle/gundo.vim"]
-	path = rc.d/vim/pack/foo/start/gundo.vim
-	url = http://github.com/sjl/gundo.vim.git
 [submodule "vim/bundle/nerdtree"]
 	path = rc.d/vim/pack/foo/start/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git
@@ -40,33 +37,15 @@
 [submodule "vim/bundle/vim-snipmate"]
 	path = rc.d/vim/pack/foo/start/vim-snipmate
 	url = http://github.com/msanders/snipmate.vim.git
-[submodule "Command-T"]
-	path = rc.d/vim/pack/foo/start/Command-T
-	url = http://github.com/wincent/Command-T.git
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = rc.d/vim/pack/foo/start/rainbow_parentheses
 	url = http://github.com/vim-scripts/rainbow_parentheses.vim.git
-[submodule "vim/bundle/nginx"]
-	path = rc.d/vim/pack/foo/start/nginx
-	url = http://github.com/vim-scripts/nginx.vim
-[submodule "vim/bundle/syntastic"]
-	path = rc.d/vim/pack/foo/start/syntastic
-	url = https://github.com/scrooloose/syntastic.git
-[submodule "vim/bundle/powerline"]
-	path = rc.d/vim/pack/foo/start/powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
 [submodule "vim/bundle/gitgutter"]
 	path = rc.d/vim/pack/foo/start/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "vim/bundle/thrift"]
-	path = rc.d/vim/pack/foo/start/thrift
-	url = https://github.com/theevocater/thrift.vim.git
 [submodule "vim/bundle/vim-fireplace"]
 	path = rc.d/vim/pack/foo/start/vim-fireplace
 	url = https://github.com/tpope/vim-fireplace.git
-[submodule "vim/bundle/vim-salt"]
-	path = rc.d/vim/pack/foo/start/vim-salt
-	url = https://github.com/saltstack/salt-vim.git
 [submodule "vim/bundle/vim-go"]
 	path = rc.d/vim/pack/foo/start/vim-go
 	url = https://github.com/fatih/vim-go.git
@@ -85,9 +64,6 @@
 [submodule "vim/bundle/vim-terraform"]
 	path = rc.d/vim/pack/foo/start/vim-terraform
 	url = https://github.com/hashivim/vim-terraform
-[submodule "vim/bundle/YouCompleteMe"]
-	path = rc.d/vim/pack/foo/start/YouCompleteMe
-	url = https://github.com/ycm-core/YouCompleteMe
 [submodule "dotfiles_private"]
 	path = dotfiles_private
 	url = git@github.com:theevocater/dotfiles_private
@@ -97,3 +73,9 @@
 [submodule "rc.d/vim/bundle/vim-ansible"]
 	path = rc.d/vim/pack/foo/start/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim.git
+[submodule "rc.d/vim/pack/foo/start/fzf"]
+	path = rc.d/vim/pack/foo/start/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "rc.d/vim/pack/foo/start/fzf.vim"]
+	path = rc.d/vim/pack/foo/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git

@@ -49,4 +49,16 @@ if whence -p gh &>/dev/null ; then
   plugins+=(gh)
 fi
 
+if whence -p rg &>/dev/null ; then
+  plugins+=(ripgrep)
+fi
+
+if whence -p fdfind &>/dev/null ; then
+  plugins+=(fd)
+fi
+
+if whence -p fzf &>/dev/null ; then
+  plugins+=(fzf)
+fi
+
 source $ZSH/oh-my-zsh.sh
