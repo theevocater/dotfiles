@@ -162,7 +162,7 @@ nmap <silent> <leader>r :RainbowToggle<CR>
 
 nmap <silent> <leader>c :%s/\s\+$//<CR>
 
-nmap <silent> <leader>ct :TlistToggle<CR>
+nmap <silent> <leader>o :TlistToggle<CR>
 
 nmap <silent> <leader>f :NERDTreeToggle<CR>
 nmap <silent> <leader>F :NERDTreeFind<CR>
