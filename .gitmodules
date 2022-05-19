@@ -37,9 +37,6 @@
 [submodule "vim/bundle/vim-scala"]
 	path = rc.d/vim/pack/foo/start/vim-scala
 	url = http://github.com/derekwyatt/vim-scala.git
-[submodule "vim/bundle/vim-pathogen"]
-	path = rc.d/vim/pack/foo/start/vim-pathogen
-	url = http://github.com/tpope/vim-pathogen.git
 [submodule "vim/bundle/vim-snipmate"]
 	path = rc.d/vim/pack/foo/start/vim-snipmate
 	url = http://github.com/msanders/snipmate.vim.git
