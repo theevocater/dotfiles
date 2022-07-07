@@ -9,7 +9,6 @@ ZSH_CUSTOM=$MY_ZSH_ROOT/custom
 DEFAULT_USER="$USER"
 
 plugins=(
-  brew
   golang
   docker
   git
@@ -43,6 +42,10 @@ alias pyactive='source venv/bin/activate'
 
 if [[ -d "$HOME/.cargo/bin" ]] ; then
   export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+if [[ -d "/opt/homebrew/bin" ]] ; then
+  export PATH="/opt/homebrew/bin:$PATH"
 fi
 
 if whence -p gh &>/dev/null ; then
