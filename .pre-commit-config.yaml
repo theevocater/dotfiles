@@ -2,9 +2,6 @@ repos:
 - repo: https://github.com/jumanjihouse/pre-commit-hooks
   rev: 2.1.6
   hooks:
-    - id: forbid-binary
-    - id: git-check  # Configure in .gitattributes
-    - id: git-dirty  # Configure in .gitignore
     - id: shellcheck
 - repo: https://github.com/pre-commit/mirrors-mypy
   rev: v0.950
