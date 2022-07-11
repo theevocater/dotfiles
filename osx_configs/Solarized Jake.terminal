@@ -219,6 +219,8 @@
 	cqIWGFhOU09iamVjdAgRGiQpMjdJTFFTV11kand+qKqssbzFzdAAAAAAAAABAQAAAAAA
 	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
+	<key>Bell</key>
+	<false/>
 	<key>BlinkText</key>
 	<false/>
 	<key>CursorColor</key>
@@ -272,6 +274,8 @@
 	<true/>
 	<key>UseBrightBold</key>
 	<true/>
+	<key>VisualBell</key>
+	<false/>
 	<key>name</key>
 	<string>Solarized Jake</string>
 	<key>shellExitAction</key>

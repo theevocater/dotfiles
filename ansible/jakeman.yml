@@ -2,5 +2,6 @@
 - name: Install local things
   hosts: all
   roles:
+    - brew
     - languages
     - tools
