@@ -22,7 +22,7 @@
     update_cache: true
     state: present
 - name: ensure jkaufman exists
-  user:  # need to accomodate osx someday
+  user:
     name: jkaufman
     comment: "Jake Kaufman"
     shell: /usr/bin/zsh

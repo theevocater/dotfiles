@@ -1,9 +1,17 @@
 #!/bin/bash
 set -eu -o pipefail
 
+sync_submodules() {
+  git submodule sync --recursive
+  git submodule update --init --recursive
+}
+
 install_homebrew() {
   if ! command -v brew &>/dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+  if [[ -d /opt/homebrew/bin ]] ; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
   brew upgrade
   brew install ansible
@@ -14,6 +22,7 @@ setup_apt() {
   apt install -y ansible
 }
 
+sync_submodules
 if [[ "$(uname -s)" =~ "Darwin" ]]; then
   install_homebrew
 elif [[ "$(lsb_release -s -i)" =~ "Ubuntu" ]]; then
