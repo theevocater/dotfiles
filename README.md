@@ -2,15 +2,12 @@
 
 A crash of my dotfiles.
 
-## Status
-
-Currently I'm very slowly porting setup.d stuff either to ansible or just
-deprecating them.
-
-## Config
-
 You'll likely find the most valuable stuff to crib from in [rc.d](/rc.d/). The
 rest is mostly just weird garbage.
+
+## Running
+
+Invoke [ansible-run.sh](ansible-run.sh) to bootstrap and run the playbooks.
 
 ## Terminal Colorscheme
 I use
