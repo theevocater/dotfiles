@@ -1,0 +1,10 @@
+---
+- name: Build ycmd
+  ansible.builtin.shell:
+    chdir: "{{ ansible_env.HOME }}/.dotfiles/rc.d/vim/pack/foo/start/YouCompleteMe/"
+    cmd: |
+      python3 install.py \
+        --clang-completer \
+        --go-completer \
+        --rust-completer \
+        --java-completer
