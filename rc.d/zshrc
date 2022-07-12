@@ -16,8 +16,6 @@ plugins=(
   kubectl
 )
 
-export EDITOR=`which vim`
-
 #fpath=(/usr/local/share/zsh-completions $fpath)
 
 alias dr='docker run --rm -t -i'
@@ -65,3 +63,5 @@ if whence -p fzf &>/dev/null ; then
 fi
 
 source $ZSH/oh-my-zsh.sh
+
+export EDITOR=`which vim`

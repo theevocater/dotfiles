@@ -79,3 +79,6 @@
 [submodule "rc.d/vim/pack/foo/start/fzf.vim"]
 	path = rc.d/vim/pack/foo/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "rc.d/vim/pack/foo/start/YouCompleteMe"]
+	path = rc.d/vim/pack/foo/start/YouCompleteMe
+	url = https://github.com/ycm-core/YouCompleteMe
