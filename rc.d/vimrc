@@ -167,6 +167,8 @@ nmap <silent> <leader>o :TlistToggle<CR>
 nmap <silent> <leader>f :NERDTreeToggle<CR>
 nmap <silent> <leader>F :NERDTreeFind<CR>
 
+nmap <silent> <leader>u :UndotreeToggle<CR>
+
 " fugitive keys
 nmap <silent> <leader>gs :Git<CR>
 nmap <silent> <leader>W :Gw<CR>
