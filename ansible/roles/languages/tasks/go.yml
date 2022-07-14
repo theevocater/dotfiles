@@ -8,6 +8,7 @@
     url: "https://dl.google.com/go/go{{ go_version }}.{{ ansible_system.lower() }}-amd64.tar.gz"
     checksum: "{{ go_checksum }}"
     dest: "{{ tmp_dir }}"
+    mode: 644
   register: download
 - name: Extract go
   unarchive:

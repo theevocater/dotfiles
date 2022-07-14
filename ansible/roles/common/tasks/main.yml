@@ -1,6 +1,3 @@
 - name: run common tasks ubuntu
   import_tasks: ubuntu.yml
   when: ansible_distribution == "Ubuntu"
-- name: run common tasks osx
-  import_tasks: osx.yml
-  when: ansible_sytem == "Darwin"

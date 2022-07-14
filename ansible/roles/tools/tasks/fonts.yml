@@ -11,6 +11,7 @@
     url: "{{ hasklig_url }}"
     dest: "{{ tmp_hasklig_zip }}"
     checksum: sha256:98eccec22bc0ae3838a099a911230f62197e681b6a6c30e5149c52f5fc6a95c3
+    mode: 644
 - name: Extract hasklig to .fonts
   unarchive:
     src: "{{ tmp_hasklig_zip }}"

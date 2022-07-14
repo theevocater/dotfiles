@@ -9,3 +9,5 @@
         --rust-completer \
         --java-completer
     creates: "{{ ansible_env.HOME }}/.dotfiles/rc.d/vim/pack/foo/start/YouCompleteMe/third_party/ycmd/PYTHON_USED_DURING_BUILDING"
+  tags:
+    - vim
