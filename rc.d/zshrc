@@ -9,9 +9,10 @@ ZSH_CUSTOM=$MY_ZSH_ROOT/custom
 DEFAULT_USER="$USER"
 
 plugins=(
-  golang
+  bazel
   docker
   git
+  golang
   helm
   kubectl
 )
@@ -61,6 +62,10 @@ fi
 if whence -p fzf &>/dev/null ; then
   plugins+=(fzf)
 fi
+
+# Enable completion for bazelisk
+alias bazel=bazelisk
+compdef bazelisk=bazel
 
 source $ZSH/oh-my-zsh.sh
 
