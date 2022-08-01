@@ -67,10 +67,10 @@ if [[ -d /opt/homebrew/opt/openjdk/bin ]] ; then
   export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 fi
 
-# Enable completion for bazelisk
-alias bazel=bazelisk
-compdef bazelisk=bazel
-
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR=`which vim`
+
+# Enable completion for bazelisk
+alias bazel=bazelisk
+compdef bazelisk=bazel
