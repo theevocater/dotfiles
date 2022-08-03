@@ -2,7 +2,7 @@
   file:
     path: "{{ tmp_dir }}"
     state: directory
-    mode: '755'
+    mode: 0755
 - name: Download rustup
   get_url:
     url: https://sh.rustup.rs
