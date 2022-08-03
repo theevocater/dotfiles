@@ -2,7 +2,7 @@
   file:
     path: "{{ ansible_env.HOME }}/bin"
     state: directory
-    mode: '755'
+    mode: 0755
 - name: Build work venv
   pip:
     chdir: "{{ ansible_env.HOME }}/.dotfiles/"
