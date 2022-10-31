@@ -6,6 +6,10 @@ submodules() {
   git submodule foreach git pull origin master
 
   omz update
+
+  fix_ycmd
+  # pull in new potential submodules
+  git submodule update --init --recursive
 }
 
 python_packages() {
@@ -24,6 +28,16 @@ moom() {
   fi
   echo "Dumping current moom preferences"
   scripts/moom-save.sh plists/Moom.plist
+}
+
+fix_ycmd() {
+  pushd rc.d/vim/pack/foo/start/YouCompleteMe/ || exit
+  # ycmd always leaves a mess of go stuff on update
+  go clean
+
+  # fix submodules after
+  git submodule --recursive foreach git clean -fxxd
+  popd || exit
 }
 
 # TODO(jakeman) persist plists/Solarized Jake.terminal as well
