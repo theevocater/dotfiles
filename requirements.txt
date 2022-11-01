@@ -8,13 +8,13 @@ add-trailing-comma==2.3.0
     # via -r requirements.in
 ansible==6.5.0
     # via -r requirements.in
-ansible-compat==2.2.3
+ansible-compat==2.2.4
     # via ansible-lint
 ansible-core==2.13.5
     # via
     #   ansible
     #   ansible-lint
-ansible-lint==6.8.4
+ansible-lint==6.8.6
     # via -r requirements.in
 appdirs==1.4.4
     # via milc

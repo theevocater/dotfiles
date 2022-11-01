@@ -36,7 +36,7 @@ fix_ycmd() {
   go clean
 
   # fix submodules after
-  git submodule --recursive foreach git clean -fxxd
+  git submodule foreach --recursive git clean -fxxd
   popd || exit
 }
 
