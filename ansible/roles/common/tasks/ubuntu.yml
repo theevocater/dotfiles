@@ -1,12 +1,26 @@
+- name: Install gh cli apt keyring
+  get_url:
+    url: "https://cli.github.com/packages/githubcli-archive-keyring.gpg"
+    dest: /usr/share/keyrings/githubcli-archive-keyring.gpg
+    mode: u=rw,g=r,o=r
+- name: Add gh cli apt repo
+  ansible.builtin.copy:
+    content: |
+      deb [arch=amd64 signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main
+    dest: /etc/apt/sources.list.d/github-cli.list
+    mode: 0644
+    owner: root
+    group: root
 - name: Install non-x packages
   apt:
     name:
       - ansible
       - build-essential
       - cmake
-      - ctags
+      - exuberant-ctags
       - curl
       - fontconfig
+      - gh
       - git
       - net-tools
       - python-is-python3
@@ -21,7 +35,7 @@
       - zsh
     update_cache: true
     state: present
-- name: ensure jkaufman exists
+- name: Ensure jkaufman exists
   user:
     name: jkaufman
     comment: "Jake Kaufman"
@@ -31,7 +45,6 @@
 - name: Install X11 packages
   apt:
     name:
-      - gnome-tweak-tool
       - kitty
       - lm-sensors
       - xautomation

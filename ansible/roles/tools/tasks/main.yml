@@ -8,11 +8,11 @@
   when: ansible_system == "Darwin"
 
 # Run Tasks
-- name: set up font
+- name: Set up font
   import_tasks: fonts.yml
-- name: set up dotfiles links
+- name: Set up dotfiles links
   import_tasks: dotfiles.yml
-- name: set up onivim2 config
+- name: Set up onivim2 config
   import_tasks: onivim2.yml
-- name: build ycmd
+- name: Build ycmd
   import_tasks: ycmd.yml

@@ -1,9 +1,9 @@
-- name: ensure "{{ tmp_dir }}"
+- name: Ensure {{ tmp_dir }}
   file:
     path: "{{ tmp_dir }}"
     state: directory
     mode: 0755
-- name: download go {{ go_version }}
+- name: Download go {{ go_version }}
   get_url:
     url: "https://dl.google.com/go/go{{ go_version }}.{{ ansible_system.lower() }}-amd64.tar.gz"
     checksum: "{{ go_checksum }}"

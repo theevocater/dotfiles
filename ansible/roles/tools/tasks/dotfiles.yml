@@ -1,4 +1,4 @@
-- name: symlink HOME dotfiles
+- name: Symlink HOME dotfiles
   file:
     src: "{{ ansible_env.HOME }}/.dotfiles/rc.d/{{ item }}"
     dest: "{{ ansible_env.HOME }}/.{{ item }}"
@@ -15,7 +15,7 @@
     - vimrc
     - cvsignore
     - zshrc
-- name: symlink kitty dotfiles
+- name: Symlink kitty dotfiles
   file:
     src: "{{ ansible_env.HOME }}/.dotfiles/rc.d/kitty"
     dest: "{{ ansible_env.HOME }}/.config/kitty"
