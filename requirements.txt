@@ -197,8 +197,6 @@ rsa==4.7.2
     # via awscli
 ruamel-yaml==0.17.21
     # via ansible-lint
-ruamel-yaml-clib==0.2.6
-    # via ruamel-yaml
 s3transfer==0.6.0
     # via awscli
 six==1.16.0
@@ -224,12 +222,7 @@ toml==0.10.2
     #   pre-commit
     #   tox
 tomli==2.0.1
-    # via
-    #   black
-    #   build
-    #   mypy
-    #   pep517
-    #   pytest
+    # via pytest
 tox==3.25.1
     # via -r requirements.in
 typing-extensions==4.3.0
@@ -245,7 +238,7 @@ virtualenv-clone==0.5.7
     # via pipenv
 wcmatch==8.4
     # via ansible-lint
-wheel==0.37.1
+wheel==0.38.1
     # via pip-tools
 yamllint==1.27.1
     # via ansible-lint
