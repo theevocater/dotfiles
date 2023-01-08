@@ -1,5 +1,5 @@
 ---
-- name: install docker pre-requesites
+- name: Install docker pre-requesites
   apt:
     name:
       - apt-transport-https
@@ -8,7 +8,7 @@
       - gnupg-agent
       - software-properties-common
     state: present
-- name: add docker gpg apt key
+- name: Add docker gpg apt key
   apt_key:  # from https://download.docker.com/linux/ubuntu/gpg
     data: |
       -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -75,10 +75,10 @@
       -----END PGP PUBLIC KEY BLOCK-----
     id: "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
     state: present
-- name: add stable docker repository
+- name: Add stable docker repository
   apt_repository:
     repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable edge test"
-- name: install docker-ce
+- name: Install docker-ce
   apt:
     name:
       - docker-ce
@@ -87,7 +87,7 @@
     update_cache: true
     state: present
   notify: restart docker
-- name: add docker group to jkaufman
+- name: Add Docker group to jkaufman
   user:
     name: jkaufman
     groups: docker

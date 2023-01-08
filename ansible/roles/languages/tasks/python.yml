@@ -9,7 +9,7 @@
     requirements: requirements.txt
     virtualenv: venv
     virtualenv_python: python3
-- name: symlink binaries from venv to ~/bin
+- name: Symlink binaries from venv to ~/bin
   file:
     src: "{{ ansible_env.HOME }}/.dotfiles/venv/bin/{{ item }}"
     dest: "{{ ansible_env.HOME }}/bin/{{ item }}"

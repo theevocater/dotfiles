@@ -1,3 +1,3 @@
-- name: run common tasks ubuntu
+- name: Run common tasks ubuntu
   import_tasks: ubuntu.yml
   when: ansible_distribution == "Ubuntu"

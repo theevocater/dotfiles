@@ -1,10 +1,10 @@
-- name: install golang
+- name: Install golang
   import_tasks: go.yml
   # OSX uses brew
   when: ansible_system == "Linux"
-- name: install rust
+- name: Install rust
   import_tasks: rust.yml
-- name: python tasks
+- name: Run python tasks
   import_tasks: python.yml
   tags:
   - python
