@@ -7,4 +7,4 @@
 - name: Run python tasks
   import_tasks: python.yml
   tags:
-  - python
+    - python
