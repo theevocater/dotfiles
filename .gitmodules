@@ -1,45 +1,45 @@
 [submodule "vim/bundle/nerdtree"]
 	path = rc.d/vim/pack/foo/start/nerdtree
-	url = http://github.com/scrooloose/nerdtree.git
+	url = https://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundle/vim-yankring"]
 	path = rc.d/vim/pack/foo/start/vim-yankring
-	url = http://github.com/chrismetcalf/vim-yankring.git
+	url = https://github.com/chrismetcalf/vim-yankring.git
 [submodule "vim/bundle/nerdcommenter"]
 	path = rc.d/vim/pack/foo/start/nerdcommenter
-	url = http://github.com/scrooloose/nerdcommenter.git
+	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "vim/bundle/fugitive"]
 	path = rc.d/vim/pack/foo/start/fugitive
-	url = http://github.com/tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/vim-javascript"]
 	path = rc.d/vim/pack/foo/start/vim-javascript
-	url = http://github.com/pangloss/vim-javascript.git
+	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundle/vim-surround"]
 	path = rc.d/vim/pack/foo/start/vim-surround
-	url = http://github.com/tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/vim-ragtag"]
 	path = rc.d/vim/pack/foo/start/vim-ragtag
-	url = http://github.com/tpope/vim-ragtag.git
+	url = https://github.com/tpope/vim-ragtag.git
 [submodule "vim/bundle/vim-unimpaired"]
 	path = rc.d/vim/pack/foo/start/vim-unimpaired
-	url = http://github.com/tpope/vim-unimpaired.git
+	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "vim/bundle/a.vim"]
 	path = rc.d/vim/pack/foo/start/a.vim
-	url = http://github.com/theevocater/a.vim.git
+	url = https://github.com/theevocater/a.vim.git
 [submodule "vim/bundle/taglist.vim"]
 	path = rc.d/vim/pack/foo/start/taglist.vim
-	url = http://github.com/vim-scripts/taglist.vim.git
+	url = https://github.com/vim-scripts/taglist.vim.git
 [submodule "vim/bundle/vim-git"]
 	path = rc.d/vim/pack/foo/start/vim-git
-	url = http://github.com/tpope/vim-git
+	url = https://github.com/tpope/vim-git
 [submodule "vim/bundle/vim-scala"]
 	path = rc.d/vim/pack/foo/start/vim-scala
-	url = http://github.com/derekwyatt/vim-scala.git
+	url = https://github.com/derekwyatt/vim-scala.git
 [submodule "vim/bundle/vim-snipmate"]
 	path = rc.d/vim/pack/foo/start/vim-snipmate
-	url = http://github.com/msanders/snipmate.vim.git
+	url = https://github.com/msanders/snipmate.vim.git
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = rc.d/vim/pack/foo/start/rainbow_parentheses
-	url = http://github.com/vim-scripts/rainbow_parentheses.vim.git
+	url = https://github.com/vim-scripts/rainbow_parentheses.vim.git
 [submodule "vim/bundle/gitgutter"]
 	path = rc.d/vim/pack/foo/start/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
@@ -51,7 +51,7 @@
 	url = https://github.com/fatih/vim-go.git
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = rc.d/vim/pack/foo/start/vim-colors-solarized
-	url = git@github.com:altercation/vim-colors-solarized.git
+	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/bundle/rust"]
 	path = rc.d/vim/pack/foo/start/rust
 	url = https://github.com/rust-lang/rust.vim.git
