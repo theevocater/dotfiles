@@ -29,7 +29,6 @@
     - ansible-test
     - ansible-vault
     - autopep8
-    - aws
     - black
     - flake8
     - isort

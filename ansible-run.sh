@@ -26,6 +26,7 @@ bootstrap() {
 
   sync_submodules
 
+if ! command -v  ansible &>/dev/null ; then
   if [[ "$(uname -s)" =~ "Darwin" ]]; then
     install_homebrew
   elif [[ "$(lsb_release -s -i)" =~ "Ubuntu" ]]; then
@@ -34,12 +35,11 @@ bootstrap() {
     echo "Unable to determine base OS. Not installing"
     return 1
   fi
+fi
 }
 
 # install ansible if necessary
-if ! command -v  ansible &>/dev/null ; then
-  bootstrap
-fi
+bootstrap
 
 # Run playbooks that require root
 ansible-playbook --verbose --inventory ansible/localhost --ask-become-pass ansible/root.yml

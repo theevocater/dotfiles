@@ -15,6 +15,11 @@
     - vimrc
     - cvsignore
     - zshrc
+- name: Ensure .config exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/"
+    state: directory
+    mode: '0755'
 - name: Symlink kitty dotfiles
   file:
     src: "{{ ansible_env.HOME }}/.dotfiles/rc.d/kitty"
