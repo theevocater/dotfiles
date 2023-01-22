@@ -3,13 +3,11 @@
 OS=$(uname)
 submodules() {
   echo "Updating git submodules to master"
-  git submodule foreach git pull origin master
+  git submodule update --remote --merge
 
   omz update
 
   fix_ycmd
-  # pull in new potential submodules
-  git submodule update --init --recursive
 }
 
 python_packages() {
