@@ -26,6 +26,7 @@
       - fontconfig
       - gh
       - git
+      - mosh
       - python3
       - python3-devel
       - shellcheck
