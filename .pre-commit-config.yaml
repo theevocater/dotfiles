@@ -4,7 +4,7 @@ repos:
   hooks:
     - id: shellcheck
 - repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v0.991
+  rev: v1.1.1
   hooks:
     - id: mypy
 - repo: https://github.com/asottile/reorder_python_imports
@@ -16,7 +16,7 @@ repos:
   hooks:
     - id: flake8
 - repo: https://github.com/pre-commit/mirrors-autopep8
-  rev: v2.0.1
+  rev: v2.0.2
   hooks:
     - id: autopep8
 - repo: https://github.com/ansible/ansible-lint.git
