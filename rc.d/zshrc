@@ -1,4 +1,40 @@
 # Path to your oh-my-zsh installation.
+### Path manipulation
+#if [[ -d "$HOME/bin" ]] ; then
+  #export PATH="$HOME/bin:$PATH"
+#fi
+
+if [[ -d "/usr/local/go/bin" ]] ; then
+  export PATH="/usr/local/go/bin:$PATH"
+fi
+
+if [[ -d "$HOME/.jakeman/go/bin" ]] ; then
+  export PATH="$HOME/.jakeman/go/bin:$PATH"
+fi
+
+if [[ -d "$HOME/.cargo/bin" ]] ; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+if [[ -d "/opt/homebrew/bin" ]] ; then
+  export PATH="/opt/homebrew/bin:$PATH"
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  if [[ -d /opt/homebrew/opt/openjdk/bin ]] ; then
+    export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+  fi
+fi
+
+if [[ -d "$HOME/.rd/bin" ]] ; then
+  export PATH="$HOME/.rd/bin:$PATH"
+fi
+
+### Add go get binaries
+if whence -p go &>/dev/null ; then
+  export PATH="$(go env GOPATH)/bin:$PATH"
+fi
+
+### oh-my-zsh
 MY_ZSH_ROOT=$HOME/.dotfiles/rc.d/zsh
 export ZSH=$MY_ZSH_ROOT/oh-my-zsh
 
@@ -18,36 +54,6 @@ plugins=(
   ssh-agent
 )
 
-#fpath=(/usr/local/share/zsh-completions $fpath)
-
-alias dr='docker run --rm -t -i'
-
-if [[ -d "$HOME/bin" ]] ; then
-  export PATH="$HOME/bin:$PATH"
-fi
-
-if whence -p go &>/dev/null ; then
-  export PATH="$(go env GOPATH)/bin:$PATH"
-fi
-
-if [[ -d "/usr/local/go/bin" ]] ; then
-  export PATH="/usr/local/go/bin:$PATH"
-fi
-
-if [[ -d "$HOME/.jakeman/go/bin" ]] ; then
-  export PATH="$HOME/.jakeman/go/bin:$PATH"
-fi
-
-alias pyactive='source venv/bin/activate'
-
-if [[ -d "$HOME/.cargo/bin" ]] ; then
-  export PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-if [[ -d "/opt/homebrew/bin" ]] ; then
-  export PATH="/opt/homebrew/bin:$PATH"
-fi
-
 if whence -p gh &>/dev/null ; then
   plugins+=(gh)
 fi
@@ -64,13 +70,13 @@ if whence -p fzf &>/dev/null ; then
   plugins+=(fzf)
 fi
 
-if [[ -d /opt/homebrew/opt/openjdk/bin ]] ; then
-  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-fi
-
-source $ZSH/oh-my-zsh.sh
+### Aliases etc
+alias dr='docker run --rm -t -i'
+alias pyactive='source venv/bin/activate'
 
 export EDITOR=`which vim`
+
+source $ZSH/oh-my-zsh.sh
 
 if [[ "xterm-kitty" == "$TERM" && ! -e "/usr/share/terminfo/x/xterm-kitty" ]] ; then
   # Rather than fully break, use the terminfo for a basic xterm if we don't
