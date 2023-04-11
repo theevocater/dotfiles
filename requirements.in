@@ -17,3 +17,6 @@ pytest
 pyupgrade
 reorder-python-imports
 tox
+
+# nvim
+neovim

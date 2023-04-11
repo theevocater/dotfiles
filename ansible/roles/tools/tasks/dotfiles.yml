@@ -20,8 +20,11 @@
     path: "{{ ansible_env.HOME }}/.config/"
     state: directory
     mode: '0755'
-- name: Symlink kitty dotfiles
+- name: Symlink .config/ dotfiles
   file:
-    src: "{{ ansible_env.HOME }}/.dotfiles/rc.d/kitty"
-    dest: "{{ ansible_env.HOME }}/.config/kitty"
+    src: "{{ ansible_env.HOME }}/.dotfiles/rc.d/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/{{ item }}"
     state: link
+  loop:
+    - kitty
+    - nvim

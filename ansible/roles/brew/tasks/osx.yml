@@ -8,6 +8,7 @@
       - gh
       - go
       - htop
+      - neovim
       - python
       - reattach-to-user-namespace
       - shellcheck
