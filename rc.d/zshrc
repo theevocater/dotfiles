@@ -74,9 +74,12 @@ fi
 alias dr='docker run --rm -t -i'
 alias pyactive='source venv/bin/activate'
 
+# go all in
+alias vim=nvim
 export EDITOR=`which vim`
 
 source $ZSH/oh-my-zsh.sh
+
 
 if [[ "xterm-kitty" == "$TERM" && ! -e "/usr/share/terminfo/x/xterm-kitty" ]] ; then
   # Rather than fully break, use the terminfo for a basic xterm if we don't
