@@ -23,6 +23,7 @@
       - gh
       - git
       - mosh
+      - neovim
       - net-tools
       - python-is-python3
       - python3-dev

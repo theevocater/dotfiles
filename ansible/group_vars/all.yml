@@ -1,3 +1,3 @@
-go_version: '1.20'
-go_checksum: 'sha256:5a9ebcc65c1cce56e0d2dc616aff4c4cedcfbda8cc6f0288cc08cda3b18dcbf1'
+go_version: '1.20.3'
+go_checksum: 'sha256:979694c2c25c735755bf26f4f45e19e64e4811d661dd07b8c010f7a8e18adfca'
 tmp_dir: "{{ ansible_env.HOME }}/.jakeman"
