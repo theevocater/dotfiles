@@ -27,6 +27,7 @@
       - gh
       - git
       - mosh
+      - neovim
       - python3
       - python3-devel
       - shellcheck
