@@ -75,8 +75,8 @@ alias dr='docker run --rm -t -i'
 alias pyactive='source venv/bin/activate'
 
 # go all in
+export EDITOR=`which nvim`
 alias vim=nvim
-export EDITOR=`which vim`
 
 source $ZSH/oh-my-zsh.sh
 
