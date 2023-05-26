@@ -85,3 +85,6 @@
 [submodule "rc.d/vim/pack/foo/start/undotree"]
 	path = rc.d/vim/pack/github/start/undotree
 	url = https://github.com/mbbill/undotree.git
+[submodule "rc.d/vim/pack/github/opt/copilot.vim"]
+	path = rc.d/vim/pack/github/opt/copilot.vim
+	url = https://github.com/github/copilot.vim.git
