@@ -1,0 +1,1 @@
+ansible/roles/brew/tasks/osx.yml syntax-check[specific] # ansible-lint isn't smart enough to ignore this on the wrong platform
