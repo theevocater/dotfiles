@@ -1,13 +1,13 @@
 ---
 - name: Build ycmd
   ansible.builtin.shell:
-    chdir: "{{ ansible_env.HOME }}/.dotfiles/rc.d/vim/pack/foo/start/YouCompleteMe/"
+    chdir: "{{ ansible_env.HOME }}/.dotfiles/rc.d/vim/pack/github/start/YouCompleteMe/"
     cmd: |
       python3 install.py \
         --clang-completer \
         --go-completer \
         --rust-completer \
         --java-completer
-    creates: "{{ ansible_env.HOME }}/.dotfiles/rc.d/vim/pack/foo/start/YouCompleteMe/third_party/ycmd/PYTHON_USED_DURING_BUILDING"
+    creates: "{{ ansible_env.HOME }}/.dotfiles/rc.d/vim/pack/github/start/YouCompleteMe/third_party/ycmd/PYTHON_USED_DURING_BUILDING"
   tags:
     - vim
