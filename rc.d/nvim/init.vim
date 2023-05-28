@@ -7,3 +7,5 @@ let g:python3_host_prog="~/.dotfiles/venv/bin/python3"
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
+
+packadd copilot.vim

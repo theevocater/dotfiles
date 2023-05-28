@@ -1,3 +1,5 @@
 go_version: '1.20.3'
 go_checksum: 'sha256:979694c2c25c735755bf26f4f45e19e64e4811d661dd07b8c010f7a8e18adfca'
 tmp_dir: "{{ ansible_env.HOME }}/.jakeman"
+nvm_version: v0.39.3
+nodejs_version: lts/hydrogen
