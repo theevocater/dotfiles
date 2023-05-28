@@ -34,9 +34,6 @@
 [submodule "vim/bundle/vim-scala"]
 	path = rc.d/vim/pack/github/start/vim-scala
 	url = https://github.com/derekwyatt/vim-scala.git
-[submodule "vim/bundle/vim-snipmate"]
-	path = rc.d/vim/pack/github/start/vim-snipmate
-	url = https://github.com/msanders/snipmate.vim.git
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = rc.d/vim/pack/github/start/rainbow_parentheses
 	url = https://github.com/vim-scripts/rainbow_parentheses.vim.git
