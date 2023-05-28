@@ -34,6 +34,10 @@ if [[ -d "$HOME/bin" ]] ; then
   export PATH="$HOME/bin:$PATH"
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 ### oh-my-zsh
 MY_ZSH_ROOT=$HOME/.dotfiles/rc.d/zsh
 export ZSH=$MY_ZSH_ROOT/oh-my-zsh
@@ -51,6 +55,7 @@ plugins=(
   golang
   helm
   kubectl
+  nvm
   ssh-agent
 )
 
