@@ -5,8 +5,6 @@ submodules() {
   echo "Updating git submodules to master"
   git submodule update --remote --merge
 
-  omz update
-
   fix_ycmd
 }
 
@@ -29,7 +27,7 @@ moom() {
 }
 
 fix_ycmd() {
-  pushd rc.d/vim/pack/foo/start/YouCompleteMe/ || exit
+  pushd rc.d/vim/pack/github/start/YouCompleteMe/ || exit
   # ycmd always leaves a mess of go stuff on update
   go clean
 
@@ -39,7 +37,7 @@ fix_ycmd() {
 }
 
 # TODO(jakeman) persist plists/Solarized Jake.terminal as well
-#u
+#
 
 submodules
 python_packages
