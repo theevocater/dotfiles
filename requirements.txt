@@ -4,21 +4,19 @@
 #
 #    pip-compile
 #
---index-url https://artifactory.lyft.net/artifactory/api/pypi/virtual-pypi-lyft/simple/
-
-add-trailing-comma==3.0.1
+add-trailing-comma==3.1.0
     # via -r requirements.in
-ansible-compat==4.1.7
+ansible-compat==4.1.10
     # via ansible-lint
-ansible-core==2.15.3
+ansible-core==2.15.5
     # via
     #   ansible-compat
     #   ansible-lint
-ansible-lint==6.18.0
+ansible-lint==6.21.1
     # via -r requirements.in
 appdirs==1.4.4
     # via milc
-argcomplete==3.1.1
+argcomplete==3.1.2
     # via milc
 attrs==23.1.0
     # via
@@ -26,13 +24,13 @@ attrs==23.1.0
     #   referencing
 autopep8==2.0.4
     # via -r requirements.in
-black==23.7.0
+black==23.10.0
     # via
     #   -r requirements.in
     #   ansible-lint
-bracex==2.3.post1
+bracex==2.4
     # via wcmatch
-build==0.10.0
+build==1.0.3
     # via pip-tools
 cachetools==5.3.1
     # via tox
@@ -40,13 +38,13 @@ certifi==2023.7.22
     # via
     #   pipenv
     #   requests
-cffi==1.15.1
+cffi==1.16.0
     # via cryptography
 cfgv==3.4.0
     # via pre-commit
 chardet==5.2.0
     # via tox
-charset-normalizer==3.2.0
+charset-normalizer==3.3.1
     # via requests
 classify-imports==4.2.0
     # via reorder-python-imports
@@ -60,20 +58,20 @@ colorama==0.4.6
     #   log-symbols
     #   milc
     #   tox
-cryptography==41.0.3
+cryptography==41.0.4
     # via ansible-core
 distlib==0.3.7
     # via virtualenv
 dotty-dict==1.3.1
     # via qmk
-filelock==3.12.2
+filelock==3.12.4
     # via
     #   ansible-lint
     #   tox
     #   virtualenv
 flake8==6.1.0
     # via -r requirements.in
-greenlet==2.0.2
+greenlet==3.0.0
     # via pynvim
 halo==0.0.31
     # via milc
@@ -81,7 +79,7 @@ hid==1.0.5
     # via qmk
 hjson==3.1.0
     # via qmk
-identify==2.5.27
+identify==2.5.30
     # via pre-commit
 idna==3.4
     # via requests
@@ -91,7 +89,7 @@ isort==5.12.0
     # via -r requirements.in
 jinja2==3.1.2
     # via ansible-core
-jsonschema==4.19.0
+jsonschema==4.19.1
     # via
     #   ansible-compat
     #   ansible-lint
@@ -110,9 +108,9 @@ mdurl==0.1.2
     # via markdown-it-py
 milc==1.6.8
     # via qmk
-msgpack==1.0.5
+msgpack==1.0.7
     # via pynvim
-mypy==1.5.1
+mypy==1.6.1
     # via -r requirements.in
 mypy-extensions==1.0.0
     # via
@@ -122,7 +120,7 @@ neovim==0.3.1
     # via -r requirements.in
 nodeenv==1.8.0
     # via pre-commit
-packaging==23.1
+packaging==23.2
     # via
     #   ansible-compat
     #   ansible-core
@@ -137,13 +135,13 @@ pathspec==0.11.2
     #   ansible-lint
     #   black
     #   yamllint
-pillow==10.0.0
+pillow==10.1.0
     # via qmk
 pip-tools==7.3.0
     # via -r requirements.in
-pipenv==2023.8.26
+pipenv==2023.10.20
     # via -r requirements.in
-platformdirs==3.10.0
+platformdirs==3.11.0
     # via
     #   black
     #   tox
@@ -152,9 +150,9 @@ pluggy==1.3.0
     # via
     #   pytest
     #   tox
-pre-commit==3.3.3
+pre-commit==3.5.0
     # via -r requirements.in
-pycodestyle==2.11.0
+pycodestyle==2.11.1
     # via
     #   autopep8
     #   flake8
@@ -168,15 +166,15 @@ pygments==2.16.1
     #   rich
 pynvim==0.4.3
     # via neovim
-pyproject-api==1.5.4
+pyproject-api==1.6.1
     # via tox
 pyproject-hooks==1.0.0
     # via build
 pyserial==3.5
     # via qmk
-pytest==7.4.0
+pytest==7.4.2
     # via -r requirements.in
-pyupgrade==3.10.1
+pyupgrade==3.15.0
     # via -r requirements.in
 pyusb==1.2.1
     # via qmk
@@ -193,21 +191,21 @@ referencing==0.30.2
     # via
     #   jsonschema
     #   jsonschema-specifications
-reorder-python-imports==3.10.0
+reorder-python-imports==3.12.0
     # via -r requirements.in
 requests==2.31.0
     # via ansible-lint
 resolvelib==1.0.1
     # via ansible-core
-rich==13.5.2
+rich==13.6.0
     # via ansible-lint
-rpds-py==0.10.0
+rpds-py==0.10.6
     # via
     #   jsonschema
     #   referencing
-ruamel-yaml==0.17.32
+ruamel-yaml==0.17.40
     # via ansible-lint
-ruamel-yaml-clib==0.2.7
+ruamel-yaml-clib==0.2.8
     # via ruamel-yaml
 six==1.16.0
     # via halo
@@ -225,18 +223,18 @@ tokenize-rt==5.2.0
     # via
     #   add-trailing-comma
     #   pyupgrade
-tox==4.10.0
+tox==4.11.3
     # via -r requirements.in
-typing-extensions==4.7.1
+typing-extensions==4.8.0
     # via mypy
-urllib3==2.0.4
+urllib3==2.0.7
     # via requests
-virtualenv==20.24.3
+virtualenv==20.24.5
     # via
     #   pipenv
     #   pre-commit
     #   tox
-wcmatch==8.4.1
+wcmatch==8.5
     # via ansible-lint
 wheel==0.41.2
     # via pip-tools
