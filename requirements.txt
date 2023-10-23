@@ -6,15 +6,15 @@
 #
 --index-url https://artifactory.lyft.net/artifactory/api/pypi/virtual-pypi-lyft/simple/
 
-add-trailing-comma==3.0.1
+add-trailing-comma==3.1.0
     # via -r requirements.in
-ansible-compat==4.1.7
+ansible-compat==4.1.10
     # via ansible-lint
 ansible-core==2.15.3
     # via
     #   ansible-compat
     #   ansible-lint
-ansible-lint==6.18.0
+ansible-lint==6.19.0
     # via -r requirements.in
 appdirs==1.4.4
     # via milc
@@ -30,9 +30,9 @@ black==23.7.0
     # via
     #   -r requirements.in
     #   ansible-lint
-bracex==2.3.post1
+bracex==2.4
     # via wcmatch
-build==0.10.0
+build==1.0.3
     # via pip-tools
 cachetools==5.3.1
     # via tox
@@ -66,7 +66,7 @@ distlib==0.3.7
     # via virtualenv
 dotty-dict==1.3.1
     # via qmk
-filelock==3.12.2
+filelock==3.12.3
     # via
     #   ansible-lint
     #   tox
@@ -141,7 +141,7 @@ pillow==10.0.0
     # via qmk
 pip-tools==7.3.0
     # via -r requirements.in
-pipenv==2023.8.26
+pipenv==2023.9.8
     # via -r requirements.in
 platformdirs==3.10.0
     # via
@@ -152,7 +152,7 @@ pluggy==1.3.0
     # via
     #   pytest
     #   tox
-pre-commit==3.3.3
+pre-commit==3.4.0
     # via -r requirements.in
 pycodestyle==2.11.0
     # via
@@ -168,13 +168,13 @@ pygments==2.16.1
     #   rich
 pynvim==0.4.3
     # via neovim
-pyproject-api==1.5.4
+pyproject-api==1.6.1
     # via tox
 pyproject-hooks==1.0.0
     # via build
 pyserial==3.5
     # via qmk
-pytest==7.4.0
+pytest==7.4.2
     # via -r requirements.in
 pyupgrade==3.10.1
     # via -r requirements.in
@@ -201,7 +201,7 @@ resolvelib==1.0.1
     # via ansible-core
 rich==13.5.2
     # via ansible-lint
-rpds-py==0.10.0
+rpds-py==0.10.2
     # via
     #   jsonschema
     #   referencing
@@ -225,18 +225,18 @@ tokenize-rt==5.2.0
     # via
     #   add-trailing-comma
     #   pyupgrade
-tox==4.10.0
+tox==4.11.2
     # via -r requirements.in
 typing-extensions==4.7.1
     # via mypy
 urllib3==2.0.4
     # via requests
-virtualenv==20.24.3
+virtualenv==20.24.5
     # via
     #   pipenv
     #   pre-commit
     #   tox
-wcmatch==8.4.1
+wcmatch==8.5
     # via ansible-lint
 wheel==0.41.2
     # via pip-tools
