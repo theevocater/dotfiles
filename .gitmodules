@@ -85,3 +85,6 @@
 [submodule "rc.d/vim/pack/github/opt/copilot.vim"]
 	path = rc.d/vim/pack/github/opt/copilot.vim
 	url = https://github.com/github/copilot.vim.git
+[submodule "rc.d/vim/pack/github/start/salt-vim"]
+	path = rc.d/vim/pack/github/start/salt-vim
+	url = https://github.com/vmware-archive/salt-vim/
