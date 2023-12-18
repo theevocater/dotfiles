@@ -1,6 +1,6 @@
 ---
 - name: Install basic packages
-  community.general.homebrew:
+  community.general.homebrew:  # noqa: syntax-check[unknown-module]
     name:
       - ansible
       - cmake
