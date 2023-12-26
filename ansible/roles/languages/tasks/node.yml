@@ -2,12 +2,12 @@
   ansible.builtin.file:
     path: "{{ tmp_dir }}"
     state: directory
-    mode: 0755
+    mode: '0755'
 - name: Download nvm install script
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_version }}/install.sh
     dest: "{{ tmp_dir }}/nvm_install.sh"
-    mode: 0755
+    mode: '0755'
   register: download
 - name: Run nvim install
   ansible.builtin.command:
