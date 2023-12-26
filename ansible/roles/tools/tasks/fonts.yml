@@ -15,5 +15,5 @@
 - name: Extract hasklig to .fonts
   unarchive:
     src: "{{ tools_tmp_hasklig_zip }}"
-    dest: "{{ tools_fonts_dir }}"
+    dest: "{{ tools_font_dir }}"
   notify: update fonts
