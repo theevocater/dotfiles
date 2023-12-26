@@ -3,7 +3,7 @@
   file:
     path: "{{ ansible_env.HOME }}/.config/oni2"
     state: directory
-    mode: 0755
+    mode: '0755'
 - name: Symlink oni config files
   file:
     src: "{{ ansible_env.HOME }}/.dotfiles/rc.d/onivim/{{ item }}"
