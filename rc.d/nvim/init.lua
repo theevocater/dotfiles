@@ -243,6 +243,8 @@ vim.opt.formatoptions = 'jcroql1n'
 -------------------------------------------------------------------------------
 -- enable backup files
 vim.opt.backup =  true
+-- By default, backupdir uses '.' which is annoying.
+vim.opt.backupdir = vim.fn.expand('~/.local/state/nvim/backup//')
 
 -- enable undofile
 vim.opt.undofile = true
