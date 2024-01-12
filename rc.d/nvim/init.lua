@@ -30,7 +30,7 @@ require('lazy').setup({
   },
 
   -- Make vim good thanks to tpope
-  'tpope/vim-commentary',
+  'tpope/vim-commentary', -- we might want to look into numToStr/Comment.nvim, tcomment, or others
   'tpope/vim-fugitive',
   'tpope/vim-git',
   'tpope/vim-rhubarb',
@@ -116,6 +116,7 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  -- 'github/copilot.vim',
 })
 
 -------------------------------------------------------------------------------
@@ -125,7 +126,7 @@ require('lazy').setup({
 -- set visualbell
 -- set t_vb=""
 
-vim.opt.switchbuf = useopen,split
+vim.opt.switchbuf = 'useopen,split'
 
 -- Buffer handling
 vim.opt.hidden = true
@@ -203,8 +204,9 @@ vim.api.nvim_create_autocmd({ 'CursorHold' }, {
 })
 vim.opt.updatetime = 30000
 
--- Make yank clipboard work w/ system clipboard
-vim.opt.clipboard='unnamed'
+-- Make yank clipboard work w/ system clipboard. plus is for linux to ensure it
+-- uses the copy clipboard not the selection.
+vim.opt.clipboard='unnamedplus'
 
 -------------------------------------------------------------------------------
 -- Searching
@@ -271,5 +273,145 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
 -- nmap <silent> <leader>q :silent :nohlsearch<CR>
 
 -- TODO Create mapping to check if darkmode is on
+--
+
+-------------------------------------------------------------------------------
+-- Setup plugins
+-------------------------------------------------------------------------------
+
+-- Setup Telescope
+require('telescope').setup {}
+-- Enable telescope fzf native, if installed
+pcall(require('telescope').load_extension, 'fzf')
+
+-- TODO read telescope docs / kickstart to use more stuff here
+vim.keymap.set('n', '<leader>t', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 
 
+-- Setup Treesitter
+-- See `:help nvim-treesitter`
+-- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
+vim.defer_fn(function()
+  require('nvim-treesitter.configs').setup {
+    -- Add languages to be installed here that you want installed for treesitter
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+
+    -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
+    auto_install = false,
+    sync_install = false,
+    ignore_install = {},
+    modules = {},
+
+    highlight = { enable = true },
+    indent = { enable = true },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "gnn",
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
+      },
+    },
+    textobjects = {
+      select = {
+        enable = true,
+        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+        keymaps = {
+          -- You can use the capture groups defined in textobjects.scm
+          ['aa'] = '@parameter.outer',
+          ['ia'] = '@parameter.inner',
+          ['af'] = '@function.outer',
+          ['if'] = '@function.inner',
+          ['ac'] = '@class.outer',
+          ['ic'] = '@class.inner',
+        },
+      },
+      swap = {
+        enable = true,
+        swap_next = {
+          ['<leader>a'] = '@parameter.inner',
+        },
+        swap_previous = {
+          ['<leader>A'] = '@parameter.inner',
+        },
+      },
+      move = {
+        enable = true,
+        set_jumps = true, -- whether to set jumps in the jumplist
+        goto_next_start = {
+          [']m'] = '@function.outer',
+          [']]'] = '@class.outer',
+        },
+        goto_next_end = {
+          [']M'] = '@function.outer',
+          [']['] = '@class.outer',
+        },
+        goto_previous_start = {
+          ['[m'] = '@function.outer',
+          ['[['] = '@class.outer',
+        },
+        goto_previous_end = {
+          ['[M'] = '@function.outer',
+          ['[]'] = '@class.outer',
+        },
+      },
+    },
+  }
+end, 0)
+
+-- Configure LSP stuff
+-- mason-lspconfig requires that these setup functions are called in this order
+-- before setting up the servers.
+require('mason').setup()
+require('mason-lspconfig').setup()
+
+-- Enable the following language servers
+--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+--
+--  Add any additional override configuration in the following tables. They will be passed to
+--  the `settings` field of the server config. You must look up that documentation yourself.
+--
+--  If you want to override the default filetypes that your language server will attach to you can
+--  define the property 'filetypes' to the map in question.
+local servers = {
+  -- clangd = {},
+  -- gopls = {},
+  -- pyright = {},
+  -- rust_analyzer = {},
+  -- tsserver = {},
+  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+
+  lua_ls = {
+    Lua = {
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
+      -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+      -- diagnostics = { disable = { 'missing-fields' } },
+    },
+  },
+}
+
+-- Setup neovim lua configuration
+require('neodev').setup()
+
+-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+-- Ensure the servers above are installed
+local mason_lspconfig = require 'mason-lspconfig'
+
+mason_lspconfig.setup {
+  ensure_installed = vim.tbl_keys(servers),
+}
+
+mason_lspconfig.setup_handlers {
+  function(server_name)
+    require('lspconfig')[server_name].setup {
+      capabilities = capabilities,
+      settings = servers[server_name],
+      filetypes = (servers[server_name] or {}).filetypes,
+    }
+  end,
+}
