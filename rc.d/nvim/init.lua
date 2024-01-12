@@ -71,7 +71,7 @@ require('lazy').setup({
 
   { 'folke/which-key.nvim', opts = {} },
 
-  -- replace airblade/vim-gitgutter
+  -- Replace airblade/vim-gitgutter
   {
     'lewis6991/gitsigns.nvim',
     opts = {
