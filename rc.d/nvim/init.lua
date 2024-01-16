@@ -21,7 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   {
     -- Solarized lyfe
-    'altercation/vim-colors-solarized',
+    'maxmx03/solarized.nvim',
     priority = 1000,
     config = function()
       vim.opt.background = 'light'
