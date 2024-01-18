@@ -19,15 +19,23 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  -- Solarized lyfe
   {
-    -- Solarized lyfe
-    'maxmx03/solarized.nvim',
+    'altercation/vim-colors-solarized',
     priority = 1000,
     config = function()
+      vim.opt.termguicolors = false
       vim.opt.background = 'light'
       vim.cmd.colorscheme 'solarized'
     end,
   },
+
+  -- {
+  --    TODO I can't figure out a way to use both this and the classic vim color scheme
+  --    depending on termguicolors support so give up for now
+  --   'maxmx03/solarized.nvim',
+  --   lazy = true,
+  -- },
 
   -- Make vim good thanks to tpope
   'tpope/vim-commentary', -- we might want to look into numToStr/Comment.nvim, tcomment, or others
@@ -49,6 +57,8 @@ require('lazy').setup({
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
+
+      { "nvimtools/none-ls.nvim", lazy = true },
     },
   },
 
@@ -268,9 +278,23 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
   end,
 })
 
+-------------------------------------------------------------------------------
 -- Mappings
+-------------------------------------------------------------------------------
+-- Leader Hotkeys
 
--- nmap <silent> <leader>q :silent :nohlsearch<CR>
+-- set up to show spaces
+vim.opt.listchars = 'tab:>-,trail:_,eol:$'
+vim.keymap.set('n', '<leader>s', ':set nolist!<CR>', { silent = true, })
+
+-- sets ,q to silence search
+vim.keymap.set('n', '<leader>q', ':nohlsearch<CR>', { silent = true, })
+
+-- turn on paste quickly
+vim.keymap.set('n', '<leader>p', ':set paste!<CR>', { silent = true, })
+
+-- remove trailing spaces
+vim.keymap.set('n', '<leader>c', ':%s/\\s\\+$//<CR>', { silent = true, })
 
 -- TODO Create mapping to check if darkmode is on
 --
@@ -278,6 +302,10 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
 -------------------------------------------------------------------------------
 -- Setup plugins
 -------------------------------------------------------------------------------
+-- Setup fugitive
+-- open fugitive Git status window
+vim.keymap.set('n', '<leader>g', ':Git<CR>', { silent = true, })
+
 
 -- Setup Telescope
 require('telescope').setup {}
@@ -375,11 +403,11 @@ require('mason-lspconfig').setup()
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
+  clangd = {},
+  gopls = {},
+  pyright = {},
+  rust_analyzer = {},
+  tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
@@ -391,6 +419,22 @@ local servers = {
     },
   },
 }
+
+local null_ls = require("null-ls")
+
+null_ls.setup({
+  sources = {
+    -- Go
+    null_ls.builtins.diagnostics.golangci_lint,
+    null_ls.builtins.formatting.gofmt,
+
+    -- Python
+    null_ls.builtins.diagnostics.flake8,
+    null_ls.builtins.diagnostics.mypy,
+    null_ls.builtins.formatting.autopep8,
+    null_ls.builtins.formatting.black,
+  },
+})
 
 -- Setup neovim lua configuration
 require('neodev').setup()
@@ -414,4 +458,57 @@ mason_lspconfig.setup_handlers {
       filetypes = (servers[server_name] or {}).filetypes,
     }
   end,
+}
+
+
+-- [[ Configure nvim-cmp ]]
+-- See `:help cmp`
+local cmp = require 'cmp'
+local luasnip = require 'luasnip'
+require('luasnip.loaders.from_vscode').lazy_load()
+luasnip.config.setup {}
+
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
+  },
+  mapping = cmp.mapping.preset.insert {
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete {},
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_locally_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.locally_jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'path' },
+  },
 }
