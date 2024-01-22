@@ -461,7 +461,7 @@ mason_lspconfig.setup_handlers {
 }
 
 
--- [[ Configure nvim-cmp ]]
+-- Configure nvim-cmp
 -- See `:help cmp`
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
