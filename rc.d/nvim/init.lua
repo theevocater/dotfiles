@@ -526,3 +526,9 @@ cmp.setup {
     { name = 'path' },
   },
 }
+
+-- TODO
+-- Ignore venv, etc as old vimrc in fzf etc
+-- less annoying autocomplete in comments probably
+-- leader motions for formatting the buffer
+-- C-u in telescope
