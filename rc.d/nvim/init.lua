@@ -53,7 +53,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -152,7 +152,7 @@ vim.opt.wildmode = 'list:longest,full'
 -- Shows the current mode
 vim.opt.showmode = true
 -- Shows commands that match your incomplete typing
-vim.opt.showcmd =  true
+vim.opt.showcmd = true
 -- Number our lines
 vim.o.relativenumber = true
 -- always show the statusline
@@ -216,7 +216,7 @@ vim.opt.updatetime = 30000
 
 -- Make yank clipboard work w/ system clipboard. plus is for linux to ensure it
 -- uses the copy clipboard not the selection.
-vim.opt.clipboard='unnamedplus'
+vim.opt.clipboard = 'unnamedplus'
 
 -------------------------------------------------------------------------------
 -- Searching
@@ -238,7 +238,7 @@ vim.opt.hlsearch = true
 -------------------------------------------------------------------------------
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
-vim.opt.shiftwidth=2
+vim.opt.shiftwidth = 2
 vim.opt.smarttab = true
 vim.opt.expandtab = true
 vim.opt.smartindent = true
@@ -246,7 +246,7 @@ vim.opt.smartindent = true
 -------------------------------------------------------------------------------
 -- Line Wrapping
 -------------------------------------------------------------------------------
-vim.opt.wrap =  true
+vim.opt.wrap = true
 vim.opt.textwidth = 79
 vim.opt.formatoptions = 'jcroql1n'
 
@@ -254,7 +254,7 @@ vim.opt.formatoptions = 'jcroql1n'
 -- Temp file storage
 -------------------------------------------------------------------------------
 -- enable backup files
-vim.opt.backup =  true
+vim.opt.backup = true
 -- By default, backupdir uses '.' which is annoying.
 vim.opt.backupdir = vim.fn.expand('~/.local/state/nvim/backup//')
 
@@ -322,7 +322,21 @@ vim.keymap.set('n', '<leader>t', require('telescope.builtin').find_files, { desc
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = {
+      'bash',
+      'c', 'cpp',
+      'go',
+      'javascript',
+      'lua',
+      'python',
+      'rust',
+      'terraform',
+      'tsx',
+      'typescript',
+      'vim',
+      'vimdoc',
+      'yaml',
+    },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
