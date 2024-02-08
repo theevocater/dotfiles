@@ -326,6 +326,7 @@ vim.defer_fn(function()
       'bash',
       'c', 'cpp',
       'go',
+      'java',
       'javascript',
       'lua',
       'python',
@@ -419,6 +420,7 @@ require('mason-lspconfig').setup()
 local servers = {
   clangd = {},
   gopls = {},
+  jdtls = {},
   pyright = {},
   rust_analyzer = {},
   tsserver = {},
