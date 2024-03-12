@@ -15,21 +15,13 @@
     dest: "{{ ansible_env.HOME }}/bin/{{ item }}"
     state: link
   loop:
-    - add-trailing-comma
     - ansible-lint
-    - autopep8
-    - black
-    - flake8
-    - isort
-    - mypy
     - pip
     - pip-compile
     - pipenv
     - pre-commit
     - python3
-    - pyupgrade
     - qmk
-    - reorder-python-imports
     - tox
     - virtualenv
     - wheel
