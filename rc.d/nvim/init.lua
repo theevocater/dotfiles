@@ -423,6 +423,7 @@ local servers = {
   jdtls = {},
   pyright = {},
   rust_analyzer = {},
+  terraformls = {},
   tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
