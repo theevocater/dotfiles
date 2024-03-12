@@ -53,6 +53,7 @@ ZSH_CUSTOM=$MY_ZSH_ROOT/custom
 DEFAULT_USER="$USER"
 
 plugins=(
+  1password
   bazel
   docker
   git

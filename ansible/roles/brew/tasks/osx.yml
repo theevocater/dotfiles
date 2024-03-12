@@ -2,6 +2,7 @@
 - name: Install basic packages  # noqa: syntax-check[unknown-module]
   community.general.homebrew:
     name:
+      - 1password-cli
       - ansible
       - cmake
       - fzf
@@ -9,6 +10,7 @@
       - go
       - htop
       - neovim
+      - moom
       - python
       - reattach-to-user-namespace
       - shellcheck
