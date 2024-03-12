@@ -6,7 +6,7 @@
 #
 ansible-compat==4.1.11
     # via ansible-lint
-ansible-core==2.16.3
+ansible-core==2.16.4
     # via
     #   ansible-compat
     #   ansible-lint
@@ -14,19 +14,19 @@ ansible-lint==24.2.0
     # via -r requirements.in
 appdirs==1.4.4
     # via milc
-argcomplete==3.2.2
+argcomplete==3.2.3
     # via milc
 attrs==23.2.0
     # via
     #   jsonschema
     #   referencing
-black==24.1.1
+black==24.2.0
     # via ansible-lint
 bracex==2.4
     # via wcmatch
-build==1.0.3
+build==1.1.1
     # via pip-tools
-cachetools==5.3.2
+cachetools==5.3.3
     # via tox
 certifi==2024.2.2
     # via pipenv
@@ -46,7 +46,7 @@ colorama==0.4.6
     #   log-symbols
     #   milc
     #   tox
-cryptography==42.0.2
+cryptography==42.0.5
     # via ansible-core
 distlib==0.3.8
     # via virtualenv
@@ -61,11 +61,11 @@ greenlet==3.0.3
     # via pynvim
 halo==0.0.31
     # via milc
-hid==1.0.5
+hid==1.0.6
     # via qmk
 hjson==3.1.0
     # via qmk
-identify==2.5.33
+identify==2.5.35
     # via pre-commit
 jinja2==3.1.3
     # via ansible-core
@@ -86,7 +86,7 @@ mdurl==0.1.2
     # via markdown-it-py
 milc==1.8.0
     # via qmk
-msgpack==1.0.7
+msgpack==1.0.8
     # via pynvim
 mypy-extensions==1.0.0
     # via black
@@ -94,7 +94,7 @@ neovim==0.3.1
     # via -r requirements.in
 nodeenv==1.8.0
     # via pre-commit
-packaging==23.2
+packaging==24.0
     # via
     #   ansible-compat
     #   ansible-core
@@ -110,7 +110,7 @@ pathspec==0.12.1
     #   yamllint
 pillow==10.2.0
     # via qmk
-pip-tools==7.3.0
+pip-tools==7.4.1
     # via -r requirements.in
 pipenv==2023.12.1
     # via -r requirements.in
@@ -121,7 +121,7 @@ platformdirs==4.2.0
     #   virtualenv
 pluggy==1.4.0
     # via tox
-pre-commit==3.6.0
+pre-commit==3.6.2
     # via -r requirements.in
 pycparser==2.21
     # via cffi
@@ -134,7 +134,9 @@ pynvim==0.5.0
 pyproject-api==1.6.1
     # via tox
 pyproject-hooks==1.0.0
-    # via build
+    # via
+    #   build
+    #   pip-tools
 pyserial==3.5
     # via qmk
 pyusb==1.2.1
@@ -146,7 +148,7 @@ pyyaml==6.0.1
     #   ansible-lint
     #   pre-commit
     #   yamllint
-qmk==1.1.2
+qmk==1.1.5
     # via -r requirements.in
 referencing==0.33.0
     # via
@@ -154,9 +156,9 @@ referencing==0.33.0
     #   jsonschema-specifications
 resolvelib==1.0.1
     # via ansible-core
-rich==13.7.0
+rich==13.7.1
     # via ansible-lint
-rpds-py==0.17.1
+rpds-py==0.18.0
     # via
     #   jsonschema
     #   referencing
@@ -176,20 +178,20 @@ subprocess-tee==0.4.1
     #   ansible-lint
 termcolor==2.4.0
     # via halo
-tox==4.12.1
+tox==4.14.1
     # via -r requirements.in
-types-colorama==0.4.15.20240205
+types-colorama==0.4.15.20240311
     # via milc
-virtualenv==20.25.0
+virtualenv==20.25.1
     # via
     #   pipenv
     #   pre-commit
     #   tox
-wcmatch==8.5
+wcmatch==8.5.1
     # via ansible-lint
-wheel==0.42.0
+wheel==0.43.0
     # via pip-tools
-yamllint==1.34.0
+yamllint==1.35.1
     # via ansible-lint
 
 # The following packages are considered to be unsafe in a requirements file:

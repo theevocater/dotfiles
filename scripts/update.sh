@@ -26,16 +26,6 @@ moom() {
   scripts/moom-save.sh plists/Moom.plist
 }
 
-fix_ycmd() {
-  pushd rc.d/vim/pack/github/start/YouCompleteMe/ || exit
-  # ycmd always leaves a mess of go stuff on update
-  go clean
-
-  # fix submodules after
-  git submodule foreach --recursive git clean -fxxd
-  popd || exit
-}
-
 # TODO(jakeman) persist plists/Solarized Jake.terminal as well
 #
 

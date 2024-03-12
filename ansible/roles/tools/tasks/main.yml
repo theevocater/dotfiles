@@ -14,5 +14,3 @@
   import_tasks: dotfiles.yml
 - name: Set up onivim2 config
   import_tasks: onivim2.yml
-- name: Build ycmd
-  import_tasks: ycmd.yml
