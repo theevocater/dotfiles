@@ -1,0 +1,21 @@
+{
+  "pymain": {
+    "prefix": "pymain",
+    "body": [
+      "import argparse",
+      "from typing import Sequence",
+      "from typing import Optional",
+      "",
+      "",
+      "def main(argv: Optional[Sequence[str]] = None) -> int:",
+      "    parser = argparse.ArgumentParser()",
+      "    args = parser.parse_args(argv)",
+      "    return 0",
+      "",
+      "",
+      "if __name__ == '__main__':",
+      "    raise SystemExit(main())"
+    ],
+    "description": "Code snippet for a new python script"
+  }
+}
