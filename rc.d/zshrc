@@ -1,45 +1,44 @@
 # Path to your oh-my-zsh installation.
 ### Path manipulation
+# Make PATH a set instead of an array to dedup and speed up resolution
+typeset -U PATH
+
 if [[ -d "/usr/local/go/bin" ]] ; then
-  export PATH="/usr/local/go/bin:$PATH"
+  path=("/usr/local/go/bin" $path)
 fi
 
 if [[ -d "$HOME/.jakeman/go/bin" ]] ; then
-  export PATH="$HOME/.jakeman/go/bin:$PATH"
+  path=("$HOME/.jakeman/go/bin" $path)
 fi
 
 if [[ -d "$HOME/.cargo/bin" ]] ; then
-  export PATH="$HOME/.cargo/bin:$PATH"
+  path=("$HOME/.cargo/bin" $path)
 fi
 
 if [[ -d "/opt/homebrew/bin" ]] ; then
-  export PATH="/opt/homebrew/bin:$PATH"
+  path=("/opt/homebrew/bin" $path)
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
   if [[ -d /opt/homebrew/opt/openjdk/bin ]] ; then
-    export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+    path+=("/opt/homebrew/opt/openjdk/bin" $path)
   fi
 fi
 
 if [[ -d "$HOME/.rd/bin" ]] ; then
-  export PATH="$HOME/.rd/bin:$PATH"
+  path=("$HOME/.rd/bin" $path)
 fi
 
 ### Add go get binaries
 if whence -p go &>/dev/null ; then
-  export PATH="$(go env GOPATH)/bin:$PATH"
+  path=("$(go env GOPATH)/bin" $path)
 fi
 
 if [[ -d "$HOME/bin" ]] ; then
-  export PATH="$HOME/bin:$PATH"
+  path=("$HOME/bin" $path)
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 if [[ -s "$HOME/.local/share/bob" ]] ; then
-  export PATH="$HOME/.local/share/bob/nvim-bin/:$PATH"
+  path=("$HOME/.local/share/bob/nvim-bin/" $path)
 fi
 
 ### oh-my-zsh
@@ -55,12 +54,9 @@ DEFAULT_USER="$USER"
 plugins=(
   1password
   bazel
-  docker
   git
   golang
-  helm
   kubectl
-  nvm
   ssh-agent
 )
 
@@ -68,17 +64,17 @@ if whence -p gh &>/dev/null ; then
   plugins+=(gh)
 fi
 
-if whence -p rg &>/dev/null ; then
-  plugins+=(ripgrep)
-fi
+# if whence -p rg &>/dev/null ; then
+#   plugins+=(ripgrep)
+# fi
 
-if whence -p fdfind &>/dev/null ; then
-  plugins+=(fd)
-fi
+# if whence -p fdfind &>/dev/null ; then
+#   plugins+=(fd)
+# fi
 
-if whence -p fzf &>/dev/null ; then
-  plugins+=(fzf)
-fi
+# if whence -p fzf &>/dev/null ; then
+#   plugins+=(fzf)
+# fi
 
 ### Aliases etc
 alias dr='docker run --rm -t -i'
@@ -89,7 +85,6 @@ export EDITOR=`which nvim`
 alias vim=nvim
 
 source $ZSH/oh-my-zsh.sh
-
 
 if [[ "xterm-kitty" == "$TERM" && ! -e "/usr/share/terminfo/x/xterm-kitty" ]] ; then
   # Rather than fully break, use the terminfo for a basic xterm if we don't
