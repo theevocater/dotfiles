@@ -5,15 +5,6 @@
     baseurl: https://cli.github.com/packages/rpm
     enabled: true
     gpgkey: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x23F3D4EA75716059
-- name: Ensure crb repo is enabled
-  ansible.builtin.command: dnf config-manager --set-enabled crb
-  when: ansible_facts['distribution_major_version'] == "9"
-- name: Install epel-release
-  dnf:
-    name:
-      - epel-release
-    update_cache: true
-    state: present
 - name: Install non-x packages
   dnf:
     name:

@@ -19,13 +19,13 @@ bootstrap() {
   }
 
   setup_apt() {
-    apt update
-    apt install -y ansible
+    sudo apt update
+    sudo apt install -y ansible
   }
 
   setup_dnf() {
-    sudo dnf config-manager --enable epel
     sudo dnf config-manager --enable crb
+    sudo dnf install epel-release
     sudo dnf update
     sudo dnf install ansible
   }
@@ -38,7 +38,7 @@ bootstrap() {
     elif grep -q "^Rocky Linux release 9.*$" /etc/redhat-release ; then
       setup_dnf
     elif [[ "$(lsb_release -s -i)" =~ "Ubuntu" ]]; then
-      sudo sh -c setup_apt
+      setup_apt
     else
       echo "Unable to determine base OS. Not installing"
       return 1
