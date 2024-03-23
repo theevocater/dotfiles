@@ -57,10 +57,34 @@ require('lazy').setup({
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
-
-      { "nvimtools/none-ls.nvim", lazy = true },
     },
   },
+  -- Autoformatting
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        -- These are run sequentially
+        python = { "reorder-python-imports", "black" },
+        go = { "gofmt" },
+        -- Use a sub-list to run only the first available formatter
+        -- javascript = { { "prettierd", "prettier" } },
+      },
+      format_on_save = function(bufnr)
+        -- Disable "format_on_save lsp_fallback" for languages that don't
+        -- have a well standardized coding style. You can add additional
+        -- languages here or re-enable it for the disabled ones.
+        local disable_filetypes = { c = true, cpp = true }
+        return {
+          timeout_ms = 500,
+          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+        }
+      end,
+    },
+  },
+  -- Linting
+  { 'mfussenegger/nvim-lint' },
 
   {
     -- Autocompletion
@@ -79,7 +103,7 @@ require('lazy').setup({
     },
   },
 
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
 
   -- Replace airblade/vim-gitgutter
   {
@@ -418,6 +442,7 @@ require('mason-lspconfig').setup()
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
+  bashls = {},
   clangd = {},
   gopls = {},
   jdtls = {},
@@ -437,20 +462,15 @@ local servers = {
   },
 }
 
-local null_ls = require("null-ls")
+require('lint').linters_by_ft = {
+  python = { 'flake8', 'mypy' },
+  go = { 'golangci_lint' },
+}
 
-null_ls.setup({
-  sources = {
-    -- Go
-    null_ls.builtins.diagnostics.golangci_lint,
-    null_ls.builtins.formatting.gofmt,
-
-    -- Python
-    null_ls.builtins.diagnostics.flake8,
-    null_ls.builtins.diagnostics.mypy,
-    null_ls.builtins.formatting.autopep8,
-    null_ls.builtins.formatting.black,
-  },
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
 })
 
 -- Setup neovim lua configuration

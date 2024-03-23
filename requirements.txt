@@ -10,7 +10,7 @@ ansible-core==2.16.4
     # via
     #   ansible-compat
     #   ansible-lint
-ansible-lint==24.2.0
+ansible-lint==24.2.1
     # via -r requirements.in
 appdirs==1.4.4
     # via milc
@@ -20,7 +20,7 @@ attrs==23.2.0
     # via
     #   jsonschema
     #   referencing
-black==24.2.0
+black==24.3.0
     # via ansible-lint
 bracex==2.4
     # via wcmatch
@@ -150,7 +150,7 @@ pyyaml==6.0.1
     #   yamllint
 qmk==1.1.5
     # via -r requirements.in
-referencing==0.33.0
+referencing==0.34.0
     # via
     #   jsonschema
     #   jsonschema-specifications
@@ -178,7 +178,7 @@ subprocess-tee==0.4.1
     #   ansible-lint
 termcolor==2.4.0
     # via halo
-tox==4.14.1
+tox==4.14.2
     # via -r requirements.in
 types-colorama==0.4.15.20240311
     # via milc
