@@ -4,8 +4,6 @@ OS=$(uname)
 submodules() {
   echo "Updating git submodules to master"
   git submodule update --remote --merge
-
-  fix_ycmd
 }
 
 python_packages() {
@@ -19,7 +17,7 @@ precommit() {
 }
 
 moom() {
-  if [[ "$OS" != "Darwin" ]] ; then
+  if [[ "${OS}" != "Darwin" ]] ; then
     return 0
   fi
   echo "Dumping current moom preferences"
