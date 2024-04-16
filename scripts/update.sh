@@ -24,6 +24,10 @@ moom() {
   scripts/moom-save.sh plists/Moom.plist
 }
 
+lazy() {
+  nvim --headless "+Lazy! update" +qa
+}
+
 # TODO(jakeman) persist plists/Solarized Jake.terminal as well
 #
 
@@ -31,3 +35,4 @@ submodules
 python_packages
 precommit
 moom
+lazy
