@@ -72,9 +72,9 @@ fi
 #   plugins+=(fd)
 # fi
 
-# if whence -p fzf &>/dev/null ; then
-#   plugins+=(fzf)
-# fi
+if whence -p fzf &>/dev/null ; then
+  plugins+=(fzf)
+fi
 
 ### Aliases etc
 alias dr='docker run --rm -t -i'
