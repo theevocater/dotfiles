@@ -21,11 +21,16 @@ moom() {
     return 0
   fi
   echo "Dumping current moom preferences"
-  scripts/moom-save.sh plists/Moom.plist
+
+  defaults export com.manytricks.Moom plists/Moom.plist
 }
 
 lazy() {
   nvim --headless "+Lazy! update" +qa
+}
+
+omz() {
+  "$ZSH"/tools/upgrade.sh
 }
 
 # TODO(jakeman) persist plists/Solarized Jake.terminal as well
@@ -36,3 +41,4 @@ python_packages
 precommit
 moom
 lazy
+omz
