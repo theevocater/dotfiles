@@ -182,6 +182,14 @@ require('lazy').setup({
 
   'github/copilot.vim',
   { 'stevearc/oil.nvim', opts = {} },
+  {
+    'MeanderingProgrammer/markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    opts = {
+      headings = { '▸ ', '▸▸ ', '▸▸▸ ', '▸▸▸▸ ', '▸▸▸▸▸ ', '▸▸▸▸▸▸ ' },
+      checkbox = { unchecked = '☐', checked = '☑', },
+    },
+  },
 })
 
 -------------------------------------------------------------------------------
@@ -374,6 +382,8 @@ vim.defer_fn(function()
       'java',
       'javascript',
       'lua',
+      'markdown',
+      'markdown_inline',
       'python',
       'rust',
       'terraform',
