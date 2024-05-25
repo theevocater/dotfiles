@@ -20,7 +20,7 @@ repos:
   hooks:
     - id: autopep8
 - repo: https://github.com/ansible/ansible-lint.git
-  rev: v24.2.3
+  rev: v24.5.0
   hooks:
     - id: ansible-lint
       files: ^ansible/
