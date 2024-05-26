@@ -16,4 +16,4 @@
   unarchive:
     src: "{{ tools_tmp_hasklig_zip }}"
     dest: "{{ tools_font_dir }}"
-  notify: update fonts
+  notify: Update fc-cache
