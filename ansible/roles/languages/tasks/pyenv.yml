@@ -13,3 +13,26 @@
   command:
     cmd: "{{ download.dest }}"
     creates: "{{ ansible_env.HOME }}/.pyenv"
+- name: Install python build packages
+  become_user: root
+  become: true
+  dnf:
+    name:
+      - bzip2
+      - bzip2-devel
+      - gcc
+      - gdbm-libs
+      - libffi-devel
+      - libnsl2
+      - libuuid-devel
+      - make
+      - openssl-devel
+      - patch
+      - readline-devel
+      - sqlite
+      - sqlite-devel
+      - tk-devel
+      - xz-devel
+      - zlib-devel
+    update_cache: true
+    state: present
