@@ -86,7 +86,7 @@
       - containerd.io
     update_cache: true
     state: present
-  notify: restart docker
+  notify: Restart docker
 - name: Add Docker group to jkaufman
   user:
     name: jkaufman
