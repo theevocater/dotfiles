@@ -41,6 +41,12 @@ if [[ -s "$HOME/.local/share/bob" ]] ; then
   path=("$HOME/.local/share/bob/nvim-bin/" $path)
 fi
 
+if [[ -s "$HOME/.pyenv" ]] ; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+
 ### oh-my-zsh
 MY_ZSH_ROOT=$HOME/.dotfiles/rc.d/zsh
 export ZSH=$MY_ZSH_ROOT/oh-my-zsh
