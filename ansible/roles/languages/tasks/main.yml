@@ -4,6 +4,12 @@
   when: ansible_system == "Linux"
   tags:
     - go
+- name: Install pyenv
+  import_tasks: pyenv.yml
+  # OSX uses brew
+  when: ansible_system == "Linux"
+  tags:
+    - pyenv
 - name: Install rust
   import_tasks: rust.yml
   tags:
