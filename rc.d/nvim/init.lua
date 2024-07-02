@@ -200,7 +200,14 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  'github/copilot.vim',
+  {
+    'github/copilot.vim',
+    config = function()
+      -- I want to be able to run copilot manually, but not generate ghost cmps
+      vim.cmd(':Copilot disable')
+      vim.keymap.set('n', '<leader>cp', function() vim.cmd(':Copilot panel') end, { desc = 'Run [C]o[P]ilot' })
+    end
+  },
   'stevearc/oil.nvim',
   {
     'MeanderingProgrammer/markdown.nvim',
