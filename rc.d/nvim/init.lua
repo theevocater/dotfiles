@@ -141,13 +141,33 @@ require('lazy').setup({
     },
     config = function()
       -- Setup Telescope
-      require('telescope').setup {
+      local telescope = require("telescope")
+      local telescopeConfig = require("telescope.config")
+      -- Show hidden files ignoring .git by default
+      -- Clone the default Telescope configuration
+      local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+      table.insert(vimgrep_arguments, "--hidden")
+      table.insert(vimgrep_arguments, "--glob")
+      table.insert(vimgrep_arguments, "!**/.git/*")
+
+      telescope.setup({
         extensions = {
           ['ui_select'] = {
             require('telescope.themes').get_dropdown(),
           },
         },
-      }
+        defaults = {
+          -- `hidden = true` is not supported in text grep commands.
+          vimgrep_arguments = vimgrep_arguments,
+        },
+        pickers = {
+          find_files = {
+            -- explicitly ignore .git as you don't normally .gitignore it
+            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+          },
+        },
+      })
+
       -- Enable telescope fzf native, if installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
