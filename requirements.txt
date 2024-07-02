@@ -110,7 +110,7 @@ pathspec==0.12.1
     #   ansible-lint
     #   black
     #   yamllint
-pillow==10.3.0
+pillow==10.4.0
     # via qmk
 pip-tools==7.4.1
     # via -r requirements.in
