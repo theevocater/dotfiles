@@ -201,7 +201,7 @@ require('lazy').setup({
   },
 
   'github/copilot.vim',
-  { 'stevearc/oil.nvim', opts = {} },
+  'stevearc/oil.nvim',
   {
     'MeanderingProgrammer/markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -692,8 +692,20 @@ cmp.setup {
   },
 }
 
+
+-- Configure Oil
+-- I configure Oil to only replace netrw's directory browsing capabilities, and
+-- otherwise leave netrw alone. This ensures things like rhubarb can still
+-- function.
+require("oil").setup({ default_file_explorer = false })
+-- Let oil open directories by default
+require("oil.config").setup({ default_file_explorer = true })
+-- Turn off the directory browsing part of netrw manually
+if vim.fn.exists("#FileExplorer") then
+  vim.api.nvim_create_augroup("FileExplorer", { clear = true })
+end
+
 -- TODO
 -- Ignore venv, etc as old vimrc in fzf etc
--- less annoying autocomplete in comments probably
 -- leader motions for formatting the buffer
 -- C-u in telescope
