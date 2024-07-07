@@ -28,7 +28,7 @@ build==1.2.1
     # via pip-tools
 cachetools==5.3.3
     # via tox
-certifi==2024.6.2
+certifi==2024.7.4
     # via pipenv
 cffi==1.16.0
     # via cryptography
@@ -180,7 +180,7 @@ subprocess-tee==0.4.2
     #   ansible-lint
 termcolor==2.4.0
     # via halo
-tox==4.15.1
+tox==4.16.0
     # via -r requirements.in
 types-colorama==0.4.15.20240311
     # via milc
