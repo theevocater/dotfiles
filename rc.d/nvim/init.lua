@@ -20,22 +20,27 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- Solarized lyfe
+  -- {
+  --   'altercation/vim-colors-solarized',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.opt.termguicolors = false
+  --     vim.opt.background = 'light'
+  --     vim.cmd.colorscheme 'solarized'
+  --   end,
+  -- },
   {
-    'altercation/vim-colors-solarized',
+    'Tsuzat/NeoSolarized.nvim',
+    opts = {
+      style = 'light',
+      transparent = false,
+    },
     priority = 1000,
     config = function()
-      vim.opt.termguicolors = false
       vim.opt.background = 'light'
-      vim.cmd.colorscheme 'solarized'
+      vim.cmd.colorscheme 'NeoSolarized'
     end,
   },
-
-  -- {
-  --    TODO I can't figure out a way to use both this and the classic vim color scheme
-  --    depending on termguicolors support so give up for now
-  --   'maxmx03/solarized.nvim',
-  --   lazy = true,
-  -- },
 
   -- Make vim good thanks to tpope
   'tpope/vim-commentary', -- we might want to look into numToStr/Comment.nvim, tcomment, or others
