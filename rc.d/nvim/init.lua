@@ -222,6 +222,8 @@ require('lazy').setup({
       checkbox = { unchecked = '☐', checked = '☑', },
     },
   },
+  -- Syntax for kovidgoyal/kitty
+  { "fladson/vim-kitty" },
 })
 
 -------------------------------------------------------------------------------
