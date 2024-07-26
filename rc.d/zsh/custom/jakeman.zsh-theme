@@ -12,7 +12,7 @@ segmentize() {
   fg="%F{$2}"
   command="$3"
   if [[ $FIRST_SEGMENT != 'FALSE' ]] ; then
-    echo -n "%{%b%F{grey}%}|"
+    echo -n "%{%b%K{default}%F{default}%}|"
 	fi
 	echo -n "%{$bg$fg%} $command "
   FIRST_SEGMENT='TRUE'
@@ -42,13 +42,10 @@ p_time() {
 }
 
 p_git() {
-# [branch{untracked}{status}]
-# {status} = ˄ if im forward, ˅ if im behind, @ - yellow staged, red unstaged
   if $(git rev-parse --is-inside-work-tree &>/dev/null); then
 		setopt promptsubst
 		autoload -Uz vcs_info
 
-		zstyle ':vcs_info:*' enable git
 		zstyle ':vcs_info:*' get-revision true
 		zstyle ':vcs_info:*' check-for-changes true
 		zstyle ':vcs_info:*' stagedstr '✚'
@@ -60,11 +57,18 @@ p_git() {
 	fi
 }
 
+p_venv() {
+  if [[ -n ${VIRTUAL_ENV} ]] ; then
+    segmentize default magenta ${VIRTUAL_ENV:t:gs/%/%%}
+  fi
+}
+
 prompt() {
   RETVAL=$?
   p_status
   p_time
   p_dir
+  p_venv
 	p_git
   p_end
 }
