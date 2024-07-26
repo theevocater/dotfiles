@@ -1,5 +1,4 @@
-# Path to your oh-my-zsh installation.
-### Path manipulation
+########## path manipulation ##########
 # Make PATH a set instead of an array to dedup and speed up resolution
 typeset -U PATH
 
@@ -15,20 +14,11 @@ if [[ -d "$HOME/.cargo/bin" ]] ; then
   path=("$HOME/.cargo/bin" $path)
 fi
 
-if [[ -d "/opt/homebrew/bin" ]] ; then
-  path=("/opt/homebrew/bin" $path)
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  if [[ -d /opt/homebrew/opt/openjdk/bin ]] ; then
-    path+=("/opt/homebrew/opt/openjdk/bin" $path)
-  fi
-fi
-
 if [[ -d "$HOME/.rd/bin" ]] ; then
   path=("$HOME/.rd/bin" $path)
 fi
 
-### Add go get binaries
+# Add go get binaries
 if whence -p go &>/dev/null ; then
   path=("$(go env GOPATH)/bin" $path)
 fi
@@ -47,7 +37,7 @@ if [[ -s "$HOME/.pyenv" ]] ; then
   eval "$(pyenv init -)"
 fi
 
-### oh-my-zsh
+########## oh-my-zsh ##########
 MY_ZSH_ROOT=$HOME/.dotfiles/rc.d/zsh
 export ZSH=$MY_ZSH_ROOT/oh-my-zsh
 
@@ -60,47 +50,37 @@ DEFAULT_USER="$USER"
 plugins=(
   1password
   bazel
+  brew
   git
   golang
   kubectl
+  podman
+  rust
   ssh-agent
+  virtualenv
 )
+
 
 if whence -p gh &>/dev/null ; then
   plugins+=(gh)
 fi
 
-# if whence -p rg &>/dev/null ; then
-#   plugins+=(ripgrep)
-# fi
+# Default to no aliases from plugins
+zstyle ':omz:plugins:*' aliases no
 
-# if whence -p fdfind &>/dev/null ; then
-#   plugins+=(fd)
-# fi
+# Enable git vcs_info for my prompt
+zstyle ':vcs_info:*' enable git
 
-if whence -p fzf &>/dev/null ; then
-  plugins+=(fzf)
-fi
-
-### Aliases etc
+########## Aliases ##########
 alias dr='docker run --rm -t -i'
 alias pyactive='source venv/bin/activate'
 
-# go all in
+# Use nvim
+if whence -p nvim &>/dev/null ; then
 export EDITOR=`which nvim`
 alias vim=nvim
-
-if (( $+commands[podman] )); then
-
- # If the completion file doesn't exist yet, we need to autoload it and
- # bind it to `podman`. Otherwise, compinit will have already done that.
- if [[ ! -f "$ZSH_CACHE_DIR/completions/_podman" ]]; then
-   typeset -g -A _comps
-   autoload -Uz _podman
-   _comps[podman]=_podman
- fi
-
- podman completion zsh 2> /dev/null >| "$ZSH_CACHE_DIR/completions/_podman" &|
+else
+  export EDITOR=`which vim`
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -112,6 +92,10 @@ if [[ "xterm-kitty" == "$TERM" && ! -e "/usr/share/terminfo/x/xterm-kitty" ]] ; 
   export TERM='xterm-256color'
 fi
 
-# Enable completion for bazelisk
+########## post-zsh load ########## 
+
+# Use bazelisk for bazel and enable completion
 alias bazel=bazelisk
 compdef bazelisk=bazel
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
