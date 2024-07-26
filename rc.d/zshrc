@@ -51,13 +51,13 @@ plugins=(
   1password
   bazel
   brew
+  fzf
   git
   golang
   kubectl
   podman
   rust
   ssh-agent
-  virtualenv
 )
 
 
@@ -71,19 +71,18 @@ zstyle ':omz:plugins:*' aliases no
 # Enable git vcs_info for my prompt
 zstyle ':vcs_info:*' enable git
 
+source $ZSH/oh-my-zsh.sh
 ########## Aliases ##########
 alias dr='docker run --rm -t -i'
 alias pyactive='source venv/bin/activate'
 
 # Use nvim
 if whence -p nvim &>/dev/null ; then
-export EDITOR=`which nvim`
-alias vim=nvim
+  export EDITOR=`which nvim`
+  alias vim=nvim
 else
   export EDITOR=`which vim`
 fi
-
-source $ZSH/oh-my-zsh.sh
 
 if [[ "xterm-kitty" == "$TERM" && ! -e "/usr/share/terminfo/x/xterm-kitty" ]] ; then
   # Rather than fully break, use the terminfo for a basic xterm if we don't
