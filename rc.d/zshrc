@@ -60,7 +60,6 @@ plugins=(
   ssh-agent
 )
 
-
 if whence -p gh &>/dev/null ; then
   plugins+=(gh)
 fi
