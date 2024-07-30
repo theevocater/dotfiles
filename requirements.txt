@@ -46,7 +46,7 @@ colorama==0.4.6
     #   log-symbols
     #   milc
     #   tox
-cryptography==42.0.8
+cryptography==43.0.0
     # via ansible-core
 distlib==0.3.8
     # via virtualenv
@@ -67,7 +67,7 @@ hjson==3.1.0
     # via qmk
 identify==2.6.0
     # via pre-commit
-importlib-metadata==8.0.0
+importlib-metadata==8.2.0
     # via ansible-lint
 jinja2==3.1.4
     # via ansible-core
@@ -123,7 +123,7 @@ platformdirs==4.2.2
     #   virtualenv
 pluggy==1.5.0
     # via tox
-pre-commit==3.7.1
+pre-commit==3.8.0
     # via -r requirements.in
 pycparser==2.22
     # via cffi
@@ -160,7 +160,7 @@ resolvelib==1.0.1
     # via ansible-core
 rich==13.7.1
     # via ansible-lint
-rpds-py==0.19.0
+rpds-py==0.19.1
     # via
     #   jsonschema
     #   referencing
