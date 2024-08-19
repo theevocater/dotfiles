@@ -9,6 +9,7 @@
       - gh
       - go
       - htop
+      - kitty
       - neovim
       - moom
       - python
