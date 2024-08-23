@@ -4,9 +4,9 @@
 #
 #    pip-compile
 #
-ansible-compat==24.7.0
+ansible-compat==24.8.0
     # via ansible-lint
-ansible-core==2.17.2
+ansible-core==2.17.3
     # via
     #   ansible-compat
     #   ansible-lint
@@ -14,23 +14,23 @@ ansible-lint==24.7.0
     # via -r requirements.in
 appdirs==1.4.4
     # via milc
-argcomplete==3.4.0
+argcomplete==3.5.0
     # via milc
-attrs==23.2.0
+attrs==24.2.0
     # via
     #   jsonschema
     #   referencing
-black==24.4.2
+black==24.8.0
     # via ansible-lint
-bracex==2.4
+bracex==2.5
     # via wcmatch
 build==1.2.1
     # via pip-tools
-cachetools==5.4.0
+cachetools==5.5.0
     # via tox
 certifi==2024.7.4
     # via pipenv
-cffi==1.16.0
+cffi==1.17.0
     # via cryptography
 cfgv==3.4.0
     # via pre-commit
@@ -67,7 +67,7 @@ hjson==3.1.0
     # via qmk
 identify==2.6.0
     # via pre-commit
-importlib-metadata==8.2.0
+importlib-metadata==8.4.0
     # via ansible-lint
 jinja2==3.1.4
     # via ansible-core
@@ -143,7 +143,7 @@ pyserial==3.5
     # via qmk
 pyusb==1.2.1
     # via qmk
-pyyaml==6.0.1
+pyyaml==6.0.2
     # via
     #   ansible-compat
     #   ansible-core
@@ -160,7 +160,7 @@ resolvelib==1.0.1
     # via ansible-core
 rich==13.7.1
     # via ansible-lint
-rpds-py==0.19.1
+rpds-py==0.20.0
     # via
     #   jsonschema
     #   referencing
@@ -180,7 +180,7 @@ subprocess-tee==0.4.2
     #   ansible-lint
 termcolor==2.4.0
     # via halo
-tox==4.16.0
+tox==4.18.0
     # via -r requirements.in
 types-colorama==0.4.15.20240311
     # via milc
@@ -189,13 +189,13 @@ virtualenv==20.26.3
     #   pipenv
     #   pre-commit
     #   tox
-wcmatch==8.5.2
+wcmatch==9.0
     # via ansible-lint
-wheel==0.43.0
+wheel==0.44.0
     # via pip-tools
 yamllint==1.35.1
     # via ansible-lint
-zipp==3.19.2
+zipp==3.20.0
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
