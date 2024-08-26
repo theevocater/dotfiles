@@ -213,7 +213,12 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>cp', function() vim.cmd(':Copilot panel') end, { desc = 'Run [C]o[P]ilot' })
     end
   },
-  'stevearc/oil.nvim',
+  {
+    'stevearc/oil.nvim',
+    config = function()
+      vim.keymap.set('n', '<leader>o', ':Oil<CR>', { desc = 'open [O]il panel' })
+    end,
+  },
   {
     'MeanderingProgrammer/markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
