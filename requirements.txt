@@ -4,13 +4,13 @@
 #
 #    pip-compile
 #
-ansible-compat==24.8.0
+ansible-compat==24.9.0
     # via ansible-lint
-ansible-core==2.17.3
+ansible-core==2.17.4
     # via
     #   ansible-compat
     #   ansible-lint
-ansible-lint==24.7.0
+ansible-lint==24.9.0
     # via -r requirements.in
 appdirs==1.4.4
     # via milc
@@ -24,13 +24,13 @@ black==24.8.0
     # via ansible-lint
 bracex==2.5
     # via wcmatch
-build==1.2.1
+build==1.2.2
     # via pip-tools
 cachetools==5.5.0
     # via tox
 certifi==2024.8.30
     # via pipenv
-cffi==1.17.0
+cffi==1.17.1
     # via cryptography
 cfgv==3.4.0
     # via pre-commit
@@ -46,18 +46,18 @@ colorama==0.4.6
     #   log-symbols
     #   milc
     #   tox
-cryptography==43.0.0
+cryptography==43.0.1
     # via ansible-core
 distlib==0.3.8
     # via virtualenv
 dotty-dict==1.3.1
     # via qmk
-filelock==3.15.4
+filelock==3.16.0
     # via
     #   ansible-lint
     #   tox
     #   virtualenv
-greenlet==3.0.3
+greenlet==3.1.0
     # via pynvim
 halo==0.0.31
     # via milc
@@ -65,9 +65,9 @@ hid==1.0.6
     # via qmk
 hjson==3.1.0
     # via qmk
-identify==2.6.0
+identify==2.6.1
     # via pre-commit
-importlib-metadata==8.4.0
+importlib-metadata==8.5.0
     # via ansible-lint
 jinja2==3.1.4
     # via ansible-core
@@ -88,7 +88,7 @@ mdurl==0.1.2
     # via markdown-it-py
 milc==1.8.0
     # via qmk
-msgpack==1.0.8
+msgpack==1.1.0
     # via pynvim
 mypy-extensions==1.0.0
     # via black
@@ -114,9 +114,9 @@ pillow==10.4.0
     # via qmk
 pip-tools==7.4.1
     # via -r requirements.in
-pipenv==2024.0.1
+pipenv==2024.0.2
     # via -r requirements.in
-platformdirs==4.2.2
+platformdirs==4.3.3
     # via
     #   black
     #   tox
@@ -158,7 +158,7 @@ referencing==0.35.1
     #   jsonschema-specifications
 resolvelib==1.0.1
     # via ansible-core
-rich==13.8.0
+rich==13.8.1
     # via ansible-lint
 rpds-py==0.20.0
     # via
@@ -180,11 +180,11 @@ subprocess-tee==0.4.2
     #   ansible-lint
 termcolor==2.4.0
     # via halo
-tox==4.18.0
+tox==4.18.1
     # via -r requirements.in
 types-colorama==0.4.15.20240311
     # via milc
-virtualenv==20.26.3
+virtualenv==20.26.4
     # via
     #   pipenv
     #   pre-commit
@@ -195,7 +195,7 @@ wheel==0.44.0
     # via pip-tools
 yamllint==1.35.1
     # via ansible-lint
-zipp==3.20.1
+zipp==3.20.2
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
