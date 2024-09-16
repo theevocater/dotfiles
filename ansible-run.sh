@@ -1,6 +1,9 @@
 #!/bin/bash
 set -eu -o pipefail
 
+# Prep environment for running ansible.
+# 1. sync submodules
+# 2. potentially install ansible
 bootstrap() {
   sync_submodules() {
     git submodule sync --recursive
@@ -50,7 +53,7 @@ bootstrap() {
 bootstrap
 
 # Run playbooks that require root
-ansible-playbook --verbose --inventory ansible/localhost --ask-become-pass ansible/root.yml
+ansible-playbook --verbose --ask-become-pass ansible/root.yml
 
 # Run playbooks that are for me
-ansible-playbook --verbose --inventory ansible/localhost ansible/jakeman.yml
+ansible-playbook --verbose ansible/jakeman.yml
