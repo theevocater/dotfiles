@@ -14,9 +14,3 @@
   unarchive:
     src: "{{ download.dest }}"
     dest: "{{ tmp_dir }}"
-  when: ansible_system == "Linux"
-- name: Install go pkg
-  command:
-    cmd: "open {{ download.dest }}"
-    creates: /usr/local/go
-  when: ansible_system == "Darwin"
