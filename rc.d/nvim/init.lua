@@ -612,7 +612,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   terraformls = {},
-  tsserver = {},
+  ts_ls = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
