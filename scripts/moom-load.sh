@@ -6,4 +6,10 @@ if [ -z "$1" ] ; then
   exit 1
 fi
 
-defaults import com.manytricks.Moom "$1"
+defaults import com.manytricks.Moom plists/Moom.plist
+
+echo "Killing moom"
+killall Moom
+
+echo "Starting moom"
+open -a Moom

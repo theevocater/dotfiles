@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+set -eu -o pipefail
+
+OS=$(uname -s)
+
+
+GREEN="$(tput bold)$(tput setaf 63)"
+RESET="$(tput sgr0)"
+
+running() {
+  echo "${GREEN}${*}${RESET}"
+}
+
+system_update() {
+  if [[ "${OS}" =~ "Darwin" ]]; then
+    brew upgrade
+  elif grep -q "^Rocky Linux release 9.*$" /etc/redhat-release ; then
+    sudo dnf upgrade
+  fi
+}
+
+submodules() {
+  running "Updating git submodules to master"
+  git submodule update --remote --merge
+}
+
+python_packages() {
+  running "Updating requirements.txt"
+  pip-compile --upgrade --annotate --verbose --header
+}
+
+precommit() {
+  running "updating pre-commit hooks"
+  pre-commit autoupdate
+}
+
+moom() {
+  if [[ "${OS}" != "Darwin" ]] ; then
+    return 0
+  fi
+  running "Dumping current moom preferences"
+
+  defaults export com.manytricks.Moom plists/Moom.plist
+}
+
+vim() {
+  running "updating nvim Lazy"
+  nvim --headless "+Lazy! update" +qa
+  running "updating nvim Mason registries"
+  nvim --headless "+MasonUpdate" +qa
+}
+
+omz() {
+  "$ZSH"/tools/upgrade.sh
+}
+
+system_update
+submodules
+python_packages
+precommit
+moom
+vim
+omz
