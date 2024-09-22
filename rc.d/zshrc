@@ -37,6 +37,16 @@ if [[ -s "$HOME/.pyenv" ]] ; then
   eval "$(pyenv init -)"
 fi
 
+########## brew ##########
+# Load brew by hand due to https://github.com/ohmyzsh/ohmyzsh/issues/12183
+# tl;dr compinit is done before plugins are loaded so the brew comps don't load
+if (( ! $+commands[brew] )); then
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    fpath+=("$(brew --prefix)/share/zsh/site-functions")
+  fi
+fi
+
 ########## oh-my-zsh ##########
 MY_ZSH_ROOT=$HOME/.dotfiles/rc.d/zsh
 export ZSH=$MY_ZSH_ROOT/oh-my-zsh
@@ -50,7 +60,6 @@ DEFAULT_USER="$USER"
 plugins=(
   1password
   bazel
-  brew
   fzf
   git
   golang
