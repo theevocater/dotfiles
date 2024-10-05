@@ -22,9 +22,6 @@
 [submodule "vim/bundle/vim-unimpaired"]
 	path = rc.d/vim/pack/github/start/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "vim/bundle/a.vim"]
-	path = rc.d/vim/pack/github/start/a.vim
-	url = https://github.com/theevocater/a.vim.git
 [submodule "vim/bundle/taglist.vim"]
 	path = rc.d/vim/pack/github/start/taglist.vim
 	url = https://github.com/vim-scripts/taglist.vim.git
