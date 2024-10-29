@@ -44,7 +44,7 @@ colorama==0.4.6
     #   log-symbols
     #   milc
     #   tox
-cryptography==43.0.1
+cryptography==43.0.3
     # via ansible-core
 distlib==0.3.9
     # via virtualenv
@@ -80,7 +80,7 @@ log-symbols==0.0.14
     # via halo
 markdown-it-py==3.0.0
     # via rich
-markupsafe==3.0.1
+markupsafe==3.0.2
     # via jinja2
 mdurl==0.1.2
     # via markdown-it-py
@@ -109,11 +109,11 @@ pathspec==0.12.1
     #   ansible-lint
     #   black
     #   yamllint
-pillow==10.4.0
+pillow==11.0.0
     # via qmk
 pip-tools==7.4.1
     # via -r requirements.in
-pipenv==2024.1.0
+pipenv==2024.2.0
     # via -r requirements.in
 platformdirs==4.3.6
     # via
@@ -158,7 +158,7 @@ referencing==0.35.1
     #   jsonschema-specifications
 resolvelib==1.0.1
     # via ansible-core
-rich==13.9.2
+rich==13.9.3
     # via ansible-lint
 rpds-py==0.20.0
     # via
@@ -166,7 +166,7 @@ rpds-py==0.20.0
     #   referencing
 ruamel-yaml==0.18.6
     # via ansible-lint
-ruamel-yaml-clib==0.2.8
+ruamel-yaml-clib==0.2.12
     # via ruamel-yaml
 six==1.16.0
     # via halo
@@ -180,11 +180,11 @@ subprocess-tee==0.4.2
     #   ansible-lint
 termcolor==2.5.0
     # via halo
-tox==4.21.2
+tox==4.23.2
     # via -r requirements.in
 types-colorama==0.4.15.20240311
     # via milc
-virtualenv==20.26.6
+virtualenv==20.27.1
     # via
     #   pipenv
     #   pre-commit
