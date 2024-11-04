@@ -113,7 +113,7 @@ pillow==11.0.0
     # via qmk
 pip-tools==7.4.1
     # via -r requirements.in
-pipenv==2024.2.0
+pipenv==2024.3.1
     # via -r requirements.in
 platformdirs==4.3.6
     # via
@@ -131,7 +131,7 @@ pygments==2.18.0
     # via
     #   qmk
     #   rich
-pynvim==0.5.0
+pynvim==0.5.1
     # via neovim
 pyproject-api==1.8.0
     # via tox
@@ -150,7 +150,7 @@ pyyaml==6.0.2
     #   ansible-lint
     #   pre-commit
     #   yamllint
-qmk==1.1.5
+qmk==1.1.6
     # via -r requirements.in
 referencing==0.35.1
     # via
@@ -158,9 +158,9 @@ referencing==0.35.1
     #   jsonschema-specifications
 resolvelib==1.0.1
     # via ansible-core
-rich==13.9.3
+rich==13.9.4
     # via ansible-lint
-rpds-py==0.20.0
+rpds-py==0.20.1
     # via
     #   jsonschema
     #   referencing
