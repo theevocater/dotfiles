@@ -4,13 +4,13 @@
 #
 #    pip-compile
 #
-ansible-compat==24.9.1
+ansible-compat==24.10.0
     # via ansible-lint
-ansible-core==2.17.5
+ansible-core==2.18.0
     # via
     #   ansible-compat
     #   ansible-lint
-ansible-lint==24.9.2
+ansible-lint==24.10.0
     # via -r requirements.in
 argcomplete==3.5.1
     # via milc
@@ -44,7 +44,7 @@ colorama==0.4.6
     #   log-symbols
     #   milc
     #   tox
-cryptography==43.0.3
+cryptography==44.0.0
     # via ansible-core
 distlib==0.3.9
     # via virtualenv
@@ -63,7 +63,7 @@ hid==1.0.6
     # via qmk
 hjson==3.1.0
     # via qmk
-identify==2.6.1
+identify==2.6.3
     # via pre-commit
 importlib-metadata==8.5.0
     # via ansible-lint
@@ -94,7 +94,7 @@ neovim==0.3.1
     # via -r requirements.in
 nodeenv==1.9.1
     # via pre-commit
-packaging==24.1
+packaging==24.2
     # via
     #   ansible-compat
     #   ansible-core
@@ -113,7 +113,7 @@ pillow==11.0.0
     # via qmk
 pip-tools==7.4.1
     # via -r requirements.in
-pipenv==2024.3.1
+pipenv==2024.4.0
     # via -r requirements.in
 platformdirs==4.3.6
     # via
@@ -131,7 +131,7 @@ pygments==2.18.0
     # via
     #   qmk
     #   rich
-pynvim==0.5.1
+pynvim==0.5.2
     # via neovim
 pyproject-api==1.8.0
     # via tox
@@ -160,7 +160,7 @@ resolvelib==1.0.1
     # via ansible-core
 rich==13.9.4
     # via ansible-lint
-rpds-py==0.20.1
+rpds-py==0.21.0
     # via
     #   jsonschema
     #   referencing
@@ -184,18 +184,18 @@ tox==4.23.2
     # via -r requirements.in
 types-colorama==0.4.15.20240311
     # via milc
-virtualenv==20.27.1
+virtualenv==20.28.0
     # via
     #   pipenv
     #   pre-commit
     #   tox
 wcmatch==10.0
     # via ansible-lint
-wheel==0.44.0
+wheel==0.45.1
     # via pip-tools
 yamllint==1.35.1
     # via ansible-lint
-zipp==3.20.2
+zipp==3.21.0
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
