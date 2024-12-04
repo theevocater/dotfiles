@@ -6,7 +6,7 @@
 #
 ansible-compat==24.10.0
     # via ansible-lint
-ansible-core==2.18.0
+ansible-core==2.18.1
     # via
     #   ansible-compat
     #   ansible-lint
@@ -160,7 +160,7 @@ resolvelib==1.0.1
     # via ansible-core
 rich==13.9.4
     # via ansible-lint
-rpds-py==0.21.0
+rpds-py==0.22.1
     # via
     #   jsonschema
     #   referencing
