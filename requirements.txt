@@ -14,7 +14,7 @@ ansible-lint==24.12.2
     # via -r requirements.in
 argcomplete==3.5.2
     # via milc
-attrs==24.2.0
+attrs==24.3.0
     # via
     #   jsonschema
     #   referencing
@@ -34,7 +34,7 @@ cfgv==3.4.0
     # via pre-commit
 chardet==5.2.0
     # via tox
-click==8.1.7
+click==8.1.8
     # via
     #   black
     #   pip-tools
@@ -67,7 +67,7 @@ identify==2.6.3
     # via pre-commit
 importlib-metadata==8.5.0
     # via ansible-lint
-jinja2==3.1.4
+jinja2==3.1.5
     # via ansible-core
 jsonschema==4.23.0
     # via
