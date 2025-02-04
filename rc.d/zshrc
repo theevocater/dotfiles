@@ -2,12 +2,19 @@
 # Make PATH a set instead of an array to dedup and speed up resolution
 typeset -U PATH
 
-if [[ -d "/usr/local/go/bin" ]] ; then
-  path=("/usr/local/go/bin" $path)
+########## brew ##########
+# Load brew by hand due to https://github.com/ohmyzsh/ohmyzsh/issues/12183
+# tl;dr compinit is done before plugins are loaded so the brew comps don't load
+# do this first to ensure we pick up all the necessary binaries for below
+if (( ! $+commands[brew] )); then
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    fpath+=("$(brew --prefix)/share/zsh/site-functions")
+  fi
 fi
 
-if [[ -d "$HOME/.jakeman/go/bin" ]] ; then
-  path=("$HOME/.jakeman/go/bin" $path)
+if [[ -d "/usr/local/go/bin" ]] ; then
+  path=("/usr/local/go/bin" $path)
 fi
 
 if [[ -d "$HOME/.cargo/bin" ]] ; then
@@ -19,7 +26,7 @@ if [[ -d "$HOME/.rd/bin" ]] ; then
 fi
 
 # Add go get binaries
-if whence -p go &>/dev/null ; then
+if (( $+commands[go] )) ; then
   path=("$(go env GOPATH)/bin" $path)
 fi
 
@@ -35,16 +42,6 @@ if [[ -s "$HOME/.pyenv" ]] ; then
   export PYENV_ROOT="$HOME/.pyenv"
   [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
-fi
-
-########## brew ##########
-# Load brew by hand due to https://github.com/ohmyzsh/ohmyzsh/issues/12183
-# tl;dr compinit is done before plugins are loaded so the brew comps don't load
-if (( ! $+commands[brew] )); then
-  if [[ -x /opt/homebrew/bin/brew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    fpath+=("$(brew --prefix)/share/zsh/site-functions")
-  fi
 fi
 
 ########## oh-my-zsh ##########
@@ -69,7 +66,7 @@ plugins=(
   ssh-agent
 )
 
-if whence -p gh &>/dev/null ; then
+if (( $+commands[gh] )) ; then
   plugins+=(gh)
 fi
 
@@ -85,7 +82,7 @@ alias dr='docker run --rm -t -i'
 alias pyactive='source venv/bin/activate'
 
 # Use nvim
-if whence -p nvim &>/dev/null ; then
+if (( $+commands[nvim] )) ; then
   export EDITOR=`which nvim`
   alias vim=nvim
 else
