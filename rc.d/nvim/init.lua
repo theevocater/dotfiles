@@ -20,15 +20,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- Solarized lyfe
-  -- {
-  --   'altercation/vim-colors-solarized',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.opt.termguicolors = false
-  --     vim.opt.background = 'light'
-  --     vim.cmd.colorscheme 'solarized'
-  --   end,
-  -- },
   {
     'Tsuzat/NeoSolarized.nvim',
     opts = {
@@ -205,6 +196,7 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  -- AI Stuff
   {
     'github/copilot.vim',
     config = function()
@@ -213,6 +205,22 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>cp', function() vim.cmd(':Copilot panel') end, { desc = 'Run [C]o[P]ilot' })
     end
   },
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {
+      chat = {
+        adapter = "copilot",
+      },
+      inline = {
+        adapter = "copilot",
+      },
+    },
+  },
+
   {
     'stevearc/oil.nvim',
     config = function()
