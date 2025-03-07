@@ -54,9 +54,14 @@ omz() {
   "$ZSH"/tools/upgrade.sh
 }
 
+rust() {
+  rustup update
+}
+
 system_update
 submodules
 python_packages
+rust
 precommit
 moom
 vim

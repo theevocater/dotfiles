@@ -20,5 +20,6 @@
     - python
 - name: Run node tasks
   import_tasks: node.yml
+  when: ansible_system == "Linux"
   tags:
     - node
