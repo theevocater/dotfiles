@@ -66,6 +66,10 @@ plugins=(
   ssh-agent
 )
 
+if [[ -f "$HOME/.nvm/nvm.sh" ]] ; then
+  plugins+=(nvm)
+fi
+
 if (( $+commands[gh] )) ; then
   plugins+=(gh)
 fi
