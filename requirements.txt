@@ -6,11 +6,11 @@
 #
 ansible-compat==25.1.5
     # via ansible-lint
-ansible-core==2.18.4
+ansible-core==2.18.5
     # via
     #   ansible-compat
     #   ansible-lint
-ansible-lint==25.2.1
+ansible-lint==25.4.0
     # via -r requirements.in
 argcomplete==3.6.2
     # via milc
@@ -26,7 +26,7 @@ build==1.2.2.post1
     # via pip-tools
 cachetools==5.5.2
     # via tox
-certifi==2025.1.31
+certifi==2025.4.26
     # via pipenv
 cffi==1.17.1
     # via cryptography
@@ -55,7 +55,7 @@ filelock==3.18.0
     #   ansible-lint
     #   tox
     #   virtualenv
-greenlet==3.1.1
+greenlet==3.2.1
     # via pynvim
 halo==0.0.31
     # via milc
@@ -63,9 +63,9 @@ hid==1.0.7
     # via qmk
 hjson==3.1.0
     # via qmk
-identify==2.6.9
+identify==2.6.10
     # via pre-commit
-importlib-metadata==8.6.1
+importlib-metadata==8.7.0
     # via ansible-lint
 jinja2==3.1.6
     # via ansible-core
@@ -74,7 +74,7 @@ jsonschema==4.23.0
     #   ansible-compat
     #   ansible-lint
     #   qmk
-jsonschema-specifications==2024.10.1
+jsonschema-specifications==2025.4.1
     # via jsonschema
 log-symbols==0.0.14
     # via halo
@@ -84,13 +84,13 @@ milc==1.9.1
     # via qmk
 msgpack==1.1.0
     # via pynvim
-mypy-extensions==1.0.0
+mypy-extensions==1.1.0
     # via black
 neovim==0.3.1
     # via -r requirements.in
 nodeenv==1.9.1
     # via pre-commit
-packaging==24.2
+packaging==25.0
     # via
     #   ansible-compat
     #   ansible-core
@@ -105,11 +105,11 @@ pathspec==0.12.1
     #   ansible-lint
     #   black
     #   yamllint
-pillow==11.1.0
+pillow==11.2.1
     # via qmk
 pip-tools==7.4.1
     # via -r requirements.in
-pipenv==2024.4.1
+pipenv==2025.0.1
     # via -r requirements.in
 platformdirs==4.3.7
     # via
@@ -144,7 +144,7 @@ pyyaml==6.0.2
     #   ansible-lint
     #   pre-commit
     #   yamllint
-qmk==1.1.6
+qmk==1.1.7
     # via -r requirements.in
 referencing==0.36.2
     # via
@@ -177,7 +177,7 @@ tox==4.25.0
     # via -r requirements.in
 types-colorama==0.4.15.20240311
     # via milc
-typing-extensions==4.13.1
+typing-extensions==4.13.2
     # via referencing
 virtualenv==20.30.0
     # via
