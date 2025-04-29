@@ -522,20 +522,6 @@ vim.opt.undofile = true
 -- specifically marks, registers, searches and buffers
 vim.opt.viminfo = [['20,<50,s10,h,%]]
 
--- Borrowed from vim9.1.0 defaults.vim
--- TODO remove if things work, i don't remember what this does
--- vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
---   pattern = { '*' },
---   callback = function()
---     vim.api.nvim_exec2([[
---     let line = line("'\"")
---     if line >= 1 && line <= line("$") && &filetype !~# 'commit' && index(['xxd', 'gitrebase'], &filetype) == -1
---       execute "normal! g`\""
---     endif
---     ]], {})
---   end,
--- })
-
 -------------------------------------------------------------------------------
 -- Mappings
 -------------------------------------------------------------------------------
@@ -564,11 +550,6 @@ vim.keymap.set('n', '<leader>c', ':%s/\\s\\+$//<CR>', { silent = true, })
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
   callback = function(event)
-    -- NOTE: Remember that Lua is a real programming language, and as such it is possible
-    -- to define small helper and utility functions so you don't have to repeat yourself.
-    --
-    -- In this case, we create a function that lets us more easily define mappings specific
-    -- for LSP related items. It sets the mode, buffer and description for us each time.
     local map = function(keys, func, desc)
       vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
     end
@@ -751,6 +732,7 @@ cmp.setup {
   },
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'lazydev', group_index = 0, },
     { name = 'luasnip' },
     { name = 'path' },
   },
@@ -769,6 +751,4 @@ if vim.fn.exists("#FileExplorer") then
 end
 
 -- TODO
--- Ignore venv, etc as old vimrc in fzf etc
--- leader motions for formatting the buffer
 -- C-u in telescope
