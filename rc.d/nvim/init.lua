@@ -42,6 +42,18 @@ require('lazy').setup({
   'tpope/vim-git',
   'tpope/vim-rhubarb',
 
+  {
+    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- used for completion, annotations and signatures of Neovim apis
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      },
+    },
+  },
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -51,14 +63,23 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       { 'j-hui/fidget.nvim',       opts = {} },
-
-      -- Additional lua configuration, makes nvim stuff amazing!
-      { 'folke/neodev.nvim',       opts = {} },
     },
   },
   -- Autoformatting
   {
     'stevearc/conform.nvim',
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
+    keys = {
+      {
+        '<leader>f',
+        function()
+          require('conform').format { async = true, lsp_format = 'fallback' }
+        end,
+        mode = '',
+        desc = '[F]ormat buffer',
+      },
+    },
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
@@ -73,14 +94,18 @@ require('lazy').setup({
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true, proto = true }
-        return {
-          timeout_ms = 500,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-        }
+        if disable_filetypes[vim.bo[bufnr].filetype] then
+          return nil
+        else
+          return {
+            timeout_ms = 500,
+            lsp_format = 'fallback',
+          }
+        end
       end,
     },
   },
-
+  -- Supplemental Linters
   {
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'BufNewFile' },
@@ -136,18 +161,12 @@ require('lazy').setup({
   },
 
   {
-    -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
+    event = 'VimEnter',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-      -- Only load if `make` is available. Make sure you have the system
-      -- requirements installed.
       {
         'nvim-telescope/telescope-fzf-native.nvim',
-        -- NOTE: If you are having trouble with this installation,
-        --       refer to the README for telescope-fzf-native for more instructions.
         build = 'make',
         cond = function()
           return vim.fn.executable 'make' == 1
@@ -190,21 +209,21 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'ui-select')
       pcall(require('telescope').load_extension, 'menufacture')
 
-      -- menufacture overrides
-      local menufacture = require('telescope').extensions.menufacture
-      vim.keymap.set('n', '<leader>sf', menufacture.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>sw', menufacture.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', menufacture.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>gf', menufacture.git_files, { desc = 'Search by [G]it [F]iles' })
 
       local builtin = require('telescope.builtin')
+      -- menufacture overrides use <ctrl-^> to enable hidden files etc
+      local menufacture = require('telescope').extensions.menufacture
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+      vim.keymap.set('n', '<leader>sf', menufacture.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+      vim.keymap.set('n', '<leader>sw', menufacture.grep_string, { desc = '[S]earch current [W]ord' })
+      vim.keymap.set('n', '<leader>sg', menufacture.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>gf', menufacture.git_files, { desc = 'Search by [G]it [F]iles' })
     end
   },
 
@@ -503,20 +522,6 @@ vim.opt.undofile = true
 -- specifically marks, registers, searches and buffers
 vim.opt.viminfo = [['20,<50,s10,h,%]]
 
--- Borrowed from vim9.1.0 defaults.vim
--- TODO remove if things work, i don't remember what this does
--- vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
---   pattern = { '*' },
---   callback = function()
---     vim.api.nvim_exec2([[
---     let line = line("'\"")
---     if line >= 1 && line <= line("$") && &filetype !~# 'commit' && index(['xxd', 'gitrebase'], &filetype) == -1
---       execute "normal! g`\""
---     endif
---     ]], {})
---   end,
--- })
-
 -------------------------------------------------------------------------------
 -- Mappings
 -------------------------------------------------------------------------------
@@ -545,11 +550,6 @@ vim.keymap.set('n', '<leader>c', ':%s/\\s\\+$//<CR>', { silent = true, })
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
   callback = function(event)
-    -- NOTE: Remember that Lua is a real programming language, and as such it is possible
-    -- to define small helper and utility functions so you don't have to repeat yourself.
-    --
-    -- In this case, we create a function that lets us more easily define mappings specific
-    -- for LSP related items. It sets the mode, buffer and description for us each time.
     local map = function(keys, func, desc)
       vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
     end
@@ -559,10 +559,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
     --  To jump back, press <C-t>.
     map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
+    -- Find references for the word under your cursor.
+    map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+
+    -- Jump to the implementation of the word under your cursor.
+    --  Useful when your language has ways of declaring types without an actual implementation.
+    map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+
     -- Jump to the type of the word under your cursor.
     --  Useful when you're not sure what type a variable is and you want to see
     --  the definition of its *type*, not where it was *defined*.
     map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+
+    -- Fuzzy find all the symbols in your current document.
+    --  Symbols are things like variables, functions, types, etc.
+    map('gO', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 
     -- Fuzzy find all the symbols in your current workspace.
     --  Similar to document symbols, except searches over your entire project.
@@ -721,6 +732,7 @@ cmp.setup {
   },
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'lazydev', group_index = 0, },
     { name = 'luasnip' },
     { name = 'path' },
   },
@@ -739,6 +751,4 @@ if vim.fn.exists("#FileExplorer") then
 end
 
 -- TODO
--- Ignore venv, etc as old vimrc in fzf etc
--- leader motions for formatting the buffer
 -- C-u in telescope
