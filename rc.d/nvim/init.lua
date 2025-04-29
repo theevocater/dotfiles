@@ -3,19 +3,17 @@
 -- Change mapleader before anything else so plugins don't accidentally get the
 -- wrong ideas
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- Use lazy.nvim for package management
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath, }
+  if vim.v.shell_error ~= 0 then
+    error('Error cloning lazy.nvim:\n' .. out)
+  end
+end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
@@ -35,7 +33,12 @@ require('lazy').setup({
 
   -- Make vim good thanks to tpope
   'tpope/vim-commentary', -- we might want to look into numToStr/Comment.nvim, tcomment, or others
-  'tpope/vim-fugitive',
+  {
+    'tpope/vim-fugitive',
+    config = function()
+      vim.keymap.set('n', '<leader>g', ':Git<CR>', { silent = true, })
+    end,
+  },
   'tpope/vim-git',
   'tpope/vim-rhubarb',
 
@@ -77,8 +80,27 @@ require('lazy').setup({
       end,
     },
   },
-  -- Linting
-  { 'mfussenegger/nvim-lint' },
+
+  {
+    'mfussenegger/nvim-lint',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      local lint = require('lint')
+      lint.linters_by_ft = {
+        python = { 'flake8', 'mypy' },
+        go = { 'golangcilint' },
+      }
+
+      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
+        group = vim.api.nvim_create_augroup('lint', { clear = true }),
+        callback = function()
+          if vim.opt_local.modifiable:get() then
+            require("lint").try_lint()
+          end
+        end,
+      })
+    end,
+  },
 
   {
     -- Autocompletion
@@ -97,9 +119,8 @@ require('lazy').setup({
     },
   },
 
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
 
-  -- Replace airblade/vim-gitgutter
   {
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -194,6 +215,87 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+    main = 'nvim-treesitter.configs', -- This is the main module for opts
+    opts = {
+      -- Add languages to be installed here that you want installed for treesitter
+      ensure_installed = {
+        'bash',
+        'c', 'cpp',
+        'go',
+        'java',
+        'javascript',
+        'lua',
+        'python',
+        'rust',
+        'terraform',
+        'tsx',
+        'typescript',
+        'vim',
+        'vimdoc',
+        'yaml',
+      },
+
+      auto_install = false,
+      sync_install = false,
+      ignore_install = {},
+      modules = {},
+
+      highlight = { enable = true },
+      indent = { enable = true },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "gnn",
+          node_incremental = "grn",
+          scope_incremental = "grc",
+          node_decremental = "grm",
+        },
+      },
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+          keymaps = {
+            -- You can use the capture groups defined in textobjects.scm
+            ['aa'] = '@parameter.outer',
+            ['ia'] = '@parameter.inner',
+            ['af'] = '@function.outer',
+            ['if'] = '@function.inner',
+            ['ac'] = '@class.outer',
+            ['ic'] = '@class.inner',
+          },
+        },
+        swap = {
+          enable = true,
+          swap_next = {
+            ['<leader>a'] = '@parameter.inner',
+          },
+          swap_previous = {
+            ['<leader>A'] = '@parameter.inner',
+          },
+        },
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set jumps in the jumplist
+          goto_next_start = {
+            [']m'] = '@function.outer',
+            [']]'] = '@class.outer',
+          },
+          goto_next_end = {
+            [']M'] = '@function.outer',
+            [']['] = '@class.outer',
+          },
+          goto_previous_start = {
+            ['[m'] = '@function.outer',
+            ['[['] = '@class.outer',
+          },
+          goto_previous_end = {
+            ['[M'] = '@function.outer',
+            ['[]'] = '@class.outer',
+          },
+        },
+      },
+    },
   },
 
   -- AI Stuff
@@ -270,6 +372,10 @@ vim.opt.laststatus = 2
 -- redraw only when we need to.
 vim.opt.lazyredraw = true
 
+-- TODO Enable these?
+-- vim.opt.splitright = true
+-- vim.opt.splitbelow = true
+
 -- Statusline
 -- TODO this could use an update
 vim.api.nvim_exec2([[
@@ -289,7 +395,7 @@ vim.opt.showmatch = true
 vim.opt.matchtime = 3
 
 -- Show the current working line
-vim.wo.cursorline = true
+vim.o.cursorline = true
 
 -- Show colorcolumn on insert
 vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
@@ -331,9 +437,20 @@ vim.api.nvim_create_autocmd({ 'CursorHold' }, {
 })
 vim.opt.updatetime = 30000
 
--- Make yank clipboard work w/ system clipboard. plus is for linux to ensure it
--- uses the copy clipboard not the selection.
-vim.opt.clipboard = 'unnamedplus'
+-- Make yank clipboard work w/ system clipboard. plus is for linux to ensure it uses the copy clipboard not the selection.
+-- The use of a function pushes this until after UiEnter which lowers startup time according to https://github.com/nvim-lua/kickstart.nvim/blob/d350db2449da40df003c40d440f909d74e2d4e70/init.lua#L115-L116
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
+
+-- Highlight then clear after yank to make clear what i copied
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 
 -------------------------------------------------------------------------------
 -- Searching
@@ -350,6 +467,9 @@ vim.opt.incsearch = true
 -- Highlight the last search done
 vim.opt.hlsearch = true
 
+-- Preview s/ubstitions
+vim.opt.inccommand = 'split'
+
 -------------------------------------------------------------------------------
 -- Indenting/Spacing
 -------------------------------------------------------------------------------
@@ -359,6 +479,7 @@ vim.opt.shiftwidth = 2
 vim.opt.smarttab = true
 vim.opt.expandtab = true
 vim.opt.smartindent = true
+vim.opt.breakindent = true
 
 -------------------------------------------------------------------------------
 -- Line Wrapping
@@ -383,17 +504,18 @@ vim.opt.undofile = true
 vim.opt.viminfo = [['20,<50,s10,h,%]]
 
 -- Borrowed from vim9.1.0 defaults.vim
-vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
-  pattern = { '*' },
-  callback = function()
-    vim.api.nvim_exec2([[
-    let line = line("'\"")
-    if line >= 1 && line <= line("$") && &filetype !~# 'commit' && index(['xxd', 'gitrebase'], &filetype) == -1
-      execute "normal! g`\""
-    endif
-    ]], {})
-  end,
-})
+-- TODO remove if things work, i don't remember what this does
+-- vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
+--   pattern = { '*' },
+--   callback = function()
+--     vim.api.nvim_exec2([[
+--     let line = line("'\"")
+--     if line >= 1 && line <= line("$") && &filetype !~# 'commit' && index(['xxd', 'gitrebase'], &filetype) == -1
+--       execute "normal! g`\""
+--     endif
+--     ]], {})
+--   end,
+-- })
 
 -------------------------------------------------------------------------------
 -- Mappings
@@ -401,11 +523,11 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
 -- Leader Hotkeys
 
 -- set up to show spaces
-vim.opt.listchars = 'tab:>-,trail:_,eol:$'
-vim.keymap.set('n', '<leader>s', ':set nolist!<CR>', { silent = true, })
+vim.opt.listchars = 'tab:>-,trail:_,eol:$,nbsp:␣'
+vim.keymap.set('n', '<leader>l', ':set nolist!<CR>', { silent = true, })
 
 -- sets ,q to silence search
-vim.keymap.set('n', '<leader>q', ':nohlsearch<CR>', { silent = true, })
+vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { silent = true, })
 
 -- turn on paste quickly
 vim.keymap.set('n', '<leader>p', ':set paste!<CR>', { silent = true, })
@@ -419,99 +541,6 @@ vim.keymap.set('n', '<leader>c', ':%s/\\s\\+$//<CR>', { silent = true, })
 -------------------------------------------------------------------------------
 -- Setup plugins
 -------------------------------------------------------------------------------
--- Setup fugitive
--- open fugitive Git status window
-vim.keymap.set('n', '<leader>g', ':Git<CR>', { silent = true, })
-
--- Setup Treesitter
--- See `:help nvim-treesitter`
--- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
-vim.defer_fn(function()
-  require('nvim-treesitter.configs').setup {
-    -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = {
-      'bash',
-      'c', 'cpp',
-      'go',
-      'java',
-      'javascript',
-      'lua',
-      'markdown',
-      'markdown_inline',
-      'python',
-      'rust',
-      'terraform',
-      'tsx',
-      'typescript',
-      'vim',
-      'vimdoc',
-      'yaml',
-    },
-
-    -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-    auto_install = false,
-    sync_install = false,
-    ignore_install = {},
-    modules = {},
-
-    highlight = { enable = true },
-    indent = { enable = true },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "gnn",
-        node_incremental = "grn",
-        scope_incremental = "grc",
-        node_decremental = "grm",
-      },
-    },
-    textobjects = {
-      select = {
-        enable = true,
-        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-        keymaps = {
-          -- You can use the capture groups defined in textobjects.scm
-          ['aa'] = '@parameter.outer',
-          ['ia'] = '@parameter.inner',
-          ['af'] = '@function.outer',
-          ['if'] = '@function.inner',
-          ['ac'] = '@class.outer',
-          ['ic'] = '@class.inner',
-        },
-      },
-      swap = {
-        enable = true,
-        swap_next = {
-          ['<leader>a'] = '@parameter.inner',
-        },
-        swap_previous = {
-          ['<leader>A'] = '@parameter.inner',
-        },
-      },
-      move = {
-        enable = true,
-        set_jumps = true, -- whether to set jumps in the jumplist
-        goto_next_start = {
-          [']m'] = '@function.outer',
-          [']]'] = '@class.outer',
-        },
-        goto_next_end = {
-          [']M'] = '@function.outer',
-          [']['] = '@class.outer',
-        },
-        goto_previous_start = {
-          ['[m'] = '@function.outer',
-          ['[['] = '@class.outer',
-        },
-        goto_previous_end = {
-          ['[M'] = '@function.outer',
-          ['[]'] = '@class.outer',
-        },
-      },
-    },
-  }
-end, 0)
-
 -- Configure LSP stuff
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -621,17 +650,6 @@ local servers = {
   },
 }
 
-require('lint').linters_by_ft = {
-  python = { 'flake8', 'mypy' },
-  go = { 'golangcilint' },
-}
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-})
-
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
@@ -640,6 +658,7 @@ capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp'
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
+  automatic_installation = false,
   ensure_installed = vim.tbl_keys(servers),
 }
 
@@ -706,7 +725,6 @@ cmp.setup {
     { name = 'path' },
   },
 }
-
 
 -- Configure Oil
 -- I configure Oil to only replace netrw's directory browsing capabilities, and
