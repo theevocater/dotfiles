@@ -30,6 +30,12 @@ require('lazy').setup({
       vim.cmd.colorscheme 'NeoSolarized'
     end,
   },
+  {
+    "f-person/auto-dark-mode.nvim",
+    opts = {
+      fallback = "light",
+    },
+  },
 
   -- Make vim good thanks to tpope
   'tpope/vim-commentary', -- we might want to look into numToStr/Comment.nvim, tcomment, or others
