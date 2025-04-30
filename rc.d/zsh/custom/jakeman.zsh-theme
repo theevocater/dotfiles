@@ -19,7 +19,7 @@ segmentize() {
 }
 
 p_end() {
-  echo -n '==%{%b%K{default}%F{black}%}>%{%f%b%k%} '
+  echo -n '%{%b%K{default}%F{grey}%}==>%{%f%b%k%} '
 }
 
 p_dir() {
