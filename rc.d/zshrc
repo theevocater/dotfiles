@@ -78,7 +78,6 @@ zstyle ':vcs_info:*' enable git
 
 source $ZSH/oh-my-zsh.sh
 ########## Aliases ##########
-alias dr='docker run --rm -t -i'
 alias pyactive='source venv/bin/activate'
 
 # Use nvim

@@ -12,5 +12,3 @@
   import_tasks: fonts.yml
 - name: Set up dotfiles links
   import_tasks: dotfiles.yml
-- name: Set up onivim2 config
-  import_tasks: onivim2.yml
