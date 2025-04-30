@@ -18,23 +18,24 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- Solarized lyfe
-  {
-    'Tsuzat/NeoSolarized.nvim',
-    opts = {
-      style = 'light',
-      transparent = false,
-    },
-    priority = 1000,
-    config = function()
-      vim.opt.background = 'light'
-      vim.cmd.colorscheme 'NeoSolarized'
-    end,
-  },
-  {
+  { -- Load this first to set the background correctly before the theme
     "f-person/auto-dark-mode.nvim",
+    priority = 1000,
     opts = {
       fallback = "light",
     },
+    dependencies = {
+      {
+        'Tsuzat/NeoSolarized.nvim',
+        opts = {
+          style = 'light',
+          transparent = false,
+        },
+        config = function()
+          vim.cmd.colorscheme 'NeoSolarized'
+        end,
+      },
+    }
   },
 
   -- Make vim good thanks to tpope
