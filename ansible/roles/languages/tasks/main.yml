@@ -14,7 +14,7 @@
   import_tasks: rust.yml
   tags:
     - rust
-- name: Run python tasks
-  import_tasks: python.yml
+- name: Build work venv
+  import_tasks: workvenv.yml
   tags:
-    - python
+    - venv
