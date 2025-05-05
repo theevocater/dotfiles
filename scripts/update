@@ -20,7 +20,7 @@ system_update() {
 }
 
 submodules() {
-  running "Updating git submodules to master"
+  running "Updating git submodules"
   git submodule update --remote --merge
 }
 
