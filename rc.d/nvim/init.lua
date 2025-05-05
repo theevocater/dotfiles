@@ -1,7 +1,6 @@
 -- Based heavily on my previous vimrc, kickstart.nvim, and lunarvim
 
--- Change mapleader before anything else so plugins don't accidentally get the
--- wrong ideas
+-- Change mapleader before anything else so plugins don't accidentally get the wrong ideas
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -49,6 +48,7 @@ require("lazy").setup({
 	"tpope/vim-git",
 	"tpope/vim-rhubarb",
 
+	-- LSP Configuration & Plugins
 	{
 		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
 		-- used for completion, annotations and signatures of Neovim apis
@@ -61,7 +61,7 @@ require("lazy").setup({
 			},
 		},
 	},
-	{ -- LSP Configuration & Plugins
+	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
@@ -72,6 +72,7 @@ require("lazy").setup({
 			{ "j-hui/fidget.nvim", opts = {} },
 		},
 	},
+
 	-- Autoformatting
 	{ "zapling/mason-conform.nvim", opts = {} },
 	{
@@ -134,8 +135,8 @@ require("lazy").setup({
 		end,
 	},
 
+	-- Autocompletion
 	{
-		-- Autocompletion
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			-- Snippet Engine & its associated nvim-cmp source
