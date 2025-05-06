@@ -9,7 +9,6 @@ typeset -U PATH
 if (( ! $+commands[brew] )); then
   if [[ -x /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    fpath+=("$(brew --prefix)/share/zsh/site-functions")
   fi
 fi
 
@@ -68,6 +67,10 @@ plugins=(
 
 if (( $+commands[gh] )) ; then
   plugins+=(gh)
+fi
+
+if (( $+commands[brew] )) ; then
+  plugins+=(brew)
 fi
 
 # Default to no aliases from plugins
