@@ -9,7 +9,6 @@ typeset -U PATH
 if (( ! $+commands[brew] )); then
   if [[ -x /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    fpath+=("$(brew --prefix)/share/zsh/site-functions")
   fi
 fi
 
@@ -25,13 +24,14 @@ if [[ -d "$HOME/.rd/bin" ]] ; then
   path=("$HOME/.rd/bin" $path)
 fi
 
+export GOPATH="$HOME/.go"
 # Add go get binaries
 if (( $+commands[go] )) ; then
   path=("$(go env GOPATH)/bin" $path)
 fi
 
-if [[ -d "$HOME/bin" ]] ; then
-  path=("$HOME/bin" $path)
+if [[ -d "$HOME/.jakeman/bin" ]] ; then
+  path=("$HOME/.jakeman/bin" $path)
 fi
 
 if [[ -s "$HOME/.local/share/bob" ]] ; then
@@ -68,6 +68,10 @@ plugins=(
 
 if (( $+commands[gh] )) ; then
   plugins+=(gh)
+fi
+
+if (( $+commands[brew] )) ; then
+  plugins+=(brew)
 fi
 
 # Default to no aliases from plugins
