@@ -24,13 +24,14 @@ if [[ -d "$HOME/.rd/bin" ]] ; then
   path=("$HOME/.rd/bin" $path)
 fi
 
+export GOPATH="$HOME/.go"
 # Add go get binaries
 if (( $+commands[go] )) ; then
   path=("$(go env GOPATH)/bin" $path)
 fi
 
-if [[ -d "$HOME/bin" ]] ; then
-  path=("$HOME/bin" $path)
+if [[ -d "$HOME/.jakeman/bin" ]] ; then
+  path=("$HOME/.jakeman/bin" $path)
 fi
 
 if [[ -s "$HOME/.local/share/bob" ]] ; then
