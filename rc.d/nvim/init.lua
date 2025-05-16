@@ -65,8 +65,9 @@ require("lazy").setup({
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
-			{ "williamboman/mason.nvim", config = true },
-			"williamboman/mason-lspconfig.nvim",
+			{ "mason-org/mason.nvim", config = true },
+			"mason-org/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 			-- Useful status updates for LSP
 			{ "j-hui/fidget.nvim", opts = {} },
@@ -449,6 +450,9 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 })
 
 vim.diagnostic.config({
+	severity_sort = true,
+	float = { border = "rounded", source = "if_many" },
+	underline = { severity = vim.diagnostic.severity.ERROR },
 	virtual_text = true,
 	virtual_lines = {
 		current_line = true,
@@ -668,11 +672,14 @@ local servers = {
 	-- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
 	lua_ls = {
-		Lua = {
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
-			-- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-			-- diagnostics = { disable = { 'missing-fields' } },
+		-- cmd = { ... },
+		-- filetypes = { ... },
+		-- capabilities = {},
+		settings = {
+			Lua = {
+				workspace = { checkThirdParty = false },
+				telemetry = { enable = false },
+			},
 		},
 	},
 }
@@ -681,22 +688,24 @@ local servers = {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
--- Ensure the servers above are installed
-local mason_lspconfig = require("mason-lspconfig")
+local ensure_installed = vim.tbl_keys(servers or {})
+vim.list_extend(ensure_installed, {})
+require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-mason_lspconfig.setup({
+require("mason-lspconfig").setup({
+	ensure_installed = {}, -- Populated via mason-tool-installer
+	automatic_enable = true,
 	automatic_installation = false,
-	ensure_installed = vim.tbl_keys(servers),
-})
-
-mason_lspconfig.setup_handlers({
-	function(server_name)
-		require("lspconfig")[server_name].setup({
-			capabilities = capabilities,
-			settings = servers[server_name],
-			filetypes = (servers[server_name] or {}).filetypes,
-		})
-	end,
+	handlers = {
+		function(server_name)
+			local server = servers[server_name] or {}
+			-- This handles overriding only values explicitly passed
+			-- by the server configuration above. Useful when disabling
+			-- certain features of an LSP (for example, turning off formatting for ts_ls)
+			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+			require("lspconfig")[server_name].setup(server)
+		end,
+	},
 })
 
 -- Configure nvim-cmp
@@ -721,7 +730,7 @@ cmp.setup({
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete({}),
+		["<C-Space>"] = cmp.mapping.complete(),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
@@ -745,12 +754,12 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 	}),
-	sources = {
+	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "lazydev", group_index = 0 },
 		{ name = "luasnip" },
 		{ name = "path" },
-	},
+	}, { { name = "buffer" } }),
 })
 
 -- Configure Oil
