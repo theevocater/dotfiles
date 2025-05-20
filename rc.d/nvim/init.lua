@@ -94,7 +94,7 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- These are run sequentially
-				python = { "reorder-python-imports", "black" },
+				python = { "reorder-python-imports" },
 				go = { "gofmt" },
 				-- Use a sub-list to run only the first available formatter
 				-- javascript = { { "prettierd", "prettier" } },
