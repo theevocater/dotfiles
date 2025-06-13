@@ -11,6 +11,7 @@ if (( ! $+commands[brew] )); then
     eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 fi
+fpath+=("$HOMEBREW_PREFIX/share/zsh/site-functions")
 
 if [[ -d "/usr/local/go/bin" ]] ; then
   path=("/usr/local/go/bin" $path)
@@ -70,15 +71,13 @@ if (( $+commands[gh] )) ; then
   plugins+=(gh)
 fi
 
-if (( $+commands[brew] )) ; then
-  plugins+=(brew)
-fi
-
 # Default to no aliases from plugins
 zstyle ':omz:plugins:*' aliases no
 
 # Enable git vcs_info for my prompt
 zstyle ':vcs_info:*' enable git
+
+zstyle ':omz:update' mode disabled
 
 source $ZSH/oh-my-zsh.sh
 ########## Aliases ##########
