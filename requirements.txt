@@ -24,9 +24,9 @@ bracex==2.5.post1
     # via wcmatch
 build==1.2.2.post1
     # via pip-tools
-cachetools==6.0.0
+cachetools==6.1.0
     # via tox
-certifi==2025.4.26
+certifi==2025.6.15
     # via pipenv
 cffi==1.17.1
     # via cryptography
@@ -44,7 +44,7 @@ colorama==0.4.6
     #   log-symbols
     #   milc
     #   tox
-cryptography==45.0.3
+cryptography==45.0.4
     # via ansible-core
 distlib==0.3.9
     # via virtualenv
@@ -55,7 +55,7 @@ filelock==3.18.0
     #   ansible-lint
     #   tox
     #   virtualenv
-greenlet==3.2.2
+greenlet==3.2.3
     # via pynvim
 halo==0.0.31
     # via milc
@@ -82,7 +82,7 @@ markupsafe==3.0.2
     # via jinja2
 milc==1.9.1
     # via qmk
-msgpack==1.1.0
+msgpack==1.1.1
     # via pynvim
 mypy-extensions==1.1.0
     # via black
@@ -157,7 +157,7 @@ rpds-py==0.25.1
     # via
     #   jsonschema
     #   referencing
-ruamel-yaml==0.18.12
+ruamel-yaml==0.18.14
     # via ansible-lint
 ruamel-yaml-clib==0.2.12
     # via ruamel-yaml
@@ -177,7 +177,7 @@ tox==4.26.0
     # via -r requirements.in
 types-colorama==0.4.15.20240311
     # via milc
-typing-extensions==4.13.2
+typing-extensions==4.14.0
     # via referencing
 virtualenv==20.31.2
     # via
@@ -190,7 +190,7 @@ wheel==0.45.1
     # via pip-tools
 yamllint==1.37.1
     # via ansible-lint
-zipp==3.22.0
+zipp==3.23.0
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:

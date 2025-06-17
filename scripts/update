@@ -49,7 +49,7 @@ vim() {
   running "updating nvim Mason registries"
   nvim --headless "+MasonUpdate" +qa
   running "updating nvim Mason tools"
-  nvim --headless "+MasonToolUpdate" +qa
+  nvim --headless "+MasonToolsUpdateSync" +qa
 }
 
 omz() {
