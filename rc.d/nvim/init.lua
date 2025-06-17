@@ -591,7 +591,7 @@ vim.opt.breakindent = true
 -- Line Wrapping
 -------------------------------------------------------------------------------
 vim.opt.wrap = true
-vim.opt.textwidth = 79
+vim.opt.textwidth = 119
 vim.opt.formatoptions = "jcroql1n"
 
 -------------------------------------------------------------------------------
