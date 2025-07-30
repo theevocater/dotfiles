@@ -8,10 +8,10 @@
     url: https://pyenv.run
     dest: "{{ tmp_dir }}/pyenv-run"
     mode: '0755'
-  register: download
+  register: languages_download
 - name: Run pyenv-run
   command:
-    cmd: "{{ download.dest }}"
+    cmd: "{{ languages_download.dest }}"
     creates: "{{ ansible_env.HOME }}/.pyenv"
 - name: Install python build packages
   become_user: root
