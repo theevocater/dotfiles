@@ -9,8 +9,8 @@
     checksum: "{{ go_checksum }}"
     dest: "{{ tmp_dir }}"
     mode: '0644'
-  register: download
+  register: languages_download
 - name: Extract go
   unarchive:
-    src: "{{ download.dest }}"
+    src: "{{ languages_download.dest }}"
     dest: "{{ tmp_dir }}"
