@@ -142,7 +142,7 @@ require("lazy").setup({
 	},
 
 	-- Autoformatting
-	{ "zapling/mason-conform.nvim", opts = {} },
+	{ "zapling/mason-conform.nvim", opts = { ignore_install = { "mypy" } } },
 	{
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
