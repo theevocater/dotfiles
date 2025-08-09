@@ -161,7 +161,7 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- These are run sequentially
-				python = { "reorder-python-imports" },
+				python = { "reorder-python-imports", "ruff_fix", "ruff_format" },
 				go = { "gofmt" },
 				-- Use a sub-list to run only the first available formatter
 				-- javascript = { { "prettierd", "prettier" } },
@@ -188,7 +188,7 @@ require("lazy").setup({
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("lint").linters_by_ft = {
-				python = { "flake8", "mypy" },
+				python = { "ruff", "mypy" },
 				go = { "golangcilint" },
 			}
 
