@@ -6,11 +6,11 @@
 #
 ansible-compat==25.8.1
     # via ansible-lint
-ansible-core==2.19.1
+ansible-core==2.19.2
     # via
     #   ansible-compat
     #   ansible-lint
-ansible-lint==25.8.2
+ansible-lint==25.9.0
     # via -r requirements.in
 argcomplete==3.6.2
     # via milc
@@ -18,7 +18,7 @@ attrs==25.3.0
     # via
     #   jsonschema
     #   referencing
-black==25.1.0
+black==25.9.0
     # via ansible-lint
 bracex==2.6
     # via wcmatch
@@ -28,13 +28,15 @@ cachetools==6.2.0
     # via tox
 certifi==2025.8.3
     # via pipenv
-cffi==1.17.1
-    # via cryptography
+cffi==2.0.0
+    # via
+    #   ansible-lint
+    #   cryptography
 cfgv==3.4.0
     # via pre-commit
 chardet==5.2.0
     # via tox
-click==8.2.1
+click==8.3.0
     # via
     #   black
     #   pip-tools
@@ -44,10 +46,14 @@ colorama==0.4.6
     #   log-symbols
     #   milc
     #   tox
-cryptography==45.0.6
-    # via ansible-core
+cryptography==46.0.1
+    # via
+    #   ansible-core
+    #   ansible-lint
 distlib==0.4.0
     # via virtualenv
+distro==1.9.0
+    # via ansible-lint
 dotty-dict==1.3.1
     # via qmk
 filelock==3.19.1
@@ -63,7 +69,7 @@ hid==1.0.8
     # via qmk
 hjson==3.1.0
     # via qmk
-identify==2.6.13
+identify==2.6.14
     # via pre-commit
 importlib-metadata==8.7.0
     # via ansible-lint
@@ -74,7 +80,7 @@ jsonschema==4.25.1
     #   ansible-compat
     #   ansible-lint
     #   qmk
-jsonschema-specifications==2025.4.1
+jsonschema-specifications==2025.9.1
     # via jsonschema
 log-symbols==0.0.14
     # via halo
@@ -121,11 +127,11 @@ pluggy==1.6.0
     # via tox
 pre-commit==4.3.0
     # via -r requirements.in
-pycparser==2.22
+pycparser==2.23
     # via cffi
 pygments==2.19.2
     # via qmk
-pynvim==0.5.2
+pynvim==0.6.0
     # via neovim
 pyproject-api==1.9.1
     # via tox
@@ -135,6 +141,8 @@ pyproject-hooks==1.2.0
     #   pip-tools
 pyserial==3.5
     # via qmk
+pytokens==0.1.10
+    # via black
 pyusb==1.3.1
     # via qmk
 pyyaml==6.0.2
@@ -159,8 +167,10 @@ rpds-py==0.27.1
     #   referencing
 ruamel-yaml==0.18.15
     # via ansible-lint
-ruamel-yaml-clib==0.2.12
-    # via ruamel-yaml
+ruamel-yaml-clib==0.2.14
+    # via
+    #   ansible-lint
+    #   ruamel-yaml
 six==1.17.0
     # via halo
 spinners==0.0.24
@@ -173,7 +183,7 @@ subprocess-tee==0.4.2
     #   ansible-lint
 termcolor==3.1.0
     # via halo
-tox==4.28.4
+tox==4.30.2
     # via -r requirements.in
 types-colorama==0.4.15.20250801
     # via milc
