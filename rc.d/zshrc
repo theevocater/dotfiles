@@ -81,7 +81,13 @@ zstyle ':omz:update' mode disabled
 
 source $ZSH/oh-my-zsh.sh
 ########## Aliases ##########
-alias pyactive='source venv/bin/activate'
+pyactive() {
+  if [[ -d venv/ ]] ; then
+    source venv/bin/activate
+  elif [[ -d .venv/ ]]; then
+    source .venv/bin/activate
+  fi
+}
 
 # Use nvim
 if (( $+commands[nvim] )) ; then
