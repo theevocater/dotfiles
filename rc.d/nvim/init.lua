@@ -399,9 +399,6 @@ require("lazy").setup({
 		config = function()
 			-- I want to be able to run copilot manually, but not generate ghost cmps
 			vim.cmd(":Copilot disable")
-			vim.keymap.set("n", "<leader>cp", function()
-				vim.cmd(":Copilot panel")
-			end, { desc = "Run [C]o[P]ilot" })
 		end,
 	},
 	{
@@ -435,6 +432,13 @@ require("lazy").setup({
 				},
 			},
 		},
+		config = function(_, opts)
+			require("codecompanion").setup(opts)
+
+			vim.keymap.set("n", "<leader>ccc", function()
+				vim.cmd(":CodeCompanionChat")
+			end, { desc = "Run [C]ode[C]ompanion[C]hat" })
+		end,
 	},
 	{
 		"ravitemer/mcphub.nvim",
@@ -852,6 +856,7 @@ cmp.setup({
 		{ name = "lazydev", group_index = 0 },
 		{ name = "luasnip" },
 		{ name = "path" },
+		{ name = "codecompanion" },
 	}, { { name = "buffer" } }),
 })
 
