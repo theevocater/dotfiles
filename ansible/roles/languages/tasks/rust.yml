@@ -12,4 +12,4 @@
 - name: Run rustup-init
   command:
     cmd: "{{ languages_download.dest }} -y"
-    creates: "{{ ansible_env.HOME }}/.rustup"
+    creates: "{{ ansible_facts['env']['HOME'] }}/.rustup"
