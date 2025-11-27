@@ -1,4 +1,4 @@
 ---
 - name: Update fc-cache
-  command: fc-cache
+  ansible.builtin.command: fc-cache
   when: ansible_facts['os_family'] == "Debian"

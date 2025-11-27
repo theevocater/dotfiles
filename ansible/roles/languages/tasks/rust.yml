@@ -1,15 +1,16 @@
+---
 - name: Ensure {{ tmp_dir }}
-  file:
+  ansible.builtin.file:
     path: "{{ tmp_dir }}"
     state: directory
-    mode: '0755'
+    mode: "0755"
 - name: Download rustup
-  get_url:
+  ansible.builtin.get_url:
     url: https://sh.rustup.rs
     dest: "{{ tmp_dir }}/rustup-init"
-    mode: '0755'
+    mode: "0755"
   register: languages_download
 - name: Run rustup-init
-  command:
+  ansible.builtin.command:
     cmd: "{{ languages_download.dest }} -y"
     creates: "{{ ansible_facts['env']['HOME'] }}/.rustup"

@@ -1,19 +1,19 @@
 ---
 - name: Ensure .fonts exists
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_facts['env']['HOME'] }}/.fonts"
     state: directory
-    mode: '0755'
+    mode: "0755"
 - name: Download hasklig
   vars:
     hasklig_version: 1.1
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ tools_hasklig_url }}"
     dest: "{{ tools_tmp_hasklig_zip }}"
     checksum: sha256:98eccec22bc0ae3838a099a911230f62197e681b6a6c30e5149c52f5fc6a95c3
-    mode: '0644'
+    mode: "0644"
 - name: Extract hasklig to .fonts
-  unarchive:
+  ansible.builtin.unarchive:
     src: "{{ tools_tmp_hasklig_zip }}"
     dest: "{{ tools_font_dir }}"
   notify: Update fc-cache
