@@ -3,24 +3,8 @@ repos:
   rev: 3.0.0
   hooks:
     - id: shellcheck
-- repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.18.2
-  hooks:
-    - id: mypy
-- repo: https://github.com/asottile/reorder_python_imports
-  rev: v3.16.0
-  hooks:
-  - id: reorder-python-imports
-- repo: https://github.com/PyCQA/flake8
-  rev: 7.3.0
-  hooks:
-    - id: flake8
-- repo: https://github.com/pre-commit/mirrors-autopep8
-  rev: v2.0.4
-  hooks:
-    - id: autopep8
 - repo: https://github.com/ansible/ansible-lint.git
-  rev: v25.11.0
+  rev: v25.11.1
   hooks:
     - id: ansible-lint
       files: ^ansible/
