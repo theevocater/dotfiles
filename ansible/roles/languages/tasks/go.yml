@@ -5,7 +5,7 @@
     mode: '0755'
 - name: Download go {{ go_version }}
   get_url:
-    url: "https://dl.google.com/go/go{{ go_version }}.{{ ansible_system.lower() }}-amd64.tar.gz"
+    url: "https://dl.google.com/go/go{{ go_version }}.{{ ansible_facts['system'].lower() }}-amd64.tar.gz"
     checksum: "{{ go_checksum }}"
     dest: "{{ tmp_dir }}"
     mode: '0644'

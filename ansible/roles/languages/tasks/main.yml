@@ -1,13 +1,13 @@
 - name: Install golang
   import_tasks: go.yml
   # OSX uses brew
-  when: ansible_system == "Linux"
+  when: ansible_facts['system'] == "Linux"
   tags:
     - go
 - name: Install pyenv
   import_tasks: pyenv.yml
   # OSX uses brew
-  when: ansible_system == "Linux"
+  when: ansible_facts['system'] == "Linux"
   tags:
     - pyenv
 - name: Install rust
