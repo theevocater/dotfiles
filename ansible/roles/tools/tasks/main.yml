@@ -2,10 +2,10 @@
 # Platform specific vars
 - name: Linux
   include_vars: linux.yml
-  when: ansible_system == "Linux"
+  when: ansible_facts['system'] == "Linux"
 - name: OSX
   include_vars: osx.yml
-  when: ansible_system == "Darwin"
+  when: ansible_facts['system'] == "Darwin"
 
 # Run Tasks
 - name: Set up font

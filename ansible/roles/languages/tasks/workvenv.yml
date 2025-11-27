@@ -1,18 +1,18 @@
 - name: Ensure ~/.jakeman/bin/
   file:
-    path: "{{ ansible_env.HOME }}/.jakeman/bin"
+    path: "{{ ansible_facts['env']['HOME'] }}/.jakeman/bin"
     state: directory
     mode: '0755'
 - name: Build work venv
   pip:
-    chdir: "{{ ansible_env.HOME }}/.dotfiles/"
+    chdir: "{{ ansible_facts['env']['HOME'] }}/.dotfiles/"
     requirements: requirements.txt
     virtualenv: venv
     virtualenv_python: python3
 - name: Symlink binaries from venv to ~/.jakeman/bin
   file:
-    src: "{{ ansible_env.HOME }}/.dotfiles/venv/bin/{{ item }}"
-    dest: "{{ ansible_env.HOME }}/.jakeman/bin/{{ item }}"
+    src: "{{ ansible_facts['env']['HOME'] }}/.dotfiles/venv/bin/{{ item }}"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.jakeman/bin/{{ item }}"
     state: link
   loop:
     - ansible-lint

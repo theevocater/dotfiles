@@ -1,1 +1,1 @@
-tools_font_dir: "{{ ansible_env.HOME }}/Library/Fonts"
+tools_font_dir: "{{ ansible_facts['env']['HOME'] }}/Library/Fonts"

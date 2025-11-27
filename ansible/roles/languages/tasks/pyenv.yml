@@ -12,7 +12,7 @@
 - name: Run pyenv-run
   command:
     cmd: "{{ languages_download.dest }}"
-    creates: "{{ ansible_env.HOME }}/.pyenv"
+    creates: "{{ ansible_facts['env']['HOME'] }}/.pyenv"
 - name: Install python build packages
   become_user: root
   become: true

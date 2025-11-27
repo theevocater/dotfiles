@@ -1,7 +1,7 @@
 ---
 - name: Ensure .fonts exists
   file:
-    path: "{{ ansible_env.HOME }}/.fonts"
+    path: "{{ ansible_facts['env']['HOME'] }}/.fonts"
     state: directory
     mode: '0755'
 - name: Download hasklig

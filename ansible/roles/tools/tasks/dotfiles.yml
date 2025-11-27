@@ -1,7 +1,7 @@
 - name: Symlink HOME dotfiles
   file:
-    src: "{{ ansible_env.HOME }}/.dotfiles/rc.d/{{ item }}"
-    dest: "{{ ansible_env.HOME }}/.{{ item }}"
+    src: "{{ ansible_facts['env']['HOME'] }}/.dotfiles/rc.d/{{ item }}"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.{{ item }}"
     state: link
   loop:
     - bash_logout
@@ -17,13 +17,13 @@
     - zshrc
 - name: Ensure .config exists
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.config/"
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/"
     state: directory
     mode: '0755'
 - name: Symlink .config/ dotfiles
   file:
-    src: "{{ ansible_env.HOME }}/.dotfiles/rc.d/{{ item }}"
-    dest: "{{ ansible_env.HOME }}/.config/{{ item }}"
+    src: "{{ ansible_facts['env']['HOME'] }}/.dotfiles/rc.d/{{ item }}"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/{{ item }}"
     state: link
   loop:
     - kitty
