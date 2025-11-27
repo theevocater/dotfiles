@@ -1,3 +1,4 @@
+---
 - name: Install brew packages
-  import_tasks: osx.yml
+  ansible.builtin.import_tasks: osx.yml
   when: ansible_facts['system'] == "Darwin"

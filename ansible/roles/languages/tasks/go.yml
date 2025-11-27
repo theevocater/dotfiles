@@ -1,16 +1,17 @@
+---
 - name: Ensure {{ tmp_dir }}
-  file:
+  ansible.builtin.file:
     path: "{{ tmp_dir }}"
     state: directory
-    mode: '0755'
+    mode: "0755"
 - name: Download go {{ go_version }}
-  get_url:
+  ansible.builtin.get_url:
     url: "https://dl.google.com/go/go{{ go_version }}.{{ ansible_facts['system'].lower() }}-amd64.tar.gz"
     checksum: "{{ go_checksum }}"
     dest: "{{ tmp_dir }}"
-    mode: '0644'
+    mode: "0644"
   register: languages_download
 - name: Extract go
-  unarchive:
+  ansible.builtin.unarchive:
     src: "{{ languages_download.dest }}"
     dest: "{{ tmp_dir }}"

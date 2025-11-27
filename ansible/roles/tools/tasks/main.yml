@@ -1,14 +1,14 @@
 ---
 # Platform specific vars
 - name: Linux
-  include_vars: linux.yml
+  ansible.builtin.include_vars: linux.yml
   when: ansible_facts['system'] == "Linux"
 - name: OSX
-  include_vars: osx.yml
+  ansible.builtin.include_vars: osx.yml
   when: ansible_facts['system'] == "Darwin"
 
 # Run Tasks
 - name: Set up font
-  import_tasks: fonts.yml
+  ansible.builtin.import_tasks: fonts.yml
 - name: Set up dotfiles links
-  import_tasks: dotfiles.yml
+  ansible.builtin.import_tasks: dotfiles.yml

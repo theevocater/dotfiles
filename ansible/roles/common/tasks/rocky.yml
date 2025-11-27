@@ -1,3 +1,4 @@
+---
 - name: Add gh cli yum repo
   ansible.builtin.yum_repository:
     name: gh-cli
@@ -6,10 +7,10 @@
     enabled: true
     gpgkey: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x23F3D4EA75716059
 - name: Install non-x packages
-  dnf:
+  ansible.builtin.dnf:
     name:
-      - '@Server'
-      - '@Development'
+      - "@Server"
+      - "@Development"
       - ansible
       - cmake
       - ctags
@@ -29,7 +30,7 @@
     update_cache: true
     state: present
 - name: Ensure jkaufman exists
-  user:
+  ansible.builtin.user:
     name: jkaufman
     comment: "Jake Kaufman"
     shell: /usr/bin/zsh

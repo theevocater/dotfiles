@@ -1,6 +1,7 @@
+---
 - name: Run common tasks ubuntu
-  import_tasks: ubuntu.yml
+  ansible.builtin.import_tasks: ubuntu.yml
   when: ansible_facts['distribution'] == "Ubuntu"
 - name: Run common tasks rocky
-  import_tasks: rocky.yml
+  ansible.builtin.import_tasks: rocky.yml
   when: ansible_facts['distribution'] == "Rocky"

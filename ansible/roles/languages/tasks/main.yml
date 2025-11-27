@@ -1,20 +1,19 @@
+---
 - name: Install golang
-  import_tasks: go.yml
-  # OSX uses brew
+  ansible.builtin.import_tasks: go.yml
   when: ansible_facts['system'] == "Linux"
   tags:
     - go
 - name: Install pyenv
-  import_tasks: pyenv.yml
-  # OSX uses brew
+  ansible.builtin.import_tasks: pyenv.yml
   when: ansible_facts['system'] == "Linux"
   tags:
     - pyenv
 - name: Install rust
-  import_tasks: rust.yml
+  ansible.builtin.import_tasks: rust.yml
   tags:
     - rust
 - name: Build work venv
-  import_tasks: workvenv.yml
+  ansible.builtin.import_tasks: workvenv.yml
   tags:
     - venv
