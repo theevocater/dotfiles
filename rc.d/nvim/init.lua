@@ -189,7 +189,7 @@ require("lazy").setup({
 		config = function()
 			require("lint").linters_by_ft = {
 				python = { "ruff", "mypy" },
-				go = { "golangcilint" },
+				go = { "golangci-lint" },
 			}
 
 			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
@@ -786,7 +786,11 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 local ensure_installed = vim.tbl_keys(servers or {})
-vim.list_extend(ensure_installed, {})
+for i, v in ipairs(ensure_installed) do
+	if v == "lua_ls" then
+		ensure_installed[i] = { "lua_ls", version = "3.16.4", auto_update = false }
+	end
+end
 require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 require("mason-lspconfig").setup({
