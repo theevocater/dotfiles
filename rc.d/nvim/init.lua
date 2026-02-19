@@ -517,6 +517,34 @@ require("lazy").setup({
 })
 
 -------------------------------------------------------------------------------
+-- Python Virtualenv Auto-activation
+-------------------------------------------------------------------------------
+local function activate_virtualenv()
+	if vim.env.VIRTUAL_ENV then
+		return
+	end
+
+	local venv_paths = { "venv", ".venv" }
+	local cwd = vim.fn.getcwd()
+
+	for _, venv_name in ipairs(venv_paths) do
+		local venv_path = cwd .. "/" .. venv_name
+		local python_path = venv_path .. "/bin/python"
+
+		if vim.fn.isdirectory(venv_path) == 1 and vim.fn.executable(python_path) == 1 then
+			vim.env.VIRTUAL_ENV = venv_path
+			vim.env.PATH = venv_path .. "/bin:" .. vim.env.PATH
+			return
+		end
+	end
+end
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = activate_virtualenv,
+	desc = "Auto-activate Python virtualenv if present",
+})
+
+-------------------------------------------------------------------------------
 -- Interface
 -------------------------------------------------------------------------------
 -- set noerrorbells
