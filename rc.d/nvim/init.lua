@@ -517,30 +517,31 @@ require("lazy").setup({
 })
 
 -------------------------------------------------------------------------------
--- Python Virtualenv Auto-activation
+-- Python Virtualenvs
 -------------------------------------------------------------------------------
-local function activate_virtualenv()
-	if vim.env.VIRTUAL_ENV then
-		return
-	end
+vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
+	group = vim.api.nvim_create_augroup("PythonVirtualenvAutoActivation", { clear = true }),
+	callback = function()
+		local venv_paths = { "venv", ".venv" }
+		local cwd = vim.fn.getcwd()
 
-	local venv_paths = { "venv", ".venv" }
-	local cwd = vim.fn.getcwd()
-
-	for _, venv_name in ipairs(venv_paths) do
-		local venv_path = cwd .. "/" .. venv_name
-		local python_path = venv_path .. "/bin/python"
-
-		if vim.fn.isdirectory(venv_path) == 1 and vim.fn.executable(python_path) == 1 then
-			vim.env.VIRTUAL_ENV = venv_path
-			vim.env.PATH = venv_path .. "/bin:" .. vim.env.PATH
-			return
+		if vim.env.VIRTUAL_ENV then
+			local old_venv_bin = vim.env.VIRTUAL_ENV .. "/bin"
+			vim.env.PATH = vim.env.PATH:gsub("^" .. vim.pesc(old_venv_bin .. ":"), "")
+			vim.env.VIRTUAL_ENV = nil
 		end
-	end
-end
 
-vim.api.nvim_create_autocmd("VimEnter", {
-	callback = activate_virtualenv,
+		for _, venv_name in ipairs(venv_paths) do
+			local venv_path = cwd .. "/" .. venv_name
+			local python_path = venv_path .. "/bin/python"
+
+			if vim.fn.isdirectory(venv_path) == 1 and vim.fn.executable(python_path) == 1 then
+				vim.env.VIRTUAL_ENV = venv_path
+				vim.env.PATH = venv_path .. "/bin:" .. vim.env.PATH
+				return
+			end
+		end
+	end,
 	desc = "Auto-activate Python virtualenv if present",
 })
 
