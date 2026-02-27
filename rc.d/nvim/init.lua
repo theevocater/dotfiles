@@ -196,7 +196,14 @@ require("lazy").setup({
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("lint").linters_by_ft = {
-				python = { "ruff", "mypy" },
+				python = (function()
+					local linters = { "ruff" }
+					-- Only add mypy if its installed (should be in the venv)
+					if vim.fn.executable("mypy") == 1 then
+						table.insert(linters, "mypy")
+					end
+					return linters
+				end)(),
 				go = { "golangci-lint" },
 			}
 
