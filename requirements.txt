@@ -14,7 +14,7 @@ ansible-lint==26.3.0
     # via -r requirements.in
 argcomplete==3.6.3
     # via milc
-attrs==25.4.0
+attrs==26.1.0
     # via
     #   jsonschema
     #   referencing
@@ -68,7 +68,7 @@ hid==1.0.9
     # via qmk
 hjson==3.1.0
     # via qmk
-identify==2.6.17
+identify==2.6.18
     # via pre-commit
 jinja2==3.1.6
     # via ansible-core
@@ -113,7 +113,7 @@ pillow==12.1.1
     # via qmk
 pip-tools==7.5.3
     # via -r requirements.in
-pipenv==2026.0.3
+pipenv==2026.2.1
     # via -r requirements.in
 platformdirs==4.9.4
     # via
@@ -141,7 +141,7 @@ pyproject-hooks==1.2.0
     #   pip-tools
 pyserial==3.5
     # via qmk
-python-discovery==1.1.3
+python-discovery==1.2.0
     # via virtualenv
 pytokens==0.4.1
     # via black
@@ -183,7 +183,7 @@ termcolor==3.3.0
     # via halo
 tomli-w==1.2.0
     # via tox
-tox==4.49.1
+tox==4.50.3
     # via -r requirements.in
 types-colorama==0.4.15.20250801
     # via milc
