@@ -220,18 +220,53 @@ require("lazy").setup({
 
 	-- Autocompletion
 	{
-		"hrsh7th/nvim-cmp",
+		"saghen/blink.cmp",
+		version = "1.*",
 		dependencies = {
-			-- Snippet Engine & its associated nvim-cmp source
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
-
-			-- Adds LSP completion capabilities
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
-
-			-- Adds a number of user-friendly snippets
-			"rafamadriz/friendly-snippets",
+			{
+				"L3MON4D3/LuaSnip",
+				version = "2.*",
+				dependencies = { "rafamadriz/friendly-snippets" },
+				config = function()
+					require("luasnip.loaders.from_vscode").lazy_load()
+					require("luasnip.loaders.from_vscode").lazy_load({ paths = "./snippets" })
+				end,
+			},
+			"Kaiser-Yang/blink-cmp-git",
+		},
+		opts = {
+			keymap = {
+				preset = "default",
+				["<CR>"] = { "accept", "fallback" },
+				["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
+				["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
+				["<C-b>"] = { "scroll_documentation_up", "fallback" },
+				["<C-f>"] = { "scroll_documentation_down", "fallback" },
+			},
+			completion = {
+				list = { selection = { preselect = true, auto_insert = false } },
+				documentation = { auto_show = true, auto_show_delay_ms = 200 },
+			},
+			sources = {
+				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				per_filetype = {
+					gitcommit = { "git" },
+				},
+				providers = {
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						score_offset = 100,
+					},
+					git = {
+						name = "Git",
+						module = "blink-cmp-git",
+					},
+				},
+			},
+			snippets = { preset = "luasnip" },
+			fuzzy = { implementation = "lua" },
+			signature = { enabled = true },
 		},
 	},
 
@@ -335,6 +370,8 @@ require("lazy").setup({
 				"java",
 				"javascript",
 				"lua",
+				"markdown",
+				"markdown_inline",
 				"python",
 				"rust",
 				"terraform",
@@ -516,7 +553,10 @@ require("lazy").setup({
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		opts = {
 			headings = { "▸ ", "▸▸ ", "▸▸▸ ", "▸▸▸▸ ", "▸▸▸▸▸ ", "▸▸▸▸▸▸ " },
-			checkbox = { unchecked = "☐", checked = "☑" },
+			checkbox = {
+				unchecked = { icon = "☐" },
+				checked = { icon = "☑" },
+			},
 		},
 	},
 	-- Syntax for kovidgoyal/kitty
@@ -580,8 +620,6 @@ vim.opt.showcmd = true
 vim.o.relativenumber = true
 -- always show the statusline
 vim.opt.laststatus = 2
--- redraw only when we need to.
-vim.opt.lazyredraw = true
 
 -- TODO Enable these?
 -- vim.opt.splitright = true
@@ -631,6 +669,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 })
 
 vim.diagnostic.config({
+	update_in_insert = false,
 	severity_sort = true,
 	float = { border = "rounded", source = "if_many" },
 	underline = { severity = vim.diagnostic.severity.ERROR },
@@ -638,6 +677,7 @@ vim.diagnostic.config({
 	virtual_lines = {
 		current_line = true,
 	},
+	jump = { float = true },
 })
 
 -- see if any files have changed when switching buffers
@@ -741,8 +781,8 @@ vim.keymap.set("n", "<leader>p", ":set paste!<CR>", { silent = true })
 -- remove trailing spaces
 vim.keymap.set("n", "<leader>c", ":%s/\\s\\+$//<CR>", { silent = true })
 
--- TODO Create mapping to check if darkmode is on
---
+-- Exit terminal mode
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
 
 -------------------------------------------------------------------------------
 -- Setup plugins
@@ -779,10 +819,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- Fuzzy find all the symbols in your current workspace.
 		--  Similar to document symbols, except searches over your entire project.
 		map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-
-		-- Opens a popup that displays documentation about the word under your cursor
-		--  See `:help K` for why this keymap.
-		map("K", vim.lsp.buf.hover, "Hover Documentation")
 
 		-- WARN: This is not Goto Definition, this is Goto Declaration.
 		--  For example, in C this would take you to the header.
@@ -866,9 +902,12 @@ local servers = {
 	},
 }
 
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+-- blink.cmp supports additional completion capabilities, so broadcast that to servers
+local capabilities = vim.tbl_deep_extend(
+	"force",
+	vim.lsp.protocol.make_client_capabilities(),
+	require("blink.cmp").get_lsp_capabilities()
+)
 
 local ensure_installed = vim.tbl_keys(servers or {})
 for i, v in ipairs(ensure_installed) do
@@ -893,60 +932,6 @@ require("mason-lspconfig").setup({
 			vim.lsp.enable(server_name)
 		end,
 	},
-})
-
--- Configure nvim-cmp
--- See `:help cmp`
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip.loaders.from_vscode").lazy_load({ paths = "./snippets" })
-luasnip.config.setup({})
-
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			luasnip.lsp_expand(args.body)
-		end,
-	},
-	completion = {
-		completeopt = "menu,menuone,noinsert",
-	},
-	mapping = cmp.mapping.preset.insert({
-		["<C-n>"] = cmp.mapping.select_next_item(),
-		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<C-b>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<CR>"] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
-		}),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expand_or_locally_jumpable() then
-				luasnip.expand_or_jump()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.locally_jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-	}),
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "lazydev", group_index = 0 },
-		{ name = "luasnip" },
-		{ name = "path" },
-	}, { { name = "buffer" } }),
 })
 
 -- Configure Oil
