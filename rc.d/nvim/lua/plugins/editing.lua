@@ -10,6 +10,7 @@ return {
 	"tpope/vim-git",
 	"tpope/vim-rhubarb",
 
+	-- Moving to modern nvim-surround instead of vim-surround
 	{
 		"kylechui/nvim-surround",
 		event = "VeryLazy",
