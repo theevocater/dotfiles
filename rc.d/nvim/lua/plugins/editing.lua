@@ -9,4 +9,10 @@ return {
 	},
 	"tpope/vim-git",
 	"tpope/vim-rhubarb",
+
+	{
+		"kylechui/nvim-surround",
+		event = "VeryLazy",
+		opts = {},
+	},
 }
