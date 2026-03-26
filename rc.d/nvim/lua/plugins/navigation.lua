@@ -62,6 +62,12 @@ return {
 				defaults = {
 					-- `hidden = true` is not supported in text grep commands.
 					vimgrep_arguments = vimgrep_arguments,
+					mappings = {
+						i = {
+							-- Restore C-u to clear prompt (default scrolls preview up)
+							["<C-u>"] = false,
+						},
+					},
 				},
 				pickers = {
 					find_files = {

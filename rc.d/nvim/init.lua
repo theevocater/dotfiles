@@ -1,5 +1,4 @@
 -- Based heavily on my previous vimrc, kickstart.nvim, and lunarvim
--- Drift analysis vs upstream kickstart: rc.d/nvim/kickstart-drift.md
 
 -- Change mapleader before anything else so plugins don't accidentally get the wrong ideas
 vim.g.mapleader = " "
@@ -22,6 +21,3 @@ require("options")
 require("keymaps")
 require("autocmds")
 require("lsp")
-
--- TODO
--- C-u in telescope
