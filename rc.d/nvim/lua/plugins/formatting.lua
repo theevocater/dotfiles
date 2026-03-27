@@ -54,7 +54,7 @@ return {
 					end
 					return linters
 				end)(),
-				go = { "golangci-lint" },
+				go = { "golangcilint" },
 			}
 
 			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
