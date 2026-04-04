@@ -29,3 +29,13 @@
   loop:
     - kitty
     - nvim
+- name: Ensure .config/jj exists
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/jj"
+    state: directory
+    mode: "0755"
+- name: Symlink jj config.toml
+  ansible.builtin.file:
+    src: "{{ ansible_facts['env']['HOME'] }}/.dotfiles/rc.d/jj/config.toml"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/jj/config.toml"
+    state: link

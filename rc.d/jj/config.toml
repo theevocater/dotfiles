@@ -1,0 +1,15 @@
+[user]
+name = "Jake Kaufman"
+email = "me@jake.computer"
+
+[ui]
+editor = "nvim"
+#diff.format = "git"
+
+[aliases]
+st = ["status"]
+lg = ["log", "--graph"]
+# jj equivalent of git checkout: go edit an existing commit
+co = ["edit"]
+# jj equivalent of git branch
+br = ["bookmark", "list"]
