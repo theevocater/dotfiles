@@ -13,5 +13,10 @@ vim.keymap.set("n", "<leader>p", ":set paste!<CR>", { silent = true })
 -- remove trailing spaces
 vim.keymap.set("n", "<leader>c", ":%s/\\s\\+$//<CR>", { silent = true })
 
+-- undotree
+vim.cmd("packadd nvim.undotree")
+
+vim.keymap.set("n", "<leader>u", ":Undotree<CR>", { silent = true })
+
 -- Exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
