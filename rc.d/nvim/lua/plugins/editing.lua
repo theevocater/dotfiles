@@ -9,6 +9,16 @@ return {
 	},
 	"tpope/vim-git",
 	"tpope/vim-rhubarb",
+	{
+		"pwntester/octo.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		opts = {
+			default_merge_method = "squash",
+		},
+	},
 
 	-- Moving to modern nvim-surround instead of vim-surround
 	{
