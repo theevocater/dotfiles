@@ -53,10 +53,12 @@ vim() {
 }
 
 omz() {
+  running "updating omz"
   "$ZSH"/tools/upgrade.sh
 }
 
 rust() {
+  running "updating rustup update"
   rustup update
 }
 
