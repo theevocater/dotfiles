@@ -44,7 +44,7 @@ colorama==0.4.6
     #   log-symbols
     #   milc
     #   tox
-cryptography==46.0.6
+cryptography==46.0.7
     # via
     #   ansible-core
     #   ansible-lint
@@ -60,7 +60,7 @@ filelock==3.25.2
     #   python-discovery
     #   tox
     #   virtualenv
-greenlet==3.3.2
+greenlet==3.4.0
     # via pynvim
 halo==0.0.31
     # via milc
@@ -115,7 +115,7 @@ pip-tools==7.5.3
     # via -r requirements.in
 pipenv==2026.5.2
     # via -r requirements.in
-platformdirs==4.9.4
+platformdirs==4.9.6
     # via
     #   black
     #   milc
@@ -141,7 +141,7 @@ pyproject-hooks==1.2.0
     #   pip-tools
 pyserial==3.5
     # via qmk
-python-discovery==1.2.1
+python-discovery==1.2.2
     # via
     #   tox
     #   virtualenv
@@ -185,13 +185,13 @@ termcolor==3.3.0
     # via halo
 tomli-w==1.2.0
     # via tox
-tox==4.52.0
+tox==4.52.1
     # via -r requirements.in
-types-colorama==0.4.15.20250801
+types-colorama==0.4.15.20260408
     # via milc
 typing-extensions==4.15.0
     # via milc
-virtualenv==21.2.0
+virtualenv==21.2.1
     # via
     #   pipenv
     #   pre-commit
