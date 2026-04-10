@@ -2,14 +2,10 @@ return {
 	{
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
+		branch = "main",
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- This is the main module for opts
-		opts = {
-			-- Add languages to be installed here that you want installed for treesitter
-			ensure_installed = {
+		config = function()
+			local ensure_installed = {
 				"bash",
 				"c",
 				"cpp",
@@ -27,24 +23,24 @@ return {
 				"vim",
 				"vimdoc",
 				"yaml",
-			},
+			}
 
-			auto_install = false,
-			sync_install = false,
-			ignore_install = {},
-			modules = {},
+			require("nvim-treesitter").install(ensure_installed)
 
-			highlight = { enable = true },
-			indent = { enable = true },
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "gnn",
-					node_incremental = "grn",
-					scope_incremental = "grc",
-					node_decremental = "grm",
-				},
-			},
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function(args)
+					pcall(vim.treesitter.start, args.buf)
+					vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end,
+			})
+		end,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		branch = "main",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = {
 			textobjects = {
 				select = {
 					enable = true,

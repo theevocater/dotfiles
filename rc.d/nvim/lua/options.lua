@@ -117,6 +117,13 @@ vim.opt.viminfo = [['20,<50,s10,h,%]]
 vim.opt.listchars = "tab:>-,trail:_,eol:$,nbsp:␣"
 
 -------------------------------------------------------------------------------
+-- Folding
+-------------------------------------------------------------------------------
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldenable = false -- don't fold on open
+
+-------------------------------------------------------------------------------
 -- Diagnostics
 -------------------------------------------------------------------------------
 vim.diagnostic.config({
