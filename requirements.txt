@@ -6,7 +6,7 @@
 #
 ansible-compat==26.3.0
     # via ansible-lint
-ansible-core==2.20.4
+ansible-core==2.20.5
     # via
     #   ansible-compat
     #   ansible-lint
@@ -22,11 +22,11 @@ black==26.3.1
     # via ansible-lint
 bracex==2.6
     # via wcmatch
-build==1.4.2
+build==1.4.4
     # via pip-tools
-cachetools==7.0.5
+cachetools==7.0.6
     # via tox
-certifi==2026.2.25
+certifi==2026.4.22
     # via pipenv
 cffi==2.0.0
     # via
@@ -34,7 +34,7 @@ cffi==2.0.0
     #   cryptography
 cfgv==3.5.0
     # via pre-commit
-click==8.3.2
+click==8.3.3
     # via
     #   black
     #   pip-tools
@@ -44,7 +44,7 @@ colorama==0.4.6
     #   log-symbols
     #   milc
     #   tox
-cryptography==46.0.7
+cryptography==47.0.0
     # via
     #   ansible-core
     #   ansible-lint
@@ -54,7 +54,7 @@ distro==1.9.0
     # via ansible-lint
 dotty-dict==1.3.1
     # via qmk
-filelock==3.25.2
+filelock==3.29.0
     # via
     #   ansible-lint
     #   python-discovery
@@ -68,7 +68,7 @@ hid==1.0.9
     # via qmk
 hjson==3.1.0
     # via qmk
-identify==2.6.18
+identify==2.6.19
     # via pre-commit
 jinja2==3.1.6
     # via ansible-core
@@ -83,7 +83,7 @@ log-symbols==0.0.14
     # via halo
 markupsafe==3.0.3
     # via jinja2
-milc==1.10.0
+milc==2.0.0
     # via qmk
 msgpack==1.1.2
     # via pynvim
@@ -93,7 +93,7 @@ neovim==0.3.1
     # via -r requirements.in
 nodeenv==1.10.0
     # via pre-commit
-packaging==26.0
+packaging==26.2
     # via
     #   ansible-compat
     #   ansible-core
@@ -125,7 +125,7 @@ platformdirs==4.9.6
     #   virtualenv
 pluggy==1.6.0
     # via tox
-pre-commit==4.5.1
+pre-commit==4.6.0
     # via -r requirements.in
 pycparser==3.0
     # via cffi
@@ -185,20 +185,20 @@ termcolor==3.3.0
     # via halo
 tomli-w==1.2.0
     # via tox
-tox==4.52.1
+tox==4.53.0
     # via -r requirements.in
 types-colorama==0.4.15.20260408
     # via milc
 typing-extensions==4.15.0
     # via milc
-virtualenv==21.2.1
+virtualenv==21.2.4
     # via
     #   pipenv
     #   pre-commit
     #   tox
 wcmatch==10.1
     # via ansible-lint
-wheel==0.46.3
+wheel==0.47.0
     # via pip-tools
 yamllint==1.38.0
     # via ansible-lint
