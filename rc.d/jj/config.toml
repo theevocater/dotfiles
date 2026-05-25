@@ -4,6 +4,7 @@ email = "me@jake.computer"
 
 [ui]
 editor = "nvim"
+default-command = "log"
 #diff.format = "git"
 
 [aliases]
