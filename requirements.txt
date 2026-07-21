@@ -4,15 +4,15 @@
 #
 #    pip-compile
 #
-ansible-compat==26.3.0
+ansible-compat==26.6.0
     # via ansible-lint
-ansible-core==2.21.0
+ansible-core==2.21.2
     # via
     #   ansible-compat
     #   ansible-lint
-ansible-lint==26.4.0
+ansible-lint==26.6.0
     # via -r requirements.in
-argcomplete==3.6.3
+argcomplete==3.7.0
     # via milc
 attrs==26.1.0
     # via
@@ -20,21 +20,21 @@ attrs==26.1.0
     #   referencing
 black==26.5.1
     # via ansible-lint
-bracex==2.6
+bracex==3.0.1
     # via wcmatch
 build==1.5.0
     # via pip-tools
 cachetools==7.1.4
     # via tox
-certifi==2026.5.20
+certifi==2026.6.17
     # via pipenv
-cffi==2.0.0
+cffi==2.1.0
     # via
     #   ansible-lint
     #   cryptography
 cfgv==3.5.0
     # via pre-commit
-click==8.4.1
+click==8.4.2
     # via
     #   black
     #   pip-tools
@@ -44,23 +44,23 @@ colorama==0.4.6
     #   log-symbols
     #   milc
     #   tox
-cryptography==48.0.0
+cryptography==49.0.0
     # via
     #   ansible-core
     #   ansible-lint
-distlib==0.4.0
+distlib==0.4.3
     # via virtualenv
 distro==1.9.0
     # via ansible-lint
 dotty-dict==1.3.1
     # via qmk
-filelock==3.29.0
+filelock==3.32.0
     # via
     #   ansible-lint
     #   python-discovery
     #   tox
     #   virtualenv
-greenlet==3.5.1
+greenlet==3.5.3
     # via pynvim
 halo==0.0.31
     # via milc
@@ -85,7 +85,7 @@ markupsafe==3.0.3
     # via jinja2
 milc==2.0.0
     # via qmk
-msgpack==1.1.2
+msgpack==1.2.1
     # via pynvim
 mypy-extensions==1.1.0
     # via black
@@ -104,18 +104,18 @@ packaging==26.2
     #   pyproject-api
     #   tox
     #   wheel
-pathspec==1.0.4
+pathspec==1.1.1
     # via
     #   ansible-lint
     #   black
     #   yamllint
-pillow==12.2.0
+pillow==12.3.0
     # via qmk
-pip-tools==7.5.3
+pip-tools==7.6.0
     # via -r requirements.in
-pipenv==2026.6.1
+pipenv==2026.6.2
     # via -r requirements.in
-platformdirs==4.9.6
+platformdirs==4.11.0
     # via
     #   black
     #   milc
@@ -133,7 +133,7 @@ pygments==2.20.0
     # via qmk
 pynvim==0.6.0
     # via neovim
-pyproject-api==1.10.0
+pyproject-api==1.11.0
     # via tox
 pyproject-hooks==1.2.0
     # via
@@ -141,7 +141,7 @@ pyproject-hooks==1.2.0
     #   pip-tools
 pyserial==3.5
     # via qmk
-python-discovery==1.3.1
+python-discovery==1.5.0
     # via
     #   tox
     #   virtualenv
@@ -165,7 +165,7 @@ referencing==0.37.0
     #   jsonschema-specifications
 resolvelib==1.2.1
     # via ansible-core
-rpds-py==0.30.0
+rpds-py==2026.6.3
     # via
     #   jsonschema
     #   referencing
@@ -185,18 +185,18 @@ termcolor==3.3.0
     # via halo
 tomli-w==1.2.0
     # via tox
-tox==4.54.0
+tox==4.58.0
     # via -r requirements.in
 types-colorama==0.4.15.20260508
     # via milc
-typing-extensions==4.15.0
+typing-extensions==4.16.0
     # via milc
-virtualenv==21.3.3
+virtualenv==21.7.0
     # via
     #   pipenv
     #   pre-commit
     #   tox
-wcmatch==10.1
+wcmatch==11.0
     # via ansible-lint
 wheel==0.47.0
     # via pip-tools
