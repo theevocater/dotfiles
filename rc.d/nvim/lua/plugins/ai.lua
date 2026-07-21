@@ -1,12 +1,5 @@
 return {
 	{
-		"github/copilot.vim",
-		config = function()
-			-- I want to be able to run copilot manually, but not generate ghost cmps
-			vim.cmd(":Copilot disable")
-		end,
-	},
-	{
 		"folke/sidekick.nvim",
 		opts = {
 			cli = {

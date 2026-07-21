@@ -101,7 +101,6 @@ local servers = {
 	rust_analyzer = {},
 	terraformls = {},
 	ts_ls = {},
-	copilot = {},
 	-- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
 	lua_ls = {
