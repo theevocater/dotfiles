@@ -124,11 +124,6 @@ local capabilities = vim.tbl_deep_extend(
 )
 
 local ensure_installed = vim.tbl_keys(servers or {})
-for i, v in ipairs(ensure_installed) do
-	if v == "lua_ls" then
-		ensure_installed[i] = { "lua_ls", version = "3.16.4", auto_update = false }
-	end
-end
 table.insert(ensure_installed, "tree-sitter-cli")
 require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
