@@ -29,6 +29,7 @@
   loop:
     - kitty
     - nvim
+    - zellij
 - name: Ensure .config/jj exists
   ansible.builtin.file:
     path: "{{ ansible_facts['env']['HOME'] }}/.config/jj"
