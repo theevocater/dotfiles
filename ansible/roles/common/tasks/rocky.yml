@@ -26,6 +26,7 @@
       - tmux
       - vim
       - python3-virtualenv
+      - zellij
       - zsh
     update_cache: true
     state: present

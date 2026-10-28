@@ -35,6 +35,7 @@
       - tmux
       - vim-nox
       - virtualenv
+      - zellij
       - zsh
     update_cache: true
     state: present

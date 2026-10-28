@@ -18,5 +18,6 @@
       - tmux
       - vim
       - virtualenv
+      - zellij
       - zsh
     state: present
